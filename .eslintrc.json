@@ -1,0 +1,121 @@
+{
+    "root": true,
+    "ignorePatterns": ["projects/**/*"],
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parserOptions": {
+                // "ignorePatterns": [".eslintrc.json"],
+                "parser": "@typescript-eslint/parser",
+                "project": ["tsconfig.json"],
+                // "tsconfigRootDir": "__dirname",
+                "createDefaultProgram": true
+            },
+            "plugins": ["eslint-plugin-import"],
+            "extends": [
+                "eslint:recommended",
+                "plugin:import/recommended",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:@angular-eslint/recommended",
+                "plugin:@angular-eslint/template/process-inline-templates",
+                "airbnb-typescript/base",
+                "plugin:prettier/recommended"
+            ],
+            "settings": {
+                "import/parsers": { "@typescript-eslint/parser": [".ts"] }
+            },
+            "rules": {
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "app",
+                        "style": "camelCase"
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": "app",
+                        "style": "kebab-case"
+                    }
+                ],
+                "@typescript-eslint/lines-between-class-members": "off",
+                "@typescript-eslint/no-unused-expressions": "off",
+                "import/no-extraneous-dependencies": [
+                    "off",
+                    {
+                        "devDependencies": false,
+                        "optionalDependencies": false,
+                        "peerDependencies": false
+                    }
+                ],
+                "import/no-commonjs": "off",
+                "import/unambiguous": "off",
+                "import/no-deprecated": "warn",
+                "import/prefer-default-export": "off",
+                "import/default": "error",
+                "import/extensions": [
+                    "error",
+                    "always",
+                    {
+                        "js": "never",
+                        "jsx": "never",
+                        "ts": "never",
+                        "tsx": "never"
+                    }
+                ],
+                "import/order": [
+                    "warn",
+                    { "groups": [["builtin", "external", "internal"]] }
+                ],
+                "import/no-cycle": "error",
+                "import/first": "error",
+                "import/exports-last": "off",
+                "import/no-default-export": "off",
+                "import/newline-after-import": ["error", { "count": 1 }],
+                "@typescript-eslint/consistent-type-imports": "off",
+                "no-param-reassign": "off",
+                "no-case-declarations": "error",
+                "no-console": [
+                    "error",
+                    { "allow": ["info", "assert", "warn", "error"] }
+                ],
+                "no-implicit-coercion": ["error", { "allow": ["!!"] }],
+                "no-return-assign": ["error", "always"],
+                "no-useless-rename": [
+                    "error",
+                    {
+                        "ignoreDestructuring": true,
+                        "ignoreImport": false,
+                        "ignoreExport": false
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["*.html"],
+            "extends": [
+                "plugin:@angular-eslint/template/recommended",
+                "plugin:@angular-eslint/template/accessibility"
+            ],
+            "rules": {
+                "@angular-eslint/template/click-events-have-key-events": "off",
+                "@angular-eslint/template/interactive-supports-focus": "off"
+            }
+        },
+        {
+            "files": ["src/**/*.spec.ts", "src/**/*.d.ts"],
+            "parserOptions": {
+                "project": "./tsconfig.spec.json"
+            },
+            "extends": ["plugin:jasmine/recommended"],
+            "plugins": ["jasmine"],
+            "env": { "jasmine": true },
+            "rules": {
+                "@typescript-eslint/no-unused-vars": "off"
+            }
+        }
+    ]
+}

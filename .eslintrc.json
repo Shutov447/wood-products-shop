@@ -5,11 +5,16 @@
         {
             "files": ["*.ts"],
             "parserOptions": {
+                "ecmaVersion": "latest",
                 // "ignorePatterns": [".eslintrc.json"],
                 "parser": "@typescript-eslint/parser",
+                // "parser": "@babel/eslint-parser",
                 "project": ["tsconfig.json"],
                 // "tsconfigRootDir": "__dirname",
                 "createDefaultProgram": true
+            },
+            "env": {
+                "es6": true
             },
             "plugins": ["eslint-plugin-import"],
             "extends": [

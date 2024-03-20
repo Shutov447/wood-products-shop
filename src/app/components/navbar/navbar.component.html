@@ -1,0 +1,45 @@
+<div class="container">
+    <app-logo class="logo"></app-logo>
+    <nav>
+        <ul class="navigation body-M">
+            <li>
+                <a
+                    href="#"
+                    class="white-font"
+                    >Доставка</a
+                >
+            </li>
+            <li>
+                <a
+                    href="#"
+                    class="white-font"
+                    >Статьи</a
+                >
+            </li>
+            <li>
+                <a
+                    href="#"
+                    class="white-font"
+                    >О нас</a
+                >
+            </li>
+            <li>
+                <a
+                    href="#"
+                    class="white-font"
+                    >Контакты</a
+                >
+            </li>
+        </ul>
+    </nav>
+    <address class="contact-info">
+        <p class="frangipani-font body-M">{{ suppurtEmail }}</p>
+        <p class="frangipani-font h5">{{ phoneNumber }}</p>
+    </address>
+    <app-button
+        [pieceOfWoodCount]="2"
+        [haveBackground]="true"
+        [size]="'XS'"
+        >каталог</app-button
+    >
+</div>

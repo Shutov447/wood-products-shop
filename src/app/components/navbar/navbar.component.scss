@@ -1,0 +1,40 @@
+@import '../../shared/scss/colors.scss';
+
+:host {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 120px;
+    min-width: 1600px;
+    background-color: $Kilamanjaro;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 134px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+    margin-right: 102px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: row;
+    gap: 67px;
+    margin-right: 66px;
+}
+
+.navigation a:hover {
+    color: $Frangipani;
+}

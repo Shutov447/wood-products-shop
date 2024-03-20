@@ -1,4 +1,4 @@
-@use '../colors/colors.scss';
+@import '../scss/colors.scss';
 
 $PermianSerif: 'Permian-Serif';
 $Gilroy: 'Gilroy';
@@ -6,9 +6,9 @@ $Gilroy: 'Gilroy';
 @font-face {
     font-family: 'Permian-Serif';
     src:
-        url('../../assets/fonts/permian-serif/PermianSerifTypeface-Bold.woff2')
+        url('../../../assets/fonts/permian-serif/PermianSerifTypeface-Bold.woff2')
             format('woff2'),
-        url('../../assets/fonts/permian-serif/PermianSerifTypeface-Bold.woff')
+        url('../../../assets/fonts/permian-serif/PermianSerifTypeface-Bold.woff')
             format('woff');
     font-weight: 700;
     font-style: normal;
@@ -17,11 +17,11 @@ $Gilroy: 'Gilroy';
 @font-face {
     font-family: 'Gilroy';
     src:
-        url('../../assets/fonts/gilroy/regular/Gilroy-Regular.woff2')
+        url('../../../assets/fonts/gilroy/regular/Gilroy-Regular.woff2')
             format('woff2'),
-        url('../../assets/fonts/gilroy/regular/Gilroy-Regular.woff')
+        url('../../../assets/fonts/gilroy/regular/Gilroy-Regular.woff')
             format('woff'),
-        url('../../assets/fonts/gilroy/regular/Gilroy-Regular.ttf')
+        url('../../../assets/fonts/gilroy/regular/Gilroy-Regular.ttf')
             format('ttf');
     font-weight: 400;
     font-style: normal;
@@ -30,11 +30,12 @@ $Gilroy: 'Gilroy';
 @font-face {
     font-family: 'Gilroy';
     src:
-        url('../../assets/fonts/gilroy/medium/Gilroy-Medium.woff2')
+        url('../../../assets/fonts/gilroy/medium/Gilroy-Medium.woff2')
             format('woff2'),
-        url('../../assets/fonts/gilroy/medium/Gilroy-Medium.woff')
+        url('../../../assets/fonts/gilroy/medium/Gilroy-Medium.woff')
             format('woff'),
-        url('../../assets/fonts/gilroy/medium/Gilroy-Medium.ttf') format('ttf');
+        url('../../../assets/fonts/gilroy/medium/Gilroy-Medium.ttf')
+            format('ttf');
     font-weight: 500;
     font-style: normal;
 }
@@ -42,10 +43,10 @@ $Gilroy: 'Gilroy';
 @font-face {
     font-family: 'Gilroy';
     src:
-        url('../../assets/fonts/gilroy/medium/Gilroy-Bold.woff2')
+        url('../../../assets/fonts/gilroy/bold/Gilroy-Bold.woff2')
             format('woff2'),
-        url('../../assets/fonts/gilroy/medium/Gilroy-Bold.woff') format('woff'),
-        url('../../assets/fonts/gilroy/medium/Gilroy-Bold.ttf') format('ttf');
+        url('../../../assets/fonts/gilroy/bold/Gilroy-Bold.woff') format('woff'),
+        url('../../../assets/fonts/gilroy/bold/Gilroy-Bold.ttf') format('ttf');
     font-weight: 700;
     font-style: normal;
 }
@@ -56,7 +57,7 @@ $Gilroy: 'Gilroy';
     font-size: 64px;
     font-weight: 700;
     line-height: 100%;
-    letter-spacing: -1%;
+    letter-spacing: 0px;
 }
 
 .h2 {
@@ -65,7 +66,7 @@ $Gilroy: 'Gilroy';
     font-size: 50px;
     font-weight: 700;
     line-height: 100%;
-    letter-spacing: -1%;
+    letter-spacing: 0px;
 }
 
 .h3 {
@@ -74,7 +75,7 @@ $Gilroy: 'Gilroy';
     font-size: 36px;
     font-weight: 700;
     line-height: 120%;
-    letter-spacing: -2%;
+    letter-spacing: 0px;
 }
 
 .h4 {
@@ -83,7 +84,7 @@ $Gilroy: 'Gilroy';
     font-size: 25px;
     font-weight: 700;
     line-height: 100%;
-    letter-spacing: -2%;
+    letter-spacing: 0px;
 }
 
 .h5 {
@@ -92,7 +93,7 @@ $Gilroy: 'Gilroy';
     font-size: 21px;
     font-weight: 700;
     line-height: 110%;
-    letter-spacing: 1%;
+    letter-spacing: 0.2px; //6%
 }
 
 .h6 {
@@ -101,7 +102,7 @@ $Gilroy: 'Gilroy';
     font-size: 22px;
     font-weight: 500;
     line-height: 140%;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
 }
 
 .body-L {
@@ -110,7 +111,7 @@ $Gilroy: 'Gilroy';
     font-size: 18px;
     font-weight: 500;
     line-height: 100%;
-    letter-spacing: 1%;
+    letter-spacing: 0.2px; // 1%
 }
 
 .body-L-bold {
@@ -119,7 +120,7 @@ $Gilroy: 'Gilroy';
     font-size: 18px;
     font-weight: 700;
     line-height: 120%;
-    letter-spacing: 1%;
+    letter-spacing: 0.2px; // 1%
 }
 
 .body-M {
@@ -128,7 +129,7 @@ $Gilroy: 'Gilroy';
     font-size: 16px;
     font-weight: 400;
     line-height: 130%;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
 }
 
 .body-M-bold {
@@ -137,7 +138,7 @@ $Gilroy: 'Gilroy';
     font-size: 16px;
     font-weight: 700;
     line-height: 130%;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
 }
 
 .body-S {
@@ -146,7 +147,7 @@ $Gilroy: 'Gilroy';
     font-size: 13px;
     font-weight: 400;
     line-height: 130%;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
 }
 
 .body-XS {
@@ -155,7 +156,7 @@ $Gilroy: 'Gilroy';
     font-size: 12px;
     font-weight: 400;
     line-height: 140%;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
 }
 
 .body-XS-bold {
@@ -164,5 +165,27 @@ $Gilroy: 'Gilroy';
     font-size: 12px;
     font-weight: 700;
     line-height: 140%;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
+}
+
+.button-font {
+    color: $Kilamanjaro;
+    font-family: Gilroy;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 1px; // 6%
+    text-transform: uppercase;
+}
+
+.white-font {
+    color: $White;
+}
+
+.frangipani-font {
+    color: $Frangipani;
+}
+
+.rust-font {
+    color: $Rust;
 }

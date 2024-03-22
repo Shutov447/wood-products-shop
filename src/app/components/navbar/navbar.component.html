@@ -1,32 +1,34 @@
 <div class="container">
-    <app-logo class="logo"></app-logo>
     <nav>
-        <ul class="navigation body-M">
+        <ul class="navigation body-M white-font">
+            <li class="logo">
+                <app-logo [routerLink]="['']"></app-logo>
+            </li>
             <li>
                 <a
-                    href="#"
-                    class="white-font"
+                    [routerLink]="['/delivery']"
+                    routerLinkActive="router-link-active"
                     >Доставка</a
                 >
             </li>
             <li>
                 <a
-                    href="#"
-                    class="white-font"
+                    [routerLink]="['/articles']"
+                    routerLinkActive="router-link-active"
                     >Статьи</a
                 >
             </li>
             <li>
                 <a
-                    href="#"
-                    class="white-font"
+                    [routerLink]="['/about-us']"
+                    routerLinkActive="router-link-active"
                     >О нас</a
                 >
             </li>
             <li>
                 <a
-                    href="#"
-                    class="white-font"
+                    [routerLink]="['/contacts']"
+                    routerLinkActive="router-link-active"
                     >Контакты</a
                 >
             </li>
@@ -37,7 +39,7 @@
         <p class="frangipani-font h5">{{ phoneNumber }}</p>
     </address>
     <app-button
-        [pieceOfWoodCount]="2"
+        [pieceOfWood]="'top&down'"
         [haveBackground]="true"
         [size]="'XS'"
         >каталог</app-button

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-    providedIn: null,
+    providedIn: 'root',
 })
 export class ElemHoverService {
     private readonly _isHovered$ = new BehaviorSubject<boolean>(false);

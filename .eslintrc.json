@@ -69,7 +69,7 @@
                     }
                 ],
                 "import/order": [
-                    "warn",
+                    "error",
                     { "groups": [["builtin", "external", "internal"]] }
                 ],
                 "import/no-cycle": "error",

@@ -1,0 +1,7 @@
+<button
+    class="arrow-button"
+    [class]="(isHovered$ | async) ? 'hovered' : 'default'"
+    appElemHover
+>
+    <tui-svg [src]="arrowDirection"></tui-svg>
+</button>

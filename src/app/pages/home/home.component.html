@@ -1,0 +1,54 @@
+<header class="header">
+    <div class="header-image"></div>
+    <div class="woodcut-container">
+        <div class="woodcut"></div>
+        <div class="woodcut-back"></div>
+        <div
+            tuiCarouselButtons
+            class="wrapper"
+        >
+            <tui-carousel
+                #carousel
+                class="carousel-container"
+            >
+                <ng-container *ngFor="let currentCarouselItem of carouselItems">
+                    <div
+                        #tuiItemElem
+                        *tuiItem
+                        class="carousel-item"
+                    >
+                        <h3 class="h3 white-font">Classic Wood Style</h3>
+                        <h5 class="h5 frangipani-font">enterior-exterior</h5>
+                        <p class="body-M-bold white-font p">
+                            Приглашает к сотрудничеству архитекторов, дизайнеров
+                            и строителей
+                        </p>
+                        <app-button
+                            [haveBackground]="true"
+                            [pieceOfWood]="'down'"
+                            [size]="'S'"
+                            class="button"
+                            >подробнее</app-button
+                        >
+                        <div class="count-carousel-items">
+                            <div class="h6 white-font">
+                                {{ currentCarouselItem }} -
+                                {{ carouselItems.length }}
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </tui-carousel>
+            <app-arrow-button
+                class="arrow-button-left"
+                [arrowDirection]="'tuiIconArrowLeftLarge'"
+                (click)="carousel.prev()"
+            ></app-arrow-button>
+            <app-arrow-button
+                class="arrow-button-right"
+                [arrowDirection]="'tuiIconArrowRightLarge'"
+                (click)="carousel.next()"
+            ></app-arrow-button>
+        </div>
+    </div>
+</header>

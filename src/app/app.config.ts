@@ -5,6 +5,11 @@ import { provideRouter } from '@angular/router';
 
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {
+    HttpClientModule,
+    provideHttpClient,
+    withFetch,
+} from '@angular/common/http';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -14,5 +19,7 @@ export const appConfig: ApplicationConfig = {
         provideClientHydration(),
         provideAnimationsAsync(),
         importProvidersFrom(TuiRootModule),
+        importProvidersFrom(HttpClientModule),
+        provideHttpClient(withFetch()),
     ],
 };

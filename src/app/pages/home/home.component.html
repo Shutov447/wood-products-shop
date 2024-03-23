@@ -11,17 +11,22 @@
                 #carousel
                 class="carousel-container"
             >
-                <ng-container *ngFor="let currentCarouselItem of carouselItems">
+                <ng-container
+                    *ngFor="let sliderData of slidersData$ | async; index as i"
+                >
                     <div
                         #tuiItemElem
                         *tuiItem
                         class="carousel-item"
                     >
-                        <h3 class="h3 white-font">Classic Wood Style</h3>
-                        <h5 class="h5 frangipani-font">enterior-exterior</h5>
+                        <h3 class="h3 white-font">
+                            {{ sliderData.header }}
+                        </h3>
+                        <h5 class="h5 frangipani-font">
+                            {{ sliderData.header_2 }}
+                        </h5>
                         <p class="body-M-bold white-font p">
-                            Приглашает к сотрудничеству архитекторов, дизайнеров
-                            и строителей
+                            {{ sliderData.content }}
                         </p>
                         <app-button
                             [haveBackground]="true"
@@ -32,8 +37,8 @@
                         >
                         <div class="count-carousel-items">
                             <div class="h6 white-font">
-                                {{ currentCarouselItem }} -
-                                {{ carouselItems.length }}
+                                {{ i + 1 }} -
+                                {{ (slidersData$ | async)?.length }}
                             </div>
                         </div>
                     </div>
@@ -52,3 +57,16 @@
         </div>
     </div>
 </header>
+<main class="main">
+    <div class="service-cards-container">
+        <div *ngFor="let cardData of cardsData$ | async">
+            <app-service-card
+                [image]="cardData.image"
+                [header]="cardData.header"
+                [content]="cardData.content"
+                [buttonText]="cardData.button_text"
+            ></app-service-card>
+        </div>
+    </div>
+    <app-contact-us-card class="contact-us-card"></app-contact-us-card>
+</main>

@@ -1,4 +1,5 @@
 @import '../../../../shared/scss/colors.scss';
+@import '../../../../shared/scss/transitions.scss';
 
 .arrow-button {
     width: 50px;
@@ -7,10 +8,18 @@
     box-shadow: 8px 0px 10px rgba(#000000, 0.1);
 }
 
+.arrow-button:hover {
+    transition: background-color $bg-color-trans;
+}
+
 .default {
     background-color: $White;
 }
 
 .hovered {
     background-color: $Frangipani;
+}
+
+.arrow-button:disabled {
+    opacity: 0.5;
 }

@@ -3,6 +3,7 @@
 </div>
 <button
     [class.BG-color]="haveBackground"
+    [class.no-BG]="!haveBackground"
     [class]="haveBackground ? 'white-font' : 'rust-font'"
     [ngClass]="size"
     class="button-font"

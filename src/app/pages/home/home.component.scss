@@ -118,3 +118,20 @@
     font-size: 15px;
     line-height: 130%;
 }
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 90px;
+}
+
+.service-cards-container {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.contact-us-card {
+    margin-top: 90px;
+}

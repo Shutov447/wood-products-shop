@@ -1,4 +1,5 @@
 @import '../../shared/scss/colors.scss';
+@import '../../shared/scss/transitions.scss';
 
 :host {
     display: flex;
@@ -46,5 +47,6 @@
 }
 
 .navigation a:hover {
+    transition: color $bg-color-trans;
     color: $Frangipani;
 }

@@ -1,0 +1,32 @@
+@import '../../shared/scss/colors.scss';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 620px;
+}
+
+.image {
+    width: 620px;
+    height: 320px;
+}
+
+.header {
+    margin-top: 40px;
+}
+
+.content {
+    margin-top: 19px;
+}
+
+.button {
+    margin: 24px 50px 20px 0;
+    align-self: flex-end;
+}
+
+.hr {
+    width: 620px;
+    height: 1px;
+    color: $Gainsboro;
+}

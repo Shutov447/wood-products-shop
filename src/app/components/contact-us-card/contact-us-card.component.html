@@ -1,30 +1,65 @@
 <div class="image"></div>
 <div class="form-container">
-    <form class="form">
-        <header>
-            <h1 class="h1">Нужна помощь с выбором?</h1>
-        </header>
-        <main class="content h6">
-            <h6>
-                Наши специалисты с радостью помогут Вам, оставьте свой номер
-                телефона!
-            </h6>
-        </main>
-        <div class="inputs">
-            <div>
+    <header>
+        <h1 class="h1">Нужна помощь с выбором?</h1>
+    </header>
+    <main class="content">
+        <h6 class="h6">
+            Наши специалисты с радостью помогут Вам, оставьте свой номер
+            телефона!
+        </h6>
+    </main>
+    <form
+        class="form"
+        [formGroup]="formGroup"
+    >
+        <div class="form-inputs-wrapper">
+            <div
+                *ngFor="let dataForm of dataForms"
+                class="form-input-wrapper"
+                [class]="
+                    dataForm.formControl?.invalid &&
+                    dataForm.formControl?.touched
+                        ? 'form-input-wrapper-invalid'
+                        : 'form-input-wrapper'
+                "
+            >
+                <small
+                    class="body-S small"
+                    *ngIf="
+                        dataForm.formControl?.dirty ||
+                        dataForm.formControl?.touched
+                    "
+                    >{{ dataForm.needData }}
+                    <span *ngIf="dataForm.formControl?.hasError('required')"
+                        >*</span
+                    >
+                </small>
                 <input
+                    class="form-input body-L"
                     type="text"
-                    name="name"
+                    [name]="dataForm.name"
+                    [formControlName]="dataForm.name"
+                    autocomplete="off"
+                    [placeholder]="
+                        dataForm.formControl?.invalid &&
+                        dataForm.formControl?.untouched
+                            ? dataForm.needData
+                            : 'Заполните форму'
+                    "
                 />
-            </div>
-            <div>
-                <input
-                    type="text"
-                    name="number"
-                />
+                <app-alert-triangle-icon
+                    class="tooltip"
+                    *ngIf="
+                        dataForm.formControl?.invalid &&
+                        dataForm.formControl?.touched
+                    "
+                ></app-alert-triangle-icon>
             </div>
         </div>
         <app-button
+            role="button"
+            type="submit"
             class="button"
             [haveBackground]="true"
             [size]="'L'"

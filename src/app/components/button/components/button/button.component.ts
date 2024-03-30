@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ButtonSize } from '../../shared/types/button-size.type';
-import { ElemHoverService } from '../../shared/services/elem-hover.service';
+import { ElemHoverService } from '../../shared/services/elem-hover/elem-hover.service';
 import { PieceOfWood } from '../../shared/types/peice-of-wood.type';
 
 @Component({

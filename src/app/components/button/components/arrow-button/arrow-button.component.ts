@@ -7,7 +7,7 @@ import {
 import { TuiSvgService } from '@taiga-ui/core';
 import { tuiIconArrowLeftLarge, tuiIconArrowRightLarge } from '@taiga-ui/icons';
 import { ArrowDirection } from '../../shared/types/arrow-direction.type';
-import { ElemHoverService } from '../../shared/services/elem-hover.service';
+import { ElemHoverService } from '../../shared/services/elem-hover/elem-hover.service';
 
 @Component({
     selector: 'app-arrow-button',

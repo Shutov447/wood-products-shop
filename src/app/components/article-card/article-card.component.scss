@@ -1,0 +1,44 @@
+@import '../../shared/scss/colors.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 450px;
+    border: 1px solid $Gainsboro;
+}
+
+.container:hover {
+    border-color: $Tide;
+}
+
+.img {
+    width: 400px;
+    height: 180px;
+}
+
+.info-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    flex-grow: 1;
+}
+
+.content {
+    color: $Gainsboro;
+    margin-top: 15px;
+}
+
+.date {
+    color: $Gainsboro;
+}
+
+.wrapper {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}

@@ -59,14 +59,34 @@
 </header>
 <main class="main">
     <div class="service-cards-container">
-        <div *ngFor="let cardData of cardsData$ | async">
+        <div *ngFor="let serviceCardData of serviceCardsData$ | async">
             <app-service-card
-                [image]="cardData.image"
-                [header]="cardData.header"
-                [content]="cardData.content"
-                [buttonText]="cardData.button_text"
+                [image]="serviceCardData.image"
+                [header]="serviceCardData.header"
+                [content]="serviceCardData.content"
+                [buttonText]="serviceCardData.button_text"
             ></app-service-card>
         </div>
     </div>
     <app-contact-us-card class="contact-us-card"></app-contact-us-card>
+    <article class="articles-container">
+        <header class="header-articles">
+            <h1 class="h1">Новые статьи</h1>
+            <button class="button-font button-article">Все статьи</button>
+        </header>
+        <main class="articles-wrapper">
+            <article *ngFor="let articleCardData of articlesCardsData$ | async">
+                <app-article-card
+                    [img]="articleCardData.image"
+                    [header]="articleCardData.header"
+                    [content]="articleCardData.content"
+                    [date]="{
+                        day: articleCardData.day,
+                        month: articleCardData.month,
+                        year: articleCardData.year
+                    }"
+                ></app-article-card>
+            </article>
+        </main>
+    </article>
 </main>

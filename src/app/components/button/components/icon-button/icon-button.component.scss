@@ -1,0 +1,12 @@
+@import '../../../../shared/scss/colors.scss';
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: $Kilamanjaro;
+    border-radius: 50%;
+    border: 1px solid rgba($White, 0.6);
+}

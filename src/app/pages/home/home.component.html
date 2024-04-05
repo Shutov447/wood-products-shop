@@ -75,7 +75,7 @@
             <button class="button-font button-article">Все статьи</button>
         </header>
         <main class="articles-wrapper">
-            <article *ngFor="let articleCardData of articlesCardsData$ | async">
+            <article *ngFor="let articleCardData of artilcesCards$ | async">
                 <app-article-card
                     [img]="articleCardData.image"
                     [header]="articleCardData.header"

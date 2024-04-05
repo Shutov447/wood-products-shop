@@ -1,0 +1,77 @@
+@import '../../shared/scss/colors.scss';
+
+:host {
+    position: relative;
+    width: 100%;
+    padding: 50px;
+}
+
+.person-container {
+    display: flex;
+    margin-top: 51px;
+
+    .person-data {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+
+        .img {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+        }
+    }
+
+    .quots {
+        position: relative;
+        bottom: 26px;
+        font-size: 120px;
+        height: 36px;
+    }
+}
+
+.rectangles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    .left-and-right {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .veritcal {
+            width: 1px;
+            height: 85%;
+        }
+    }
+
+    .top-and-bottom {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .horizontal {
+            width: 95%;
+            height: 1px;
+        }
+    }
+
+    div {
+        width: 100%;
+        height: 100%;
+
+        div:not(.empty) {
+            background-color: $Tide;
+        }
+    }
+}
+
+.empty {
+    flex-grow: 1;
+}

@@ -1,0 +1,33 @@
+<blockquote cite="">
+    <p class="h3 rust-font">
+        {{ quoteData?.quote }}
+    </p>
+    <div class="person-container">
+        <div class="person-data">
+            <div class="img">
+                <img
+                    [src]="quoteData?.img"
+                    [alt]="quoteData?.name"
+                />
+            </div>
+            <cite class="person">
+                <h5 class="h5">{{ quoteData?.name }}</h5>
+                <p class="tide-font body-S">{{ quoteData?.position }}</p>
+            </cite>
+        </div>
+        <div class="empty"></div>
+        <div class="quots button-font">``</div>
+    </div>
+</blockquote>
+<div class="rectangles">
+    <div class="left-and-right">
+        <div class="veritcal"></div>
+        <div class="empty"></div>
+        <div class="veritcal"></div>
+    </div>
+    <div class="top-and-bottom">
+        <div class="horizontal"></div>
+        <div class="empty"></div>
+        <div class="horizontal"></div>
+    </div>
+</div>

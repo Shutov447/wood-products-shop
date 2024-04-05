@@ -1,0 +1,29 @@
+@import '../../shared/scss/colors.scss';
+
+:host {
+    display: flex;
+    width: 100%;
+    background-color: $HintOfRed;
+    padding: 24px 30px 24px 30px;
+}
+
+.file-info {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    .wrapper {
+        display: flex;
+        gap: 15px;
+    }
+}
+
+.empty {
+    flex-grow: 1;
+}
+
+.button-content {
+    display: flex;
+    gap: 8px;
+    color: $Rust;
+}

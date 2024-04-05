@@ -1,0 +1,17 @@
+<div class="file-info">
+    <div class="body-L-bold">{{ fileName }}</div>
+    <div class="body-S wrapper">
+        <span>{{ fileType }}</span
+        ><span>{{ fileSize }}</span>
+    </div>
+</div>
+<div class="empty"></div>
+<app-button class="button">
+    <a
+        class="button-content"
+        [href]="fileSrc"
+        download
+        ><app-download-icon></app-download-icon>
+        <span>скачать</span>
+    </a>
+</app-button>

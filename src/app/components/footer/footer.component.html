@@ -1,0 +1,72 @@
+<div class="contact-info-container body-S">
+    <div class="company">
+        <app-logo class="logo"></app-logo>
+        <p>Фабрика G&G. {{ currentYear }}</p>
+        <p>© Все права защищены</p>
+    </div>
+    <ul class="contact-info">
+        <li class="phoneNumber h4">{{ phoneNumber }}</li>
+        <li>{{ matroStation }}</li>
+        <li>{{ address }}</li>
+        <li>{{ suppurtEmail }}</li>
+    </ul>
+</div>
+<!-- надо будет взять из ngrx массив только из названий категорий(catalog) -->
+<ul class="catalog body-S">
+    <li *ngFor="let category of ['0', '1', '2', '3']">
+        <a
+            [routerLink]="category"
+            class="link"
+            >category{{ category }}</a
+        >
+    </li>
+</ul>
+<div class="navigation-container body-S">
+    <ul class="navigation">
+        <li>
+            <a
+                routerLink="/delivery"
+                class="link"
+                >Доставка</a
+            >
+        </li>
+        <li>
+            <a
+                routerLink="/articles"
+                class="link"
+                >Статьи</a
+            >
+        </li>
+        <li>
+            <a
+                routerLink="/about-us"
+                class="link"
+                >О нас</a
+            >
+        </li>
+        <li>
+            <a
+                routerLink="/"
+                class="link privacy-policy"
+                >Политика конфиденциальности</a
+            >
+        </li>
+    </ul>
+    <ul class="icons-container">
+        <li>
+            <a href="https://vk.com/"
+                ><app-icon-button [icon]="'vk'"></app-icon-button
+            ></a>
+        </li>
+        <li>
+            <a href="https://ru.pinterest.com/"
+                ><app-icon-button [icon]="'pint'"></app-icon-button
+            ></a>
+        </li>
+        <li>
+            <a href="https://web.telegram.org/"
+                ><app-icon-button [icon]="'tg'"></app-icon-button
+            ></a>
+        </li>
+    </ul>
+</div>

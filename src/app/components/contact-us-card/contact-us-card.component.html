@@ -12,6 +12,7 @@
     <form
         class="form"
         [formGroup]="formGroup"
+        (ngSubmit)="onSubmit()"
     >
         <div class="form-inputs-wrapper">
             <div
@@ -63,6 +64,7 @@
             class="button"
             [haveBackground]="true"
             [size]="'L'"
+            [isDisabled]="formGroup.invalid"
             >Связаться с нами</app-button
         >
     </form>

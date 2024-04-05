@@ -47,4 +47,13 @@ export class ContactUsCardComponent {
             needData: 'Ваш телефон',
         },
     ];
+
+    onSubmit() {
+        this.formGroup.valid && this.submitForm();
+    }
+
+    private submitForm() {
+        // eslint-disable-next-line no-console
+        console.log(this.formGroup.value);
+    }
 }

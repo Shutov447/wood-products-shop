@@ -14,6 +14,7 @@ export class ButtonComponent {
     @Input() size: ButtonSize | null = null;
     @Input() pieceOfWood: PieceOfWood = 'none';
     @Input() haveBackground = false;
+    @Input() isDisabled = false;
 
     readonly mediumWood = '#a9845c';
     readonly rope = '#926341';

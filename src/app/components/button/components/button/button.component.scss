@@ -49,6 +49,7 @@
 
 .BG-color {
     background-color: $MediumWood;
+    transition: background-color $bg-color-trans;
 }
 
 .BG-color:hover {
@@ -58,6 +59,10 @@
 
 .BG-color:disabled {
     opacity: 0.5;
+}
+
+.no-BG {
+    transition: text-decoration $bg-color-trans;
 }
 
 .no-BG:hover {

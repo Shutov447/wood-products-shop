@@ -1,0 +1,14 @@
+@import '../../shared/scss/fonts.scss';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.h1,
+.h2 {
+    font-family: $Gilroy;
+}

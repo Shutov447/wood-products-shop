@@ -1,4 +1,5 @@
 @import '../../shared/scss/colors.scss';
+@import '../../shared/scss/transitions.scss';
 
 .container {
     display: flex;
@@ -6,9 +7,11 @@
     width: 400px;
     height: 450px;
     border: 1px solid $Gainsboro;
+    transition: border-color $bg-color-trans;
 }
 
 .container:hover {
+    transition: border-color $bg-color-trans;
     border-color: $Tide;
 }
 

@@ -6,6 +6,7 @@
     height: 50px;
     border-radius: 50%;
     box-shadow: 8px 0px 10px rgba(#000000, 0.1);
+    transition: background-color $bg-color-trans;
 }
 
 .arrow-button:hover {

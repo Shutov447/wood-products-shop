@@ -11,13 +11,12 @@
         <li>{{ suppurtEmail }}</li>
     </ul>
 </div>
-<!-- надо будет взять из ngrx массив только из названий категорий(catalog) -->
 <ul class="catalog body-S">
-    <li *ngFor="let category of ['0', '1', '2', '3']">
+    <li *ngFor="let category of categories$ | async">
         <a
-            [routerLink]="category"
+            [routerLink]="'catalog/' + category"
             class="link"
-            >category{{ category }}</a
+            >{{ category }}</a
         >
     </li>
 </ul>

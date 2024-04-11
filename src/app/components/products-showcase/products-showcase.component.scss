@@ -1,0 +1,63 @@
+@import '../../shared/scss/colors.scss';
+@import '../../shared/scss/transitions.scss';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.categories {
+    display: flex;
+
+    .category {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        border: 1px solid $Gainsboro;
+        transition: border-color $bg-color-trans;
+        filter: opacity(0.9);
+    }
+
+    .button-font {
+        font-weight: 400;
+        line-height: 120%;
+    }
+
+    .selected-category {
+        border: 2px solid $Kilamanjaro;
+        transition: border-color $bg-color-trans;
+        filter: opacity(1);
+        font-weight: 700;
+        line-height: 140%;
+    }
+}
+
+.product-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.show {
+    display: flex;
+}
+
+.not-show {
+    display: none;
+}
+
+.button {
+    height: 60px;
+    border: 1px solid $Gainsboro;
+    transition: border-color $bg-color-trans;
+}
+
+.button:hover {
+    border: 1px solid $Kilamanjaro;
+    transition: border $bg-color-trans;
+}

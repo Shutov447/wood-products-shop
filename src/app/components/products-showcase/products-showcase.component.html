@@ -1,0 +1,27 @@
+<h1 class="h1">Витрина товаров</h1>
+<div class="categories">
+    <button
+        class="button-font category"
+        *ngFor="let category of categories$ | async"
+        [class]="category === selectedCategory ? 'selected-category' : ''"
+        (click)="filter(category)"
+    >
+        {{ category }}
+    </button>
+</div>
+<div class="product-card-container">
+    <app-product-card
+        class="broad"
+        *ngFor="let product of products"
+        [class]="product.category === selectedCategory ? 'show' : 'not-show'"
+        [name]="product.name"
+        [price]="product.price"
+        [imgs]="product.photos"
+    ></app-product-card>
+</div>
+<button
+    class="button-font button"
+    [routerLink]="['/catalog']"
+>
+    показать все
+</button>

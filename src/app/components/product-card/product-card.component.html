@@ -1,0 +1,32 @@
+<div class="name body-L">{{ name }}</div>
+<div class="price body-L-bold">
+    {{ price | currency: 'RUB' : 'symbol-narrow' : '1.0-0' }}
+</div>
+<tui-carousel
+    #carousel
+    class="imgs-carousel"
+    (click)="seeNextImg()"
+>
+    <ng-container *ngFor="let img of imgs">
+        <div
+            *tuiItem
+            class="img-wrapper"
+        >
+            <img
+                class="img"
+                [src]="img"
+                [alt]="name"
+            /></div
+    ></ng-container>
+</tui-carousel>
+<div class="control">
+    <div class="pagination-dots">
+        <div
+            *ngFor="let _ of imgs; index as i"
+            class="dot"
+            [class]="i === currentDot ? 'current-dot' : ''"
+        ></div>
+    </div>
+    <div class="empty"></div>
+    <app-button>купить</app-button>
+</div>

@@ -1,0 +1,79 @@
+@import '../../shared/scss/colors.scss';
+@import '../../shared/scss/transitions.scss';
+
+:host {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    padding: 20px;
+    border: 1px solid $Gainsboro;
+    transition: border $bg-color-trans;
+}
+
+:host(:hover) {
+    border: 1px solid $Kilamanjaro;
+    transition: border $bg-color-trans;
+}
+
+:host(.broad) {
+    width: 400px;
+}
+
+:host(.thin) {
+    width: 290px;
+}
+
+.imgs-carousel {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    padding: 23px 0px 33px 0px;
+
+    .img-wrapper {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .img {
+            max-height: 220px;
+            max-width: 278px;
+            object-fit: cover;
+        }
+    }
+}
+
+.price {
+    margin-top: 7px;
+}
+
+.control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .pagination-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: $Gainsboro;
+        }
+
+        .current-dot {
+            background-color: $Kilamanjaro;
+            width: 10px;
+            height: 10px;
+        }
+    }
+}
+
+.empty {
+    flex-grow: 1;
+}

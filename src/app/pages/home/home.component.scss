@@ -1,4 +1,5 @@
 @import '../../shared/scss/colors.scss';
+@import '../../shared/scss/transitions.scss';
 
 :host {
     display: flex;
@@ -154,10 +155,12 @@
     width: 400px;
     height: 60px;
     border: 1px solid $Gainsboro;
+    transition: border $bg-color-trans;
 }
 
 .button-article:hover {
     border-color: $Tide;
+    transition: border $bg-color-trans;
 }
 
 .articles-wrapper {
@@ -166,4 +169,9 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 40px;
+}
+
+.products-showcase {
+    display: flex;
+    margin-top: 120px;
 }

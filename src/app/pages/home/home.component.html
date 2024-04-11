@@ -3,58 +3,52 @@
     <div class="woodcut-container">
         <div class="woodcut"></div>
         <div class="woodcut-back"></div>
-        <div
-            tuiCarouselButtons
-            class="wrapper"
+        <tui-carousel
+            #carousel
+            class="carousel-container"
         >
-            <tui-carousel
-                #carousel
-                class="carousel-container"
+            <ng-container
+                *ngFor="let sliderData of slidersData$ | async; index as i"
             >
-                <ng-container
-                    *ngFor="let sliderData of slidersData$ | async; index as i"
+                <div
+                    *tuiItem
+                    class="carousel-item"
                 >
-                    <div
-                        #tuiItemElem
-                        *tuiItem
-                        class="carousel-item"
+                    <h3 class="h3 white-font">
+                        {{ sliderData.header }}
+                    </h3>
+                    <h5 class="h5 frangipani-font">
+                        {{ sliderData.header_2 }}
+                    </h5>
+                    <p class="body-M-bold white-font p">
+                        {{ sliderData.content }}
+                    </p>
+                    <app-button
+                        [haveBackground]="true"
+                        [pieceOfWood]="'down'"
+                        [size]="'S'"
+                        class="button"
+                        >подробнее</app-button
                     >
-                        <h3 class="h3 white-font">
-                            {{ sliderData.header }}
-                        </h3>
-                        <h5 class="h5 frangipani-font">
-                            {{ sliderData.header_2 }}
-                        </h5>
-                        <p class="body-M-bold white-font p">
-                            {{ sliderData.content }}
-                        </p>
-                        <app-button
-                            [haveBackground]="true"
-                            [pieceOfWood]="'down'"
-                            [size]="'S'"
-                            class="button"
-                            >подробнее</app-button
-                        >
-                        <div class="count-carousel-items">
-                            <div class="h6 white-font">
-                                {{ i + 1 }} -
-                                {{ (slidersData$ | async)?.length }}
-                            </div>
+                    <div class="count-carousel-items">
+                        <div class="h6 white-font">
+                            {{ i + 1 }} -
+                            {{ (slidersData$ | async)?.length }}
                         </div>
                     </div>
-                </ng-container>
-            </tui-carousel>
-            <app-arrow-button
-                class="arrow-button-left"
-                [arrowDirection]="'tuiIconArrowLeftLarge'"
-                (click)="carousel.prev()"
-            ></app-arrow-button>
-            <app-arrow-button
-                class="arrow-button-right"
-                [arrowDirection]="'tuiIconArrowRightLarge'"
-                (click)="carousel.next()"
-            ></app-arrow-button>
-        </div>
+                </div>
+            </ng-container>
+        </tui-carousel>
+        <app-arrow-button
+            class="arrow-button-left"
+            [arrowDirection]="'tuiIconArrowLeftLarge'"
+            (click)="carousel.prev()"
+        ></app-arrow-button>
+        <app-arrow-button
+            class="arrow-button-right"
+            [arrowDirection]="'tuiIconArrowRightLarge'"
+            (click)="carousel.next()"
+        ></app-arrow-button>
     </div>
 </header>
 <main class="main">
@@ -68,6 +62,7 @@
             ></app-service-card>
         </div>
     </div>
+    <app-products-showcase class="products-showcase"></app-products-showcase>
     <app-contact-us-card class="contact-us-card"></app-contact-us-card>
     <article class="articles-container">
         <header class="header-articles">

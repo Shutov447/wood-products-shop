@@ -31,7 +31,7 @@ export class ProductsService implements OnDestroy {
             (product) => product.category === category,
         );
 
-        if (typeof number === 'number') {
+        if (number) {
             if (isNaN(number)) return [];
 
             return currentProducts.slice(0, number);

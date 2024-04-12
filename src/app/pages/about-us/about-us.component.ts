@@ -5,7 +5,7 @@ import { TuiCarouselModule } from '@taiga-ui/kit';
 import { DownloadCardComponent } from '../../components/download-card/download-card.component';
 import { QuoteCardComponent } from '../../components/quote-card/quote-card.component';
 import { IQuoteCard } from '../../../assets/quote-card/types/quote-card.type';
-import { UrlSigmentsVisualizerComponent } from '../../components/url-sigments-visualizer/url-segments-visualizer.component';
+import { UrlSegmentsVisualizerComponent } from '../../components/url-segments-visualizer/url-segments-visualizer.component';
 import { ButtonModule } from '../../components/button/button.module';
 
 @Component({
@@ -15,7 +15,7 @@ import { ButtonModule } from '../../components/button/button.module';
         CommonModule,
         DownloadCardComponent,
         QuoteCardComponent,
-        UrlSigmentsVisualizerComponent,
+        UrlSegmentsVisualizerComponent,
         TuiCarouselModule,
         ButtonModule,
     ],

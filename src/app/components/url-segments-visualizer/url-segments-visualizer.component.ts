@@ -3,14 +3,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'app-url-sigments-visualizer',
+    selector: 'app-url-segments-visualizer',
     standalone: true,
     imports: [CommonModule, RouterModule],
     templateUrl: './url-segments-visualizer.component.html',
     styleUrl: './url-segments-visualizer.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UrlSigmentsVisualizerComponent {
+export class UrlSegmentsVisualizerComponent {
     urlSegmentTranslation: unknown;
 
     constructor(private readonly actRoute: ActivatedRoute) {}

@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { UrlSigmentsVisualizerComponent } from '../../components/url-sigments-visualizer/url-segments-visualizer.component';
+import { UrlSegmentsVisualizerComponent } from '../../components/url-segments-visualizer/url-segments-visualizer.component';
 import { productsFeatureSelector } from '../../store/products/products.selector';
 import { IState } from '../../store/reducer';
 import { IProduct } from '../../../assets/products/types/product.interface';
@@ -16,7 +16,7 @@ import { ButtonModule } from '../../components/button/button.module';
     selector: 'app-catalog',
     standalone: true,
     imports: [
-        UrlSigmentsVisualizerComponent,
+        UrlSegmentsVisualizerComponent,
         CommonModule,
         RouterModule,
         ButtonModule,

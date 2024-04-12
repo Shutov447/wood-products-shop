@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { Page404Component } from './pages/page-404/page-404.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+// import { ArticlesComponent } from './pages/articles/articles.component';
 
 export const routes: Routes = [
     {
@@ -12,7 +13,7 @@ export const routes: Routes = [
     },
     // {
     //     path: 'articles',
-    //     component: ,
+    //     component: ArticlesComponent,
     // },
     {
         path: 'about-us',

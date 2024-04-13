@@ -1,0 +1,32 @@
+@import '../../shared/scss/transitions.scss';
+@import '../../shared/scss/colors.scss';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 160px 90px 160px;
+}
+
+.h1-text {
+    margin: 17px 0 40px 0;
+}
+
+.articles-container {
+    display: flex;
+    justify-content: center;
+
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.button {
+    height: 60px;
+    border: 1px solid $Gainsboro;
+    transition: border-color $bg-color-trans;
+}
+
+.button:hover {
+    border: 1px solid $Tide;
+    transition: border-color $bg-color-trans;
+}

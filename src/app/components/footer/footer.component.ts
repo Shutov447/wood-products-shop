@@ -11,6 +11,9 @@ import { METRO_STATION } from '../../shared/contact-info/metro-station.token';
 import { ButtonModule } from '../button/button.module';
 import { IState } from '../../store/reducer';
 import { productsFeatureSelector } from '../../store/products/products.selector';
+import { TELEGRAM } from '../../shared/contact-info/telegram.token';
+import { VK } from '../../shared/contact-info/vk.token';
+import { PINTEREST } from '../../shared/contact-info/pinterest.token';
 
 @Component({
     selector: 'app-footer',
@@ -34,5 +37,8 @@ export class FooterComponent {
         @Inject(PHONE_NUMBER) readonly phoneNumber: string,
         @Inject(ADDRESS) readonly address: string,
         @Inject(METRO_STATION) readonly matroStation: string,
+        @Inject(TELEGRAM) readonly tg: string,
+        @Inject(VK) readonly vk: string,
+        @Inject(PINTEREST) readonly pinterest: string,
     ) {}
 }

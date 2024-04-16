@@ -1,0 +1,89 @@
+<div class="text">
+    <h1 class="h1">Связаться с нами</h1>
+    <h6 class="h6">
+        Наши специалисты с радостью помогут Вам, оставьте свой номер телефона!
+    </h6>
+</div>
+<form
+    class="form"
+    [formGroup]="formGroup_LESS"
+    (ngSubmit)="onSubmit(formGroup_LESS)"
+>
+    <div
+        class="form-inputs-wrapper"
+        formGroupName="userDataGroup"
+    >
+        <div
+            *ngFor="let dataForm of dataForms"
+            class="form-input-wrapper"
+            [ngClass]="{
+                'form-input-wrapper-invalid':
+                    dataForm.formControl?.invalid &&
+                    dataForm.formControl?.touched
+            }"
+        >
+            <small
+                class="body-S small"
+                *ngIf="
+                    dataForm.formControl?.dirty || dataForm.formControl?.touched
+                "
+                >{{ dataForm.needData }}
+                <span *ngIf="dataForm.formControl?.hasError('required')"
+                    >*</span
+                >
+            </small>
+            <input
+                class="form-input body-L"
+                type="text"
+                autocomplete="off"
+                [name]="dataForm.name"
+                [formControlName]="dataForm.name"
+                [placeholder]="
+                    dataForm.formControl?.invalid &&
+                    dataForm.formControl?.untouched
+                        ? dataForm.needData
+                        : 'Заполните форму'
+                "
+            />
+            <app-alert-triangle-icon
+                class="tooltip"
+                *ngIf="
+                    dataForm.formControl?.invalid &&
+                    dataForm.formControl?.touched
+                "
+            ></app-alert-triangle-icon>
+        </div>
+    </div>
+    <div class="user-comment-wrapper">
+        <small
+            class="body-S small"
+            *ngIf="
+                dataForms_LESS.formControl?.dirty ||
+                dataForms_LESS.formControl?.touched
+            "
+            >{{ dataForms_LESS.needData }}
+        </small>
+        <textarea
+            [name]="dataForms_LESS.name"
+            [formControlName]="dataForms_LESS.name"
+            [placeholder]="
+                dataForms_LESS.formControl?.invalid &&
+                dataForms_LESS.formControl?.untouched
+                    ? dataForms_LESS.needData
+                    : 'Заполните форму'
+            "
+            class="form-input body-L user-comment"
+            type="text"
+            autocomplete="off"
+        ></textarea>
+    </div>
+    <app-button
+        role="button"
+        type="submit"
+        class="button"
+        [haveBackground]="true"
+        [size]="'L'"
+        [isDisabled]="formGroup_LESS.invalid"
+        >отправить сообщение</app-button
+    >
+</form>

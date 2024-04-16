@@ -8,7 +8,7 @@ import { ButtonModule } from '../../components/button/button.module';
 import { ISliderData } from '../../../assets/slider/types/slider-data.interface';
 import { ServiceCardComponent } from '../../components/service-card/service-card.component';
 import { IServiceCard } from '../../../assets/service-card/types/service-card.interface';
-import { ContactUsCardComponent } from '../../components/contact-us-card/contact-us-card.component';
+import { ContactUsCardComponent } from '../../components/contact-us-card/contact-us-card-default/contact-us-card.component';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { IState } from '../../store/reducer';
 import { articlesFeatureSelector } from '../../store/articles/articles.selector';

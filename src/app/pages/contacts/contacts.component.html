@@ -1,0 +1,65 @@
+<app-url-segments-visualizer></app-url-segments-visualizer>
+<div class="main-container">
+    <div class="contacts-container">
+        <h1 class="h1">Контакты</h1>
+        <address class="address-container body-L">
+            <section>
+                <small class="body-S">Адрес:</small>
+                <div>{{ metroStation }}</div>
+                <div>{{ address }}</div>
+            </section>
+            <section>
+                <small class="body-S">Режим работы:</small>
+                <div>{{ storeHours }}</div>
+            </section>
+            <section>
+                <small class="body-S">Телефон</small>
+                <div>{{ phoneNumber }}</div>
+            </section>
+            <section>
+                <small class="body-S">Почта и социальные сети</small>
+                <div>{{ suppurtEmail }}</div>
+            </section>
+            <ul class="social">
+                <li>
+                    <a [href]="vk">
+                        <app-icon-button
+                            [defaultColor]="kilamanjaro"
+                            [hoverColor]="kilamanjaro"
+                            [bgColor]="hintOfRed"
+                            [icon]="'vk'"
+                        ></app-icon-button
+                    ></a>
+                </li>
+                <li>
+                    <a [href]="pinterest">
+                        <app-icon-button
+                            [defaultColor]="kilamanjaro"
+                            [hoverColor]="kilamanjaro"
+                            [bgColor]="hintOfRed"
+                            [icon]="'pint'"
+                        ></app-icon-button
+                    ></a>
+                </li>
+                <li>
+                    <a [href]="tg">
+                        <app-icon-button
+                            [defaultColor]="kilamanjaro"
+                            [hoverColor]="kilamanjaro"
+                            [bgColor]="hintOfRed"
+                            [icon]="'tg'"
+                        ></app-icon-button
+                    ></a>
+                </li>
+            </ul>
+        </address>
+    </div>
+    <iframe
+        class="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2243.838834880223!2d37.46190271329995!3d55.778670889885205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b5499edf40243d%3A0x7faa7a27f1123ea!2z0L_RgNC-0YHQvy4g0JzQsNGA0YjQsNC70LAg0JbRg9C60L7QstCwLCA1Miwg0JzQvtGB0LrQstCwLCAxMjMxNTQ!5e0!3m2!1sru!2sru!4v1713228787496!5m2!1sru!2sru"
+        style="border: 0"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+</div>
+<app-contact-us-card-less></app-contact-us-card-less>

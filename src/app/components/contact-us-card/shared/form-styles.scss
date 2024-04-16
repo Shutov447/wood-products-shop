@@ -1,39 +1,8 @@
-@import '../../shared/scss/colors.scss';
+@import '../../../shared/scss/colors.scss';
 
 :host {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    height: 600px;
     background-color: $HintOfRed;
-    background-image: url(../../../assets/img/vector-woodcut.png);
-}
-
-.image {
-    background-image: url(../../../assets/img/door-img_1.jpg);
-    width: 640px;
-    height: 600px;
-}
-
-.form-container {
-    padding: 90px 70px 0 70px;
-    width: 640px;
-}
-
-.content {
-    width: 420px;
-    margin-top: 30px;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 60px;
-}
-
-.form-inputs-wrapper {
-    display: flex;
-    gap: 20px;
+    background-image: url(../../../../assets/img/vector-woodcut.png);
 }
 
 .form-input-wrapper {
@@ -52,6 +21,7 @@
 
     .small {
         color: $Rust;
+        background-color: $White;
     }
 
     .form-input::placeholder {
@@ -84,13 +54,4 @@
 .button {
     display: block;
     margin-top: 20px;
-}
-
-.vector-woodcut-img {
-    position: absolute;
-    top: 0;
-    left: 350px;
-    width: 470px;
-    height: 600px;
-    background-blend-mode: overlay;
 }

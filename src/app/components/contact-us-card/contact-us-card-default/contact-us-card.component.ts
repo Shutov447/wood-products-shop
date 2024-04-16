@@ -1,10 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormGroup,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from '../button/button.module';
-import { AlertTriangleIconComponent } from '../alert-triangle-icon/alert-triangle-icon.component';
-import { IDataForm } from './shared/types/data-form.type';
-import { phoneNumberValidator } from './shared/form-validators/phoneNumber.validator';
+import { ButtonModule } from '../../button/button.module';
+import { AlertTriangleIconComponent } from '../../alert-triangle-icon/alert-triangle-icon.component';
+import { IDataForm } from '../shared/types/data-form.type';
+import { phoneNumberValidator } from '../shared/form-validators/phoneNumber.validator';
 
 @Component({
     selector: 'app-contact-us-card',
@@ -22,7 +27,7 @@ import { phoneNumberValidator } from './shared/form-validators/phoneNumber.valid
 export class ContactUsCardComponent {
     constructor(private readonly formBuilder: FormBuilder) {}
 
-    formGroup = this.formBuilder.group({
+    formGroup: FormGroup = this.formBuilder.group({
         userName: ['', [Validators.required]],
         userPhoneNumber: ['', [Validators.required, phoneNumberValidator]],
     });
@@ -48,12 +53,8 @@ export class ContactUsCardComponent {
         },
     ];
 
-    onSubmit() {
-        this.formGroup.valid && this.submitForm();
-    }
-
-    private submitForm() {
+    onSubmit(formGroup: FormGroup) {
         // eslint-disable-next-line no-console
-        console.log(this.formGroup.value);
+        console.log(formGroup.value);
     }
 }

@@ -12,7 +12,7 @@
     <form
         class="form"
         [formGroup]="formGroup"
-        (ngSubmit)="onSubmit()"
+        (ngSubmit)="onSubmit(formGroup)"
     >
         <div class="form-inputs-wrapper">
             <div
@@ -22,7 +22,7 @@
                     dataForm.formControl?.invalid &&
                     dataForm.formControl?.touched
                         ? 'form-input-wrapper-invalid'
-                        : 'form-input-wrapper'
+                        : ''
                 "
             >
                 <small
@@ -39,9 +39,9 @@
                 <input
                     class="form-input body-L"
                     type="text"
+                    autocomplete="off"
                     [name]="dataForm.name"
                     [formControlName]="dataForm.name"
-                    autocomplete="off"
                     [placeholder]="
                         dataForm.formControl?.invalid &&
                         dataForm.formControl?.untouched

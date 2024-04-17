@@ -67,7 +67,12 @@
     <article class="articles-container">
         <header class="header-articles">
             <h1 class="h1">Новые статьи</h1>
-            <button class="button-font button-article">Все статьи</button>
+            <button
+                class="button-font button-article"
+                [routerLink]="['/articles']"
+            >
+                Все статьи
+            </button>
         </header>
         <main class="articles-wrapper">
             <article *ngFor="let articleCardData of articlesCards$ | async">

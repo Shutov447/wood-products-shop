@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { Store, select } from '@ngrx/store';
+import { RouterModule } from '@angular/router';
 import { ButtonModule } from '../../components/button/button.module';
 import { ISliderData } from '../../../assets/slider/types/slider-data.interface';
 import { ServiceCardComponent } from '../../components/service-card/service-card.component';
@@ -25,6 +26,7 @@ import { ProductsShowcaseComponent } from '../../components/products-showcase/pr
         ContactUsCardComponent,
         ArticleCardComponent,
         ProductsShowcaseComponent,
+        RouterModule,
     ],
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',

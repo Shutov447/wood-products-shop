@@ -1,0 +1,109 @@
+@import '../../../shared/scss/colors.scss';
+@import '../../../shared/scss/transitions.scss';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 250px;
+}
+
+.input-number-container {
+    flex-grow: 1;
+
+    .title {
+        margin-bottom: 13px;
+    }
+
+    .button-container {
+        display: flex;
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            transition: color $bg-color-trans;
+
+            .cross path {
+                transition: stroke $bg-color-trans;
+            }
+        }
+
+        button:hover {
+            color: $Rust;
+            transition: color $bg-color-trans;
+
+            .cross path {
+                stroke: $Rust;
+                transition: stroke $bg-color-trans;
+            }
+        }
+    }
+
+    .input-container {
+        flex-grow: 1;
+        display: flex;
+        gap: 10px;
+    }
+}
+
+.input-range-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    padding: 10px 10px 7px 10px;
+    background-color: $HintOfRed;
+    height: 48px;
+
+    .wrapper {
+        position: relative;
+        display: flex;
+        width: 100%;
+        flex-grow: 1;
+        top: 6px;
+        left: 6px;
+
+        input[type='range'] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: calc(100% - 12px);
+        }
+
+        input[type='range']:last-child::-webkit-slider-runnable-track {
+            background-color: unset;
+        }
+
+        input[type='range']:first-child {
+            margin-left: -6px;
+        }
+
+        input[type='range']:last-child {
+            margin-left: 6px;
+        }
+    }
+
+    .from-to-wrapper {
+        width: 100%;
+        display: flex;
+        padding: 2px 2px 0 2px;
+    }
+}
+
+.empty {
+    flex-grow: 1;
+}
+
+.body-M {
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: 0.2px;
+}
+
+.not-show {
+    display: none;
+}

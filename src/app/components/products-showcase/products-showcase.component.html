@@ -13,7 +13,7 @@
     <app-product-card
         class="broad"
         *ngFor="let product of products"
-        [class]="product.category === selectedCategory ? 'show' : 'not-show'"
+        [class]="product.category !== selectedCategory ? 'not-show' : ''"
         [name]="product.name"
         [price]="product.price"
         [imgs]="product.photos"

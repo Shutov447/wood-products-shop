@@ -4,11 +4,5 @@
 @use '../src/app/shared/scss/list.scss';
 
 body {
-    overflow-x: hidden;
-}
-
-@media (width < 1600px) {
-    body {
-        overflow-x: scroll;
-    }
+    overflow: hidden;
 }

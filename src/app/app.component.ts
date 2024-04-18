@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { Subject, takeUntil } from 'rxjs';
+import { TuiScrollbarModule } from '@taiga-ui/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { IProduct } from '../assets/products/types/product.interface';
@@ -14,7 +15,12 @@ import { addArticles } from './store/articles/articles.actions';
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, NavbarComponent, FooterComponent],
+    imports: [
+        RouterOutlet,
+        NavbarComponent,
+        FooterComponent,
+        TuiScrollbarModule,
+    ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
 })

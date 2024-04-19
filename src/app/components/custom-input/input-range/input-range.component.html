@@ -10,34 +10,39 @@
     </div>
     <div class="input-container body-M">
         <input
+            #numberCurrentFrom
             id="currentFrom"
             type="number"
-            [value]="currentFrom"
+            [value]="initCurrentFrom"
             (input)="setCurrentNumber($event)"
         />
         <input
+            #numberCurrentTo
             id="currentTo"
             type="number"
-            [value]="currentTo"
+            [value]="initCurrentTo"
             (input)="setCurrentNumber($event)"
         />
     </div>
 </div>
 <div class="input-range-wrapper body-S">
     <div class="wrapper">
+        <div class="track"></div>
         <input
+            #rangeCurrentFrom
             id="currentFrom"
             type="range"
             [min]="min"
             [max]="max"
-            [value]="currentFrom"
+            [value]="initCurrentFrom"
             (input)="setCurrentNumber($event)"
         /><input
+            #rangeCurrentTo
             id="currentTo"
             type="range"
             [min]="min"
             [max]="max"
-            [value]="currentTo"
+            [value]="initCurrentTo"
             (input)="setCurrentNumber($event)"
         />
     </div>

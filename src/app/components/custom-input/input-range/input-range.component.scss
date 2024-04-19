@@ -65,25 +65,30 @@
         width: 100%;
         flex-grow: 1;
         top: 6px;
-        left: 6px;
+
+        .track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $Kilamanjaro;
+        }
 
         input[type='range'] {
             position: absolute;
             top: 0;
             left: 0;
-            width: calc(100% - 12px);
+            width: 100%;
+            z-index: 1;
         }
 
-        input[type='range']:last-child::-webkit-slider-runnable-track {
+        input[type='range']::-webkit-slider-runnable-track {
             background-color: unset;
         }
 
-        input[type='range']:first-child {
-            margin-left: -6px;
-        }
-
-        input[type='range']:last-child {
-            margin-left: 6px;
+        input[type='range']:focus {
+            z-index: 2;
         }
     }
 

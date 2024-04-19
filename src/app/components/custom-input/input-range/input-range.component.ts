@@ -1,8 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     Input,
     OnInit,
+    ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -14,94 +16,137 @@ import {
 export class InputRangeComponent implements OnInit {
     @Input({ required: true }) min = 0;
     @Input({ required: true }) max = 0;
+    @Input() initCurrentFrom = 0;
+    @Input() initCurrentTo = 0;
     @Input() title: string | null = null;
-    @Input() currentFrom = 0;
-    @Input() currentTo = 0;
     @Input() showNumberInput = false;
 
+    @ViewChild('numberCurrentFrom', { read: ElementRef, static: true })
+    private readonly numberCurrentFrom: ElementRef<HTMLInputElement> | null =
+        null;
+    @ViewChild('numberCurrentTo', { read: ElementRef, static: true })
+    private readonly numberCurrentTo: ElementRef<HTMLInputElement> | null =
+        null;
+    @ViewChild('rangeCurrentFrom', { read: ElementRef, static: true })
+    private readonly rangeCurrentFrom: ElementRef<HTMLInputElement> | null =
+        null;
+    @ViewChild('rangeCurrentTo', { read: ElementRef, static: true })
+    private readonly rangeCurrentTo: ElementRef<HTMLInputElement> | null = null;
+
+    private set nCurrentFromV(number: number) {
+        this.numberCurrentFrom!.nativeElement.value = String(number);
+    }
+    private set nCurrentToV(number: number) {
+        this.numberCurrentTo!.nativeElement.value = String(number);
+    }
+    private set rCurrentFromV(number: number) {
+        this.rangeCurrentFrom!.nativeElement.value = String(number);
+    }
+    private set rCurrentToV(number: number) {
+        this.rangeCurrentTo!.nativeElement.value = String(number);
+    }
+
+    private get rCurrentFromV() {
+        return Number(this.rangeCurrentFrom?.nativeElement.value);
+    }
+    private get rCurrentToV() {
+        return Number(this.rangeCurrentTo?.nativeElement.value);
+    }
+    private get nCurrentFromV() {
+        return Number(this.numberCurrentFrom?.nativeElement.value);
+    }
+    private get nCurrentToV() {
+        return Number(this.numberCurrentTo?.nativeElement.value);
+    }
+
     ngOnInit() {
-        this.currentFrom = this.min;
-        this.currentTo = this.max;
+        !this.initCurrentFrom && (this.initCurrentFrom = this.min);
+        !this.initCurrentTo && (this.initCurrentTo = this.max);
     }
 
     setCurrentNumber(event: Event) {
         const inputEvent = event as InputEvent;
         const target = inputEvent.target as HTMLInputElement;
-        const currentNumber = Math.round(Number(target.value));
-
         const isCurrentFrom = target.id === 'currentFrom';
+        const isCurrentTo = target.id === 'currentTo';
 
-        if (isCurrentFrom) {
-            const isLimitByRangeCurrentFrom =
-                currentNumber >= this.currentTo && target.type === 'range';
+        const isRangeInput = target.type === 'range';
 
-            if (isLimitByRangeCurrentFrom) {
-                event.preventDefault();
-                target.value = String(this.currentTo);
-                this.currentFrom = this.currentTo;
+        if (isRangeInput) {
+            const isLimit = this.rCurrentFromV >= this.rCurrentToV;
+
+            if (isLimit) {
+                this.nCurrentFromV = this.rCurrentToV;
+                this.nCurrentToV = this.rCurrentFromV;
 
                 return;
             }
 
-            const isLimitByNumberCurrentFrom =
-                currentNumber >= this.currentTo && target.type === 'number';
+            if (isCurrentFrom) {
+                this.nCurrentFromV = this.rCurrentFromV;
 
-            if (isLimitByNumberCurrentFrom) {
-                const inputCurrentTo = target.nextSibling as HTMLInputElement;
+                return;
+            }
 
-                if (Number(target.value) > this.max) {
-                    inputCurrentTo.value = String(this.max);
-                    target.value = String(this.max);
-                    this.currentFrom = this.max;
+            if (isCurrentTo) {
+                this.nCurrentToV = this.rCurrentToV;
+
+                return;
+            }
+        }
+
+        const isNumberInput = target.type === 'number';
+
+        if (isNumberInput) {
+            if (this.nCurrentFromV > this.max) {
+                this.nCurrentFromV = this.max;
+                this.nCurrentToV = this.max;
+                this.rCurrentFromV = this.max;
+                this.rCurrentToV = this.max;
+
+                return;
+            }
+
+            if (this.nCurrentToV > this.max) {
+                this.nCurrentToV = this.max;
+                this.rCurrentToV = this.max;
+
+                return;
+            }
+
+            if (isCurrentFrom) {
+                if (this.nCurrentFromV > this.nCurrentToV) {
+                    this.nCurrentToV = this.nCurrentFromV;
+                    this.rCurrentFromV = this.nCurrentFromV;
+                    this.rCurrentToV = this.nCurrentFromV;
+
+                    return;
+                }
+                this.rCurrentFromV = this.nCurrentFromV;
+
+                return;
+            }
+
+            if (isCurrentTo) {
+                if (this.nCurrentFromV >= this.nCurrentToV) {
+                    this.nCurrentFromV = this.nCurrentToV;
+                    this.rCurrentToV = this.nCurrentFromV;
+                    this.rCurrentFromV = this.nCurrentFromV;
 
                     return;
                 }
 
-                inputCurrentTo.value = target.value;
-                this.currentFrom = currentNumber;
+                this.rCurrentToV = this.nCurrentToV;
 
                 return;
             }
-
-            this.currentFrom = currentNumber;
-
-            return;
-        }
-
-        const isCurrentTo = target.id === 'currentTo';
-
-        if (isCurrentTo) {
-            const isLimitByRangeCurrentTo =
-                currentNumber <= this.currentFrom && target.type === 'range';
-
-            if (isLimitByRangeCurrentTo) {
-                event.preventDefault();
-                target.value = String(this.currentFrom);
-                this.currentTo = this.currentFrom;
-
-                return;
-            }
-            const isLimitByNumberCurrentTo =
-                currentNumber <= this.currentFrom && target.type === 'number';
-
-            if (isLimitByNumberCurrentTo) {
-                const inputCurrentFrom =
-                    target.previousSibling as HTMLInputElement;
-
-                inputCurrentFrom.value = target.value;
-                this.currentTo = this.currentFrom;
-
-                return;
-            }
-
-            this.currentTo = currentNumber;
-
-            return;
         }
     }
 
     resetCurrentNumber() {
-        this.currentFrom = this.min;
-        this.currentTo = this.max;
+        this.rCurrentFromV = this.min;
+        this.rCurrentToV = this.max;
+        this.nCurrentFromV = this.min;
+        this.nCurrentToV = this.max;
     }
 }

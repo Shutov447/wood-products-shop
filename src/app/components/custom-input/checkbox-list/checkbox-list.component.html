@@ -1,0 +1,29 @@
+<fieldset>
+    <legend class="title">
+        <button
+            (click)="isShow = !isShow"
+            *ngIf="title"
+        >
+            <span class="body-L-bold">{{ title }}</span>
+            <span class="empty"></span>
+            <div
+                class="mask"
+                [class]="isShow ? '' : 'mask-second-view'"
+            ></div>
+        </button>
+    </legend>
+    <ul [class]="isShow ? 'body-M' : 'not-show'">
+        <li *ngFor="let choice of choices">
+            <button (click)="checkbox.click()">
+                <span>{{ choice }}</span>
+                <div class="empty"></div>
+            </button>
+            <input
+                #checkbox
+                type="checkbox"
+                [value]="choice"
+                (input)="setChosen($event)"
+            />
+        </li>
+    </ul>
+</fieldset>

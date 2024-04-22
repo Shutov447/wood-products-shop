@@ -82,3 +82,24 @@ input[type='range']:focus::-moz-range-thumb {
     background-color: $Kilamanjaro;
     transition: background-color $bg-color-trans;
 }
+
+// type='chackbox'
+input[type='checkbox'] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    width: 21.75px;
+    height: 20px;
+    border: 2px solid $Tide;
+    transition: background-color $bg-color-trans;
+}
+
+input[type='checkbox']:checked {
+    border: none;
+    background-color: $Kilamanjaro;
+    background-image: url(../../../assets/img/tick.svg);
+    background-repeat: no-repeat;
+    background-position: 3.5px, center;
+    transition: background-color $bg-color-trans;
+}

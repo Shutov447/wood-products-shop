@@ -9,7 +9,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import { IOutputRangeData } from '../shared/types/input-range-data.interface';
+import { IOutputRangeData } from '../../shared/types/input-range-data.interface';
 
 @Component({
     selector: 'app-input-range',

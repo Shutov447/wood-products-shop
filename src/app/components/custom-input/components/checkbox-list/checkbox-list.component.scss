@@ -1,5 +1,5 @@
-@import '../../../shared/scss/colors.scss';
-@import '../../../shared/scss/transitions.scss';
+@import '../../../../shared/scss/colors.scss';
+@import '../../../../shared/scss/transitions.scss';
 
 :host {
     .not-show {
@@ -27,7 +27,7 @@ fieldset {
                 right: 4px;
                 mask-size: 100%;
                 -webkit-mask-repeat: no-repeat;
-                mask-image: url(../../../../assets/img/tick-for-list.svg);
+                mask-image: url(../../../../../assets/img/tick-for-list.svg);
                 mask-repeat: no-repeat;
                 background-color: $Kilamanjaro;
                 transition:

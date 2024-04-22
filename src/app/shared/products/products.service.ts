@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { IProduct } from '../../../assets/products/types/product.interface';
+import { IProductsFilterFn } from './shared/types/products-filter.interface';
 
 @Injectable({
     providedIn: 'root',
@@ -24,19 +25,10 @@ export class ProductsService implements OnDestroy {
         this.destroy$.complete();
     }
 
-    // в аргументах функции указать колбек filter
-    getProducts(category: IProduct['category'], number?: number): IProduct[] {
-        let currentProducts = this.products;
-        currentProducts = currentProducts.filter(
-            (product) => product.category === category,
-        );
-
-        if (number) {
-            if (isNaN(number)) return [];
-
-            return currentProducts.slice(0, number);
-        }
-
-        return currentProducts;
+    getProducts<FilterProductsArgs>(
+        filterArgs: FilterProductsArgs,
+        filterFn: IProductsFilterFn<FilterProductsArgs>,
+    ): IProduct[] {
+        return filterFn(this.products, filterArgs);
     }
 }

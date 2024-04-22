@@ -14,6 +14,10 @@ import { productsFeatureSelector } from '../../store/products/products.selector'
 import { IState } from '../../store/reducer';
 import { ProductsService } from '../../shared/products/products.service';
 import { IProduct } from '../../../assets/products/types/product.interface';
+import {
+    ICategoryAndAmount,
+    filterByCategoryAndAmount,
+} from '../../shared/products/shared/filter-functions/by-category-and-amount';
 
 @Component({
     selector: 'app-products-showcase',
@@ -39,14 +43,15 @@ export class ProductsShowcaseComponent implements OnInit {
         private readonly productsService: ProductsService,
     ) {}
 
-    /////
-
     ngOnInit() {
         this.filter(this.selectedCategory);
     }
 
     filter(category: IProduct['category']) {
         this.selectedCategory = category;
-        this.products = this.productsService.getProducts(category, 9);
+        this.products = this.productsService.getProducts<ICategoryAndAmount>(
+            { category: category, amount: 9 },
+            filterByCategoryAndAmount,
+        );
     }
 }

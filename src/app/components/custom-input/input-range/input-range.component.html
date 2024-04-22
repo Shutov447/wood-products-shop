@@ -14,14 +14,14 @@
             id="currentFrom"
             type="number"
             [value]="initCurrentFrom"
-            (input)="setCurrentNumber($event)"
+            (input)="setCurrentNumber($event); getRange()"
         />
         <input
             #numberCurrentTo
             id="currentTo"
             type="number"
             [value]="initCurrentTo"
-            (input)="setCurrentNumber($event)"
+            (input)="setCurrentNumber($event); getRange()"
         />
     </div>
 </div>
@@ -35,7 +35,7 @@
             [min]="min"
             [max]="max"
             [value]="initCurrentFrom"
-            (input)="setCurrentNumber($event)"
+            (input)="setCurrentNumber($event); getRange()"
         /><input
             #rangeCurrentTo
             id="currentTo"
@@ -43,7 +43,7 @@
             [min]="min"
             [max]="max"
             [value]="initCurrentTo"
-            (input)="setCurrentNumber($event)"
+            (input)="setCurrentNumber($event); getRange()"
         />
     </div>
 

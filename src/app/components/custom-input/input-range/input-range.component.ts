@@ -1,11 +1,15 @@
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    EventEmitter,
     Input,
     OnInit,
+    Output,
     ViewChild,
 } from '@angular/core';
+import { IOutputRangeData } from '../shared/types/input-range-data.interface';
 
 @Component({
     selector: 'app-input-range',
@@ -13,13 +17,15 @@ import {
     styleUrl: './input-range.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputRangeComponent implements OnInit {
+export class InputRangeComponent implements OnInit, AfterViewInit {
     @Input({ required: true }) min = 0;
     @Input({ required: true }) max = 0;
-    @Input() initCurrentFrom = 0;
-    @Input() initCurrentTo = 0;
-    @Input() title: string | null = null;
-    @Input() showNumberInput = false;
+    @Input() initCurrentFrom: number | undefined = 0;
+    @Input() initCurrentTo: number | undefined = 0;
+    @Input() title: string | undefined;
+    @Input() showNumberInput: boolean | undefined = false;
+
+    @Output() getCurrentRange = new EventEmitter<IOutputRangeData>();
 
     @ViewChild('numberCurrentFrom', { read: ElementRef, static: true })
     private readonly numberCurrentFrom: ElementRef<HTMLInputElement> | null =
@@ -62,6 +68,10 @@ export class InputRangeComponent implements OnInit {
     ngOnInit() {
         !this.initCurrentFrom && (this.initCurrentFrom = this.min);
         !this.initCurrentTo && (this.initCurrentTo = this.max);
+    }
+
+    ngAfterViewInit() {
+        this.getRange();
     }
 
     setCurrentNumber(event: Event) {
@@ -122,6 +132,7 @@ export class InputRangeComponent implements OnInit {
 
                     return;
                 }
+
                 this.rCurrentFromV = this.nCurrentFromV;
 
                 return;
@@ -148,5 +159,14 @@ export class InputRangeComponent implements OnInit {
         this.rCurrentToV = this.max;
         this.nCurrentFromV = this.min;
         this.nCurrentToV = this.max;
+        this.getRange();
+    }
+
+    getRange() {
+        this.getCurrentRange.emit({
+            title: this.title,
+            from: this.nCurrentFromV,
+            to: this.nCurrentToV,
+        });
     }
 }

@@ -2,7 +2,6 @@
 @import '../../shared/scss/transitions.scss';
 
 :host {
-    position: relative;
     display: flex;
     flex-direction: column;
     height: 400px;
@@ -18,10 +17,22 @@
 
 :host(.broad) {
     width: 400px;
+
+    .imgs-carousel .img-wrapper .img {
+        max-height: 220px;
+    }
 }
 
 :host(.thin) {
     width: 290px;
+
+    .imgs-carousel .img-wrapper .img {
+        max-height: 200px;
+    }
+}
+
+.price {
+    margin-top: 7px;
 }
 
 .imgs-carousel {
@@ -37,15 +48,9 @@
         justify-content: center;
 
         .img {
-            max-height: 220px;
-            max-width: 278px;
             object-fit: cover;
         }
     }
-}
-
-.price {
-    margin-top: 7px;
 }
 
 .control {

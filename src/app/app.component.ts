@@ -1,8 +1,8 @@
-import { Component, Inject, OnDestroy } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
-import { Subject, takeUntil } from 'rxjs';
+import { take } from 'rxjs';
 import { TuiScrollbarModule } from '@taiga-ui/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -24,9 +24,7 @@ import { addArticles } from './store/articles/articles.actions';
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnDestroy {
-    private readonly destroy$ = new Subject<void>();
-
+export class AppComponent {
     title = 'wood-products-shop';
 
     constructor(
@@ -35,7 +33,7 @@ export class AppComponent implements OnDestroy {
     ) {
         this.http
             .get<IProduct[]>('assets/products/products-data.json')
-            .pipe(takeUntil(this.destroy$))
+            .pipe(take(1))
             .subscribe((products) => {
                 this.store$.dispatch(addProducts(products));
             });
@@ -43,14 +41,9 @@ export class AppComponent implements OnDestroy {
             .get<IArticleCardData[]>(
                 'assets/article-card/article-card-data.json',
             )
-            .pipe(takeUntil(this.destroy$))
+            .pipe(take(1))
             .subscribe((articlesCardsData) => {
                 this.store$.dispatch(addArticles(articlesCardsData));
             });
-    }
-
-    ngOnDestroy(): void {
-        this.destroy$.next();
-        this.destroy$.complete();
     }
 }

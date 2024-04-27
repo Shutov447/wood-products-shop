@@ -3,7 +3,6 @@ import {
     Component,
     Inject,
     Input,
-    OnInit,
 } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { map } from 'rxjs';
@@ -27,8 +26,8 @@ import {
     styleUrl: './products-showcase.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsShowcaseComponent implements OnInit {
-    products: IProduct[] = [];
+export class ProductsShowcaseComponent {
+    readonly products$ = this.productsService.products$;
 
     @Input() selectedCategory = 'sad';
 
@@ -41,15 +40,13 @@ export class ProductsShowcaseComponent implements OnInit {
         private readonly store$: Store<IState>,
         @Inject(ProductsService)
         private readonly productsService: ProductsService,
-    ) {}
-
-    ngOnInit() {
+    ) {
         this.filter(this.selectedCategory);
     }
 
     filter(category: IProduct['category']) {
         this.selectedCategory = category;
-        this.products = this.productsService.getProducts<ICategoryAndAmount>(
+        this.productsService.filterProducts<ICategoryAndAmount>(
             { category: category, amount: 9 },
             filterByCategoryAndAmount,
         );

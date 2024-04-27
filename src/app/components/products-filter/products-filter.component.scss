@@ -1,0 +1,57 @@
+@import '../../shared/scss/colors.scss';
+@import '../../shared/scss/transitions.scss';
+
+:host {
+    display: flex;
+    flex-direction: column;
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .category {
+        display: flex;
+        transition:
+            color $bg-color-trans,
+            opacity $bg-color-trans;
+    }
+
+    .category:not(.selected-category):hover {
+        color: $Rust;
+        opacity: 0.9;
+        transition:
+            color $bg-color-trans,
+            opacity $bg-color-trans;
+    }
+
+    .selected-category {
+        color: $Rust;
+    }
+}
+
+.сharacteristics {
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    width: 250px;
+    margin: 60px 0 52px 0;
+
+    .checkbox-list {
+        width: 250px;
+    }
+}
+
+.reset-wrapper {
+    display: flex;
+    justify-content: center;
+
+    .reset {
+        width: 22px;
+        height: 22px;
+        background-image: url(../../../assets/img/reset.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}

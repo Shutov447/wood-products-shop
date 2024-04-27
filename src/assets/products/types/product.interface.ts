@@ -1,4 +1,4 @@
-interface ICharacteristic {
+export interface ICharacteristic {
     value: string;
     description: string;
 }

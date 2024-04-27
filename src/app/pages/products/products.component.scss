@@ -1,0 +1,31 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 160px 0 160px;
+    width: 100vw;
+}
+
+.text-h1 {
+    margin: 17px 0 40px 0;
+}
+
+.main-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 80px;
+    width: 100%;
+
+    .filter {
+        display: block;
+        margin-top: 18px;
+    }
+
+    .product-card-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 40px;
+        height: 100%;
+    }
+}

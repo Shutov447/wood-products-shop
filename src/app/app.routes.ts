@@ -6,6 +6,8 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { categoryGuard } from './pages/catalog/shared/category-guard/category.guard';
 
 export const routes: Routes = [
     {
@@ -29,8 +31,14 @@ export const routes: Routes = [
         component: CatalogComponent,
     },
     {
+        path: 'catalog/:category',
+        component: ProductsComponent,
+        canActivate: [categoryGuard],
+    },
+    {
         path: '',
         component: HomeComponent,
+        pathMatch: 'full',
     },
     {
         path: '**',

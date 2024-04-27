@@ -18,7 +18,7 @@ import { IChosenData } from '../../shared/types/characteristic-data.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxListComponent implements AfterViewInit {
-    @Input({ required: true }) choices = new Set<string>();
+    @Input({ required: true }) choices: string[] = [];
     @Input() title: string | undefined;
 
     @Output() getCurrentChosen = new EventEmitter<IChosenData>();

@@ -40,7 +40,7 @@ export class ProductsService implements OnDestroy {
         this.destroy$.complete();
     }
 
-    filterProducts<FilterProductsArgs>(
+    filterProducts$<FilterProductsArgs>(
         filterArgs: FilterProductsArgs,
         filterFn: IProductsFilterFn<FilterProductsArgs>,
     ) {

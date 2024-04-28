@@ -46,7 +46,7 @@ export class ProductsShowcaseComponent {
 
     filter(category: IProduct['category']) {
         this.selectedCategory = category;
-        this.productsService.filterProducts<ICategoryAndAmount>(
+        this.productsService.filterProducts$<ICategoryAndAmount>(
             { category: category, amount: 9 },
             filterByCategoryAndAmount,
         );

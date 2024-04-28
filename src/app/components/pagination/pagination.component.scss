@@ -1,0 +1,22 @@
+@import '../../shared/scss/colors.scss';
+
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.chunk {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $Gainsboro;
+}
+
+.selected-chunk {
+    background-color: $Kilamanjaro;
+    border: none;
+}

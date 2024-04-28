@@ -1,0 +1,8 @@
+<button
+    class="body-M chunk"
+    *ngFor="let _ of chunks; index as i"
+    [class]="selectedChunkNumber === i ? 'selected-chunk white-font' : ''"
+    (click)="selectChunk(i)"
+>
+    {{ i + 1 }}
+</button>

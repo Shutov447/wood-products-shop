@@ -65,7 +65,7 @@ export class ProductsFilterComponent {
                 this.resetFilteringData();
                 this.filteringData.category = currentCategory;
 
-                return this.productsService.getfilteringData(currentCategory);
+                return this.productsService.getfilteringData$(currentCategory);
             }
 
             return of();

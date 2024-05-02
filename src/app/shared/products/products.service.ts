@@ -48,7 +48,7 @@ export class ProductsService implements OnDestroy {
         this._products$.next(newProducts);
     }
 
-    getfilteringData(
+    getfilteringData$(
         category: IProduct['category'],
     ): Observable<IResultFilterData> {
         return this.http

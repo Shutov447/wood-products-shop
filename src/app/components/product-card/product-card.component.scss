@@ -31,6 +31,12 @@
     }
 }
 
+.header {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
 .price {
     margin-top: 7px;
 }

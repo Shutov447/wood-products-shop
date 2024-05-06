@@ -6,13 +6,14 @@ import {
     ViewChild,
 } from '@angular/core';
 import { TuiCarouselComponent, TuiCarouselModule } from '@taiga-ui/kit';
+import { RouterModule } from '@angular/router';
 import { ButtonModule } from '../button/button.module';
 import { IProduct } from '../../../assets/products/types/product.interface';
 
 @Component({
     selector: 'app-product-card',
     standalone: true,
-    imports: [TuiCarouselModule, ButtonModule, CommonModule],
+    imports: [TuiCarouselModule, ButtonModule, CommonModule, RouterModule],
     templateUrl: './product-card.component.html',
     styleUrl: './product-card.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

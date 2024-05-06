@@ -1,7 +1,14 @@
-<div class="name body-L">{{ name }}</div>
-<div class="price body-L-bold">
-    {{ price | currency: 'RUB' : 'symbol-narrow' : '1.0-0' }}
-</div>
+<button
+    [routerLink]="['/product', name]"
+    class="header"
+>
+    <div class="name body-L">
+        {{ name }}
+    </div>
+    <div class="price body-L-bold">
+        {{ price | currency: 'RUB' : 'symbol-narrow' : '1.0-0' }}
+    </div>
+</button>
 <tui-carousel
     #carousel
     class="imgs-carousel"
@@ -29,5 +36,5 @@
         ></div>
     </div>
     <div class="empty"></div>
-    <app-button>купить</app-button>
+    <app-button [routerLink]="['/product', name]">купить</app-button>
 </div>

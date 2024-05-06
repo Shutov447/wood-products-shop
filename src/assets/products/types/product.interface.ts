@@ -10,7 +10,7 @@ export interface IProduct {
     price: number;
     rating: number;
     description: string;
-    сharacteristics: ICharacteristic[];
+    characteristics: ICharacteristic[];
     photos: string[];
     category: string;
 }

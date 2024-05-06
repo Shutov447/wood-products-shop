@@ -1,0 +1,14 @@
+<fieldset>
+    <legend class="h4 title">{{ title }}</legend>
+    <div
+        class="characteristic body-L"
+        *ngFor="let characteristic of characteristics"
+    >
+        <p>
+            {{ characteristic.description | uppercase }}
+        </p>
+        <p>
+            {{ characteristic.value }}
+        </p>
+    </div>
+</fieldset>

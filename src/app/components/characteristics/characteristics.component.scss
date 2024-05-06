@@ -1,0 +1,24 @@
+@import '../../shared/scss/colors.scss';
+
+:host {
+    display: flex;
+}
+
+.title {
+    margin-bottom: 15px;
+}
+
+.characteristic {
+    display: flex;
+    gap: 20px;
+    padding: 15px 0 15px 0;
+    border-bottom: 1px solid $Gainsboro;
+
+    p {
+        width: 100%;
+    }
+}
+
+.body-L {
+    line-height: 120%;
+}

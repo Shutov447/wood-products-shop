@@ -1,6 +1,11 @@
 @import '../../shared/scss/colors.scss';
 
-.body-XS,
+:host {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+span,
 a {
     color: $Tide;
 }

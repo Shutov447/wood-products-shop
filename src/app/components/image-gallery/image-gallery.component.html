@@ -1,0 +1,33 @@
+<div class="main-img-container">
+    <img
+        class="main-img"
+        [src]="chunks?.[currentChunkNumber]?.[currentImgNumber]"
+        [alt]="alt"
+    />
+</div>
+<div class="all-imgs">
+    <div
+        *ngFor="let img of chunks?.[currentChunkNumber]; index as i"
+        (click)="setCurrentImg(i)"
+        class="img-container"
+        [class]="currentImgNumber === i ? 'current-img' : ''"
+    >
+        <img
+            [src]="img"
+            [alt]="alt"
+            loading="lazy"
+        />
+    </div>
+    <button
+        class="left-button"
+        (click)="seePreviosImg()"
+    >
+        <div class="mask"></div>
+    </button>
+    <button
+        class="right-button"
+        (click)="seeNextImg()"
+    >
+        <div class="mask"></div>
+    </button>
+</div>

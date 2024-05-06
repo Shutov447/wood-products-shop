@@ -1,0 +1,72 @@
+@import '../../shared/scss/fonts.scss';
+@import '../../shared/scss/colors.scss';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 90px 0;
+}
+
+.url-segments-visualizer {
+    width: 540px;
+    padding: 0 0 23px 14px;
+}
+
+.main-container {
+    display: flex;
+    gap: 70px;
+    margin-bottom: 120px;
+
+    .info-container {
+        display: flex;
+        flex-direction: column;
+        width: 700px;
+
+        .vendor-code {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 26px;
+        }
+
+        .price-control {
+            display: flex;
+            margin-top: 70px;
+
+            .price {
+                font-family: $Gilroy;
+                font-size: 64px;
+                font-weight: 500;
+                line-height: 100%;
+                letter-spacing: 0;
+            }
+
+            .controls {
+                align-self: flex-end;
+                display: flex;
+                gap: 10px;
+                margin-left: auto;
+            }
+        }
+
+        .descrition-container {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            width: 100%;
+        }
+    }
+}
+
+hr {
+    background-color: $Gainsboro;
+}
+
+.hr-1 {
+    margin: 33px 0 50px 0;
+}
+
+.hr-2 {
+    margin: 50px 0 50px 0;
+}

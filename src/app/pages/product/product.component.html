@@ -1,0 +1,50 @@
+<main class="main-container">
+    <div>
+        <app-url-segments-visualizer
+            class="url-segments-visualizer"
+        ></app-url-segments-visualizer>
+        <app-image-gallery
+            [images]="(product$ | async)?.photos"
+            [alt]="(product$ | async)?.name"
+        ></app-image-gallery>
+    </div>
+    <div class="info-container">
+        <p class="body-XS tide-font vendor-code">
+            Артикул<span>{{ (product$ | async)?.vendor_code }}</span>
+        </p>
+        <h3 class="h3">{{ (product$ | async)?.name }}</h3>
+        <div class="price-control">
+            <h1 class="price">
+                {{
+                    (product$ | async)?.price
+                        | currency: 'RUB' : 'symbol-narrow' : '1.0-0'
+                }}
+            </h1>
+            <div class="controls">
+                <app-counter
+                    [min]="1"
+                    [max]="9999"
+                    (getNumber)="getProductNumber($event)"
+                ></app-counter>
+                <app-button
+                    [haveBackground]="true"
+                    [size]="'M'"
+                    >купить</app-button
+                >
+            </div>
+        </div>
+        <hr class="hr-1" />
+        <section class="descrition-container">
+            <h4 class="h4">Описание</h4>
+            <p class="body-M">
+                {{ (product$ | async)?.description }}
+            </p>
+        </section>
+        <hr class="hr-2" />
+        <app-characteristics
+            [title]="'Характеристики'"
+            [characteristics]="(product$ | async)?.characteristics"
+        ></app-characteristics>
+    </div>
+</main>
+<app-contact-us-card></app-contact-us-card>

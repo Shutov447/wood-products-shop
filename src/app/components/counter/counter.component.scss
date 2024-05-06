@@ -1,0 +1,25 @@
+@import '../../shared/scss/colors.scss';
+
+:host {
+    display: flex;
+    width: 160px;
+    height: 60px;
+    border: 1px solid $Gainsboro;
+}
+
+.number {
+    justify-self: center;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.minus {
+    padding-bottom: 3px;
+    padding-left: 24px;
+}
+
+.plus {
+    padding-right: 24px;
+}

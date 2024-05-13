@@ -1,0 +1,11 @@
+{
+    "routes": [
+        "/",
+        "/about-us",
+        "/articles",
+        "/catalog",
+        "/contacts",
+        "/delivery",
+        "/not-found"
+    ]
+}

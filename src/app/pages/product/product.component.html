@@ -14,7 +14,7 @@
         </p>
         <h3 class="h3">{{ (product$ | async)?.name }}</h3>
         <div class="price-control">
-            <h1 class="price">
+            <h1 class="price h1">
                 {{
                     ((product$ | async)?.price
                         ? (product$ | async)!.price * productsCount

@@ -13,7 +13,9 @@
         (focus)="arrowButton.setHover(true)"
         (blur)="arrowButton.setHover(false)"
     >
-        <h4 class="h4 white-font foreground">{{ category }}</h4>
+        <h4 class="h4 white-font foreground">
+            {{ category | translate | async }}
+        </h4>
         <div class="empty"></div>
         <app-arrow-button
             class="foreground"

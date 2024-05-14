@@ -22,11 +22,18 @@ import { InputRangeComponent } from '../custom-input/components/input-range/inpu
 import { ProductsService } from '../../shared/products/products.service';
 import { IOutputFilterData } from './shared/types/output-filter-data.interface';
 import { IProduct } from '../../../assets/products/types/product.interface';
+import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
 
 @Component({
     selector: 'app-products-filter',
     standalone: true,
-    imports: [ButtonModule, CommonModule, CustomInputModule, RouterModule],
+    imports: [
+        ButtonModule,
+        CommonModule,
+        CustomInputModule,
+        RouterModule,
+        TranslatePipe,
+    ],
     templateUrl: './products-filter.component.html',
     styleUrl: './products-filter.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

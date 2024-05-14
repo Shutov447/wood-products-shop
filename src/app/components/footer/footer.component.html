@@ -16,7 +16,7 @@
         <a
             [routerLink]="'catalog/' + category"
             class="link"
-            >{{ category }}</a
+            >{{ category | translate | async }}</a
         >
     </li>
 </ul>

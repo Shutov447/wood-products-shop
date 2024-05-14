@@ -10,6 +10,7 @@ import { IState } from '../../store/reducer';
 import { ProductsService } from '../../shared/products/products.service';
 import { ICategotyIntroImg } from '../../../assets/category-intro-img/types/category-intro-img.interface';
 import { ButtonModule } from '../../components/button/button.module';
+import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
 
 @Component({
     selector: 'app-catalog',
@@ -19,6 +20,7 @@ import { ButtonModule } from '../../components/button/button.module';
         CommonModule,
         RouterModule,
         ButtonModule,
+        TranslatePipe,
     ],
     templateUrl: './catalog.component.html',
     styleUrl: './catalog.component.scss',

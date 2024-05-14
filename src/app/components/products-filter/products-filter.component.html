@@ -5,7 +5,7 @@
         [routerLink]="['/catalog/' + category]"
         routerLinkActive="selected-category "
     >
-        {{ category }}
+        {{ category | translate | async }}
     </button>
 </div>
 <div class="сharacteristics">

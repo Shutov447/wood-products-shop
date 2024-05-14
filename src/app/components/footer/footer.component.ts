@@ -14,11 +14,18 @@ import { productsFeatureSelector } from '../../store/products/products.selector'
 import { TELEGRAM } from '../../shared/contact-info/telegram.token';
 import { VK } from '../../shared/contact-info/vk.token';
 import { PINTEREST } from '../../shared/contact-info/pinterest.token';
+import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
 
 @Component({
     selector: 'app-footer',
     standalone: true,
-    imports: [LogoComponent, CommonModule, RouterModule, ButtonModule],
+    imports: [
+        LogoComponent,
+        CommonModule,
+        RouterModule,
+        ButtonModule,
+        TranslatePipe,
+    ],
     templateUrl: './footer.component.html',
     styleUrl: './footer.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

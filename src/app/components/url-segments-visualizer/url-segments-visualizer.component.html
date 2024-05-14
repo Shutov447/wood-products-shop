@@ -8,10 +8,7 @@
 <span
     class="body-XS"
     *ngFor="let segmet of segments$ | async"
-    ><span class="mdash">&mdash;</span
-    ><a
-        [routerLink]="[segmet]"
-        routerLinkActive="router-link-active"
-        >{{ segmet.path }}</a
-    ></span
 >
+    <span class="mdash">&mdash;</span>
+    <a [routerLink]="[segmet]">{{ segmet.path | translate | async }}</a>
+</span>

@@ -17,11 +17,12 @@ import {
     ICategoryAndAmount,
     filterByCategoryAndAmount,
 } from '../../shared/products/shared/filter-functions/by-category-and-amount';
+import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
 
 @Component({
     selector: 'app-products-showcase',
     standalone: true,
-    imports: [ProductCardComponent, CommonModule, RouterModule],
+    imports: [ProductCardComponent, CommonModule, RouterModule, TranslatePipe],
     templateUrl: './products-showcase.component.html',
     styleUrl: './products-showcase.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

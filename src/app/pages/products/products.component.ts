@@ -5,7 +5,7 @@ import {
     Inject,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, debounceTime, of, switchMap } from 'rxjs';
+import { BehaviorSubject, debounceTime } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { UrlSegmentsVisualizerComponent } from '../../components/url-segments-visualizer/url-segments-visualizer.component';
 import { ProductsFilterComponent } from '../../components/products-filter/products-filter.component';
@@ -16,6 +16,7 @@ import { filterByOutputFilterData } from '../../shared/products/shared/filter-fu
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { IProduct } from '../../../assets/products/types/product.interface';
 import { ContactUsCardComponent } from '../../components/contact-us-card/contact-us-card-default/contact-us-card.component';
+import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
 
 @Component({
     selector: 'app-products',
@@ -27,15 +28,14 @@ import { ContactUsCardComponent } from '../../components/contact-us-card/contact
         ProductCardComponent,
         PaginationComponent,
         ContactUsCardComponent,
+        TranslatePipe,
     ],
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsComponent {
-    readonly currentCategory$ = this.activatedRoute.paramMap.pipe(
-        switchMap((paramMap) => of(paramMap.get('category'))),
-    );
+    category = '';
 
     readonly products$ = this.productsService.products$.pipe(debounceTime(600));
 
@@ -49,7 +49,13 @@ export class ProductsComponent {
         @Inject(ProductsService)
         private readonly productsService: ProductsService,
         private readonly cdr: ChangeDetectorRef,
-    ) {}
+    ) {
+        this.activatedRoute.paramMap.subscribe((paramMap) => {
+            const category = paramMap.get('category');
+
+            category && (this.category = category);
+        });
+    }
 
     onGetFilterData(filterData: IOutputFilterData) {
         this.productsService.filterProducts$<IOutputFilterData>(

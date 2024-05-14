@@ -3,9 +3,10 @@ import {
     ChangeDetectorRef,
     Component,
     Inject,
+    OnDestroy,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, debounceTime } from 'rxjs';
+import { BehaviorSubject, Subject, debounceTime, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { UrlSegmentsVisualizerComponent } from '../../components/url-segments-visualizer/url-segments-visualizer.component';
 import { ProductsFilterComponent } from '../../components/products-filter/products-filter.component';
@@ -34,7 +35,9 @@ import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
     styleUrl: './products.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnDestroy {
+    private readonly destroy$ = new Subject<void>();
+
     category = '';
 
     readonly products$ = this.productsService.products$.pipe(debounceTime(600));
@@ -50,11 +53,18 @@ export class ProductsComponent {
         private readonly productsService: ProductsService,
         private readonly cdr: ChangeDetectorRef,
     ) {
-        this.activatedRoute.paramMap.subscribe((paramMap) => {
-            const category = paramMap.get('category');
+        this.activatedRoute.paramMap
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((paramMap) => {
+                const category = paramMap.get('category');
 
-            category && (this.category = category);
-        });
+                category && (this.category = category);
+            });
+    }
+
+    ngOnDestroy() {
+        this.destroy$.next();
+        this.destroy$.complete();
     }
 
     onGetFilterData(filterData: IOutputFilterData) {

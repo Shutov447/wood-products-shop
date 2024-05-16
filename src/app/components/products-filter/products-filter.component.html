@@ -12,7 +12,7 @@
     <app-input-range
         *ngFor="let range of (filterData$ | async)?.ranges"
         [showNumberInput]="showNumberInput"
-        [title]="range.title"
+        [title]="range.title | translate | async"
         [min]="rangeMin"
         [max]="range.max"
         (getCurrentRange)="getRange($event)"

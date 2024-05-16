@@ -22,7 +22,7 @@ export class InputRangeComponent implements OnInit, AfterViewInit {
     @Input({ required: true }) max = 0;
     @Input() initCurrentFrom: number | undefined = 0;
     @Input() initCurrentTo: number | undefined = 0;
-    @Input() title: string | undefined;
+    @Input() title: string | undefined | null;
     @Input() showNumberInput: boolean | undefined = false;
 
     @Output() getCurrentRange = new EventEmitter<IOutputRangeData>();

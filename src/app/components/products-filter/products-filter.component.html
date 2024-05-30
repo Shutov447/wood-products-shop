@@ -8,11 +8,11 @@
         {{ category | translate | async }}
     </button>
 </div>
-<div class="сharacteristics">
+<div class="characteristics">
     <app-input-range
         *ngFor="let range of (filterData$ | async)?.ranges"
         [showNumberInput]="showNumberInput"
-        [title]="range.title | translate | async"
+        [title]="range.title"
         [min]="rangeMin"
         [max]="range.max"
         (getCurrentRange)="getRange($event)"

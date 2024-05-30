@@ -1,4 +1,4 @@
-<p class="body-L-bold title">{{ title }}</p>
+<p class="body-L-bold title">{{ title | translate | async }}</p>
 <div [class]="showNumberInput ? 'input-number-container' : 'not-show'">
     <div class="button-container body-S">
         <span>Выбрано</span>

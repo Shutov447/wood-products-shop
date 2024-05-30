@@ -35,7 +35,7 @@ function filterProduct(
                 continue bp;
             }
 
-            if (formattedKey === 'сharacteristics') {
+            if (formattedKey === 'characteristics') {
                 const nestedCharacteristics = newProduct[
                     key
                 ] as ICharacteristic[];

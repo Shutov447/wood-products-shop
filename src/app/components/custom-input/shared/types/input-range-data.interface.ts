@@ -8,7 +8,7 @@ export interface IInputRangeData {
 }
 
 export interface IOutputRangeData {
-    title?: string | null;
+    title: string;
     from: number;
     to: number;
 }

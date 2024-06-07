@@ -22,13 +22,13 @@ import { routes } from './app.routes';
 import { ARTICLES_CARDS_FEATURE } from './store/articles/articles.state';
 import { articlesReducer } from './store/articles/articles.reducer';
 import * as articlesCardsEffects from './store/articles/articles.effects';
-// import * as slidersEffects from './store/sliders/sliders.effects';
-// import * as homeEffects from './pages/home/store/home.effects';
-// import * as servicesEffects from './store/services/services.effects';
-// import { SLIDERS_FEATURE } from './store/sliders/sliders.state';
-// import { slidresReducer } from './store/sliders/sliders.reducer';
-// import { SERVICES_FEATURE } from './store/services/services.state';
-// import { servicesReducer } from './store/services/services.reducer';
+import * as slidersEffects from './store/sliders/sliders.effects';
+import * as homeEffects from './pages/home/store/home.effects';
+import * as servicesEffects from './store/services/services.effects';
+import { SLIDERS_FEATURE } from './store/sliders/sliders.state';
+import { slidresReducer } from './store/sliders/sliders.reducer';
+import { SERVICES_FEATURE } from './store/services/services.state';
+import { servicesReducer } from './store/services/services.reducer';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -57,20 +57,20 @@ export const appConfig: ApplicationConfig = {
             name: ARTICLES_CARDS_FEATURE,
             reducer: articlesReducer,
         }),
-        // provideState({
-        //     name: SLIDERS_FEATURE,
-        //     reducer: slidresReducer,
-        // }),
-        // provideState({
-        //     name: SERVICES_FEATURE,
-        //     reducer: servicesReducer,
-        // }),
+        provideState({
+            name: SLIDERS_FEATURE,
+            reducer: slidresReducer,
+        }),
+        provideState({
+            name: SERVICES_FEATURE,
+            reducer: servicesReducer,
+        }),
         provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
         provideEffects(
             articlesCardsEffects,
-            // slidersEffects,
-            // homeEffects,
-            // servicesEffects,
+            slidersEffects,
+            homeEffects,
+            servicesEffects,
         ),
     ],
 };

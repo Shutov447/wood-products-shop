@@ -1,11 +1,18 @@
 import { IArticleCardData } from '../../../assets/article-card/types/article-card-data.interface';
 
-export const ARTICLES_FEATURE = 'articles';
-
-export interface IArticlesState {
-    data: IArticleCardData[];
+export interface IArticlesCardsInitialState {
+    allArticlesCards: readonly IArticleCardData[];
+    chunks: readonly IArticleCardData[][];
+    accumulatingChunk: readonly IArticleCardData[];
+    isLastArticle: boolean;
 }
 
-export const articlesInitialState: IArticlesState = {
-    data: [],
+export const ARTICLES_CARDS_FEATURE = 'Articles cards';
+export const ARTICLES_CARDS_API_FEATURE = 'Articles cards api';
+
+export const articlesCardsInitialState: IArticlesCardsInitialState = {
+    allArticlesCards: [],
+    chunks: [],
+    accumulatingChunk: [],
+    isLastArticle: false,
 };

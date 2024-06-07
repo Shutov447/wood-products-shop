@@ -1,12 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
-import { chunk, concat } from 'lodash';
+import { LetDirective } from '@ngrx/component';
 import { UrlSegmentsVisualizerComponent } from '../../components/url-segments-visualizer/url-segments-visualizer.component';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
-import { IState } from '../../store/reducer';
-import { articlesFeatureSelector } from '../../store/articles/articles.selector';
-import { IArticleCardData } from '../../../assets/article-card/types/article-card-data.interface';
+import { selectArticles } from '../../store/articles/articles.selectors';
+import {
+    ArticlesCardsActions,
+    ArticlesCardsApiActions,
+} from '../../store/articles/articles.actions';
 
 @Component({
     selector: 'app-articles',
@@ -15,45 +17,28 @@ import { IArticleCardData } from '../../../assets/article-card/types/article-car
         UrlSegmentsVisualizerComponent,
         ArticleCardComponent,
         CommonModule,
+        LetDirective,
     ],
     templateUrl: './articles.component.html',
     styleUrl: './articles.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticlesComponent {
-    articlesCardsChunksToSee: IArticleCardData[] = [];
-    isShowButton = true;
+    private chunkNumber = 1;
 
-    private articlesCardsChunks: IArticleCardData[][] = [];
-    private articlesChunkNumber = 0;
+    readonly articles$ = this.store.select(selectArticles);
 
-    constructor(private readonly store$: Store<IState>) {
-        this.store$
-            .pipe(select(articlesFeatureSelector))
-            .subscribe((articlesCardsData) => {
-                this.articlesCardsChunks = chunk(articlesCardsData.data, 9);
-                this.articlesCardsChunksToSee =
-                    this.articlesCardsChunks[this.articlesChunkNumber];
-            });
-    }
-
-    onButtonClick() {
-        this.addArticlesChunk();
-        this.setButtonShow();
-    }
-
-    private addArticlesChunk() {
-        this.articlesChunkNumber++;
-        this.articlesCardsChunksToSee = concat(
-            this.articlesCardsChunksToSee,
-            this.articlesCardsChunks[this.articlesChunkNumber],
+    constructor(private readonly store: Store) {
+        this.store.dispatch(
+            ArticlesCardsApiActions.loadArticlesCardsChunks({ chunkSize: 9 }),
         );
     }
 
-    private setButtonShow() {
-        this.isShowButton = !(
-            this.articlesChunkNumber ===
-            this.articlesCardsChunks.length - 1
+    onButtonClick() {
+        this.store.dispatch(
+            ArticlesCardsActions.addChunkToAccumulating({
+                chunkNumber: this.chunkNumber++,
+            }),
         );
     }
 }

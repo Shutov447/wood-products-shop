@@ -1,1 +1,1 @@
-export const HOME_FEATURE = 'Home';
+export const HOME_FEATURE = 'Home component';

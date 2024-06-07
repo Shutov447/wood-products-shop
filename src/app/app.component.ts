@@ -2,9 +2,11 @@ import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TuiScrollbarModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TuiScrollbarService } from './shared/for-tui-scrollbar/tui-scrollbar.service';
+import { ProductsApiActions } from './store/products/products.actions';
 
 @Component({
     selector: 'app-root',
@@ -27,12 +29,8 @@ export class AppComponent {
     constructor(
         @Inject(TuiScrollbarService)
         private readonly tuiScrollbarService: TuiScrollbarService,
+        private readonly store: Store,
     ) {
-        // this.http
-        //     .get<IProduct[]>('assets/products/products-data.json')
-        //     .pipe(take(1))
-        //     .subscribe((products) => {
-        //         this.store$.dispatch(addProducts(products));
-        //     });
+        this.store.dispatch(ProductsApiActions.loadProducts());
     }
 }

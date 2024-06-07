@@ -1,20 +1,19 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Store, select } from '@ngrx/store';
-import { map } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { LetDirective, PushPipe } from '@ngrx/component';
 import { LogoComponent } from '../logo/logo.component';
 import { PHONE_NUMBER } from '../../shared/contact-info/phone-number.token';
 import { SUPPORT_EMAIL } from '../../shared/contact-info/support-email.token';
 import { ADDRESS } from '../../shared/contact-info/address.token';
 import { METRO_STATION } from '../../shared/contact-info/metro-station.token';
 import { ButtonModule } from '../button/button.module';
-import { IState } from '../../store/reducer';
-import { productsFeatureSelector } from '../../store/products/products.selector';
 import { TELEGRAM } from '../../shared/contact-info/telegram.token';
 import { VK } from '../../shared/contact-info/vk.token';
 import { PINTEREST } from '../../shared/contact-info/pinterest.token';
 import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
+import { selectCategories } from '../../store/products/products.selectors';
 
 @Component({
     selector: 'app-footer',
@@ -25,6 +24,8 @@ import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
         RouterModule,
         ButtonModule,
         TranslatePipe,
+        LetDirective,
+        PushPipe,
     ],
     templateUrl: './footer.component.html',
     styleUrl: './footer.component.scss',
@@ -32,14 +33,10 @@ import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
 })
 export class FooterComponent {
     readonly currentYear = new Date().getFullYear();
-
-    readonly categories$ = this.store$.pipe(
-        select(productsFeatureSelector),
-        map(({ categories }) => categories),
-    );
+    readonly categories$ = this.store.select(selectCategories);
 
     constructor(
-        private readonly store$: Store<IState>,
+        private readonly store: Store,
         @Inject(SUPPORT_EMAIL) readonly suppurtEmail: string,
         @Inject(PHONE_NUMBER) readonly phoneNumber: string,
         @Inject(ADDRESS) readonly address: string,

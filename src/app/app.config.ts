@@ -25,10 +25,16 @@ import * as articlesCardsEffects from './store/articles/articles.effects';
 import * as slidersEffects from './store/sliders/sliders.effects';
 import * as homeEffects from './pages/home/store/home.effects';
 import * as servicesEffects from './store/services/services.effects';
+import * as productsEffects from './store/products/products.effects';
+import * as catalogEffects from './pages/catalog/store/catalog.effects';
 import { SLIDERS_FEATURE } from './store/sliders/sliders.state';
 import { slidresReducer } from './store/sliders/sliders.reducer';
 import { SERVICES_FEATURE } from './store/services/services.state';
 import { servicesReducer } from './store/services/services.reducer';
+import { PRODUCTS_FEATURE } from './store/products/products.state';
+import { productsReducer } from './store/products/products.reducer';
+import { CATALOG_FEATURE } from './pages/catalog/store/catalog.state';
+import { catalogReducer } from './pages/catalog/store/catalog.reducer';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -65,12 +71,22 @@ export const appConfig: ApplicationConfig = {
             name: SERVICES_FEATURE,
             reducer: servicesReducer,
         }),
+        provideState({
+            name: PRODUCTS_FEATURE,
+            reducer: productsReducer,
+        }),
+        provideState({
+            name: CATALOG_FEATURE,
+            reducer: catalogReducer,
+        }),
         provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
         provideEffects(
             articlesCardsEffects,
             slidersEffects,
             homeEffects,
             servicesEffects,
+            productsEffects,
+            catalogEffects,
         ),
     ],
 };

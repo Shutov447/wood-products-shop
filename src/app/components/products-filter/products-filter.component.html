@@ -1,29 +1,34 @@
-<div class="categories">
-    <button
-        *ngFor="let category of categories$ | async"
-        class="category button-font"
-        [routerLink]="['/catalog/' + category]"
-        routerLinkActive="selected-category "
-    >
-        {{ category | translate | async }}
-    </button>
-</div>
-<div class="characteristics">
-    <app-input-range
-        *ngFor="let range of (filterData$ | async)?.ranges"
-        [showNumberInput]="showNumberInput"
-        [title]="range.title"
-        [min]="rangeMin"
-        [max]="range.max"
-        (getCurrentRange)="getRange($event)"
-    ></app-input-range>
-    <app-checkbox-list
-        *ngFor="let characteristic of (filterData$ | async)?.characteristics"
-        [choices]="characteristic.values"
-        [title]="characteristic.name"
-        (getCurrentChosen)="getChosen($event)"
-    ></app-checkbox-list>
-</div>
+<ng-container *ngrxLet="productsState$ as productsState">
+    <div class="categories">
+        <button
+            *ngFor="let category of productsState.categories"
+            class="category button-font"
+            [routerLink]="['/catalog/' + category]"
+            routerLinkActive="selected-category "
+        >
+            {{ category | translate | ngrxPush }}
+        </button>
+    </div>
+    <!-- то что ниже тоже переделать -->
+    <div class="characteristics">
+        <app-input-range
+            *ngFor="let range of (filterData$ | async)?.ranges"
+            [showNumberInput]="showNumberInput"
+            [title]="range.title"
+            [min]="rangeMin"
+            [max]="range.max"
+            (getCurrentRange)="getRange($event)"
+        ></app-input-range>
+        <app-checkbox-list
+            *ngFor="
+                let characteristic of (filterData$ | async)?.characteristics
+            "
+            [choices]="characteristic.values"
+            [title]="characteristic.name"
+            (getCurrentChosen)="getChosen($event)"
+        ></app-checkbox-list>
+    </div>
+</ng-container>
 <button
     class="body-L-bold tide-font reset-wrapper"
     (click)="reset()"

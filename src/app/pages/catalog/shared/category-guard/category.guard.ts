@@ -1,28 +1,24 @@
 import { CanActivateFn, Router } from '@angular/router';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { inject } from '@angular/core';
-import { map, take } from 'rxjs';
-import { IState } from '../../../../store/reducer';
-import { productsFeatureSelector } from '../../../../store/products/products.selector';
+import { take } from 'rxjs';
+import { selectCategories } from '../../../../store/products/products.selectors';
 
 export const categoryGuard: CanActivateFn = (route) => {
     const category = route.paramMap.get('category');
-    const store$ = inject(Store<IState>);
+    const store = inject(Store);
     const router = inject(Router);
     let canNavigate = false;
 
-    store$
-        .pipe(
-            take(1),
-            select(productsFeatureSelector),
-            map(({ categories }) => categories),
-        )
+    store
+        .select(selectCategories)
+        .pipe(take(1))
         .subscribe((categories) => {
             if (categories && category)
                 canNavigate = categories?.includes(category);
-        });
 
-    !canNavigate && router.navigateByUrl('/not-found');
+            !canNavigate && router.navigateByUrl('/not-found');
+        });
 
     return canNavigate;
 };

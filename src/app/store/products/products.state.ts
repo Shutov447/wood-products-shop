@@ -1,17 +1,14 @@
-import { EntityState, createEntityAdapter } from '@ngrx/entity';
 import { IProduct } from '../../../assets/products/types/product.interface';
 
-export const PRODUCTS_FEATURE = 'products';
-
-export interface IProductsState extends EntityState<IProduct> {
-    categories: Array<IProduct['category']> | null;
+export interface IProductsState {
+    products: readonly IProduct[];
+    categories: readonly IProduct['category'][];
 }
 
-export const productsAdapter = createEntityAdapter<IProduct>({
-    selectId: ({ vendor_code }: IProduct) => vendor_code,
-});
+export const PRODUCTS_FEATURE = 'Products';
+export const PRODUCTS_API_FEATURE = 'Products api';
 
-export const productsInitialState: IProductsState =
-    productsAdapter.getInitialState({
-        categories: null,
-    });
+export const productsInitialState: IProductsState = {
+    products: [],
+    categories: [],
+};

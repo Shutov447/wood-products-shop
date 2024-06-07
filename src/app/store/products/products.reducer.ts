@@ -1,18 +1,18 @@
 import { createReducer, on } from '@ngrx/store';
-import { addProducts } from './products.actions';
-import { productsAdapter, productsInitialState } from './products.state';
+import { IProductsState, productsInitialState } from './products.state';
+import { ProductsActions } from './products.actions';
 
 export const productsReducer = createReducer(
     productsInitialState,
-    on(addProducts, (state, { products }) => {
-        const newState = productsAdapter.setAll(products, state);
+    on(ProductsActions.addProducts, (state, { products }): IProductsState => {
         const categories = [
             ...new Set(products.map((product) => product.category)),
         ];
 
         return {
-            ...newState,
-            categories: categories,
+            ...state,
+            products,
+            categories,
         };
     }),
 );

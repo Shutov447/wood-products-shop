@@ -1,20 +1,21 @@
 <app-url-segments-visualizer></app-url-segments-visualizer>
 <h1 class="h1 text-catalog">Каталог</h1>
-<div class="categories">
+<div
+    class="categories"
+    *ngrxLet="categoriesData$ as categoriesData"
+>
     <div
         class="category"
-        *ngFor="let category of categories$ | async"
-        [style.background-image]="
-            'url(' + (introImg$ | async)?.[category] + ')'
-        "
-        [routerLink]="[category]"
+        *ngFor="let categoryData of categoriesData"
+        [style.background-image]="'url(' + categoryData.introImg + ')'"
+        [routerLink]="[categoryData.category]"
         (mouseover)="arrowButton.setHover(true)"
         (mouseout)="arrowButton.setHover(false)"
         (focus)="arrowButton.setHover(true)"
         (blur)="arrowButton.setHover(false)"
     >
         <h4 class="h4 white-font foreground">
-            {{ category | translate | async }}
+            {{ categoryData.category | translate | ngrxPush }}
         </h4>
         <div class="empty"></div>
         <app-arrow-button

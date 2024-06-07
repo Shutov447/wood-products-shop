@@ -7,12 +7,11 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { map, of, switchMap } from 'rxjs';
+import { of, switchMap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { productsFeatureSelector } from '../../store/products/products.selector';
-import { IState } from '../../store/reducer';
+import { Store } from '@ngrx/store';
+import { LetDirective, PushPipe } from '@ngrx/component';
 import { ButtonModule } from '../button/button.module';
 import { CustomInputModule } from '../custom-input/custom-input.module';
 import { IOutputRangeData } from '../custom-input/shared/types/input-range-data.interface';
@@ -23,6 +22,7 @@ import { ProductsService } from '../../shared/products/products.service';
 import { IOutputFilterData } from './shared/types/output-filter-data.interface';
 import { IProduct } from '../../../assets/products/types/product.interface';
 import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
+import { selectProducts } from '../../store/products/products.selectors';
 
 @Component({
     selector: 'app-products-filter',
@@ -33,6 +33,8 @@ import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
         CustomInputModule,
         RouterModule,
         TranslatePipe,
+        LetDirective,
+        PushPipe,
     ],
     templateUrl: './products-filter.component.html',
     styleUrl: './products-filter.component.scss',
@@ -48,10 +50,7 @@ export class ProductsFilterComponent {
         choices: [],
     };
 
-    readonly categories$ = this.store$.pipe(
-        select(productsFeatureSelector),
-        map(({ categories }) => categories),
-    );
+    readonly productsState$ = this.store.select(selectProducts);
 
     @ViewChildren(InputRangeComponent)
     private readonly inputRanges: QueryList<InputRangeComponent> | null = null;
@@ -80,7 +79,7 @@ export class ProductsFilterComponent {
     );
 
     constructor(
-        private readonly store$: Store<IState>,
+        private readonly store: Store,
         private readonly activatedRoute: ActivatedRoute,
         @Inject(ProductsService)
         private readonly productsService: ProductsService,

@@ -24,7 +24,9 @@
                 "plugin:prettier/recommended"
             ],
             "settings": {
-                "import/parsers": { "@typescript-eslint/parser": [".ts"] }
+                "import/parsers": {
+                    "@typescript-eslint/parser": [".ts"]
+                }
             },
             "rules": {
                 "@angular-eslint/directive-selector": [
@@ -70,21 +72,35 @@
                 ],
                 "import/order": [
                     "error",
-                    { "groups": [["builtin", "external", "internal"]] }
+                    {
+                        "groups": [["builtin", "external", "internal"]]
+                    }
                 ],
                 "import/no-cycle": "error",
                 "import/first": "error",
                 "import/exports-last": "off",
                 "import/no-default-export": "off",
-                "import/newline-after-import": ["error", { "count": 1 }],
+                "import/newline-after-import": [
+                    "error",
+                    {
+                        "count": 1
+                    }
+                ],
                 "@typescript-eslint/consistent-type-imports": "off",
                 "no-param-reassign": "off",
                 "no-case-declarations": "error",
                 "no-console": [
                     "error",
-                    { "allow": ["info", "assert", "warn", "error"] }
+                    {
+                        "allow": ["info", "assert", "warn", "error"]
+                    }
                 ],
-                "no-implicit-coercion": ["error", { "allow": ["!!"] }],
+                "no-implicit-coercion": [
+                    "error",
+                    {
+                        "allow": ["!!"]
+                    }
+                ],
                 "no-return-assign": ["error", "always"],
                 "no-useless-rename": [
                     "error",
@@ -114,10 +130,16 @@
             },
             "extends": ["plugin:jasmine/recommended"],
             "plugins": ["jasmine"],
-            "env": { "jasmine": true },
+            "env": {
+                "jasmine": true
+            },
             "rules": {
                 "@typescript-eslint/no-unused-vars": "off"
             }
+        },
+        {
+            "files": ["*.ts"],
+            "extends": ["plugin:@ngrx/recommended-requiring-type-checking"]
         }
     ]
 }

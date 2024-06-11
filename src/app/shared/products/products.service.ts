@@ -1,19 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import {
-    BehaviorSubject,
-    Observable,
-    Subject,
-    of,
-    switchMap,
-    takeUntil,
-} from 'rxjs';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { IProduct } from '../../../assets/products/types/product.interface';
 import { IProductsFilterFn } from './shared/types/products-filter.interface';
-import {
-    IForFilteringProducts,
-    IResultFilterData,
-} from '../../../assets/products/types/for-filtering-products.interface';
 
 @Injectable({
     providedIn: 'root',
@@ -39,7 +28,6 @@ export class ProductsService implements OnDestroy {
                 products.map((product) => {
                     this._productsNames.push(product.name);
                 });
-                // this._products$.next(this.allProducts); попытка исправления бага(номер 13) из заметок
             });
     }
 
@@ -65,44 +53,5 @@ export class ProductsService implements OnDestroy {
         );
 
         product && this._product$.next(product);
-    }
-
-    getfilteringData$(
-        category: IProduct['category'],
-    ): Observable<IResultFilterData> {
-        return this.http
-            .get<IForFilteringProducts>(
-                'assets/products/for-filtering-products-data.json',
-            )
-            .pipe(
-                switchMap((filteringData) => {
-                    const allPrices: IProduct['price'][] = [];
-                    const allRatings: IProduct['rating'][] = [];
-
-                    this.allProducts.filter((product) => {
-                        if (product.category === category) {
-                            allPrices.push(product.price);
-                            allRatings.push(product.rating);
-                        }
-                    });
-
-                    const maxPrice = Math.max(...allPrices);
-                    const maxRating = Math.max(...allRatings);
-
-                    return of({
-                        characteristics: filteringData[category],
-                        ranges: [
-                            {
-                                title: 'price',
-                                max: maxPrice,
-                            },
-                            {
-                                title: 'rating',
-                                max: maxRating,
-                            },
-                        ],
-                    });
-                }),
-            );
     }
 }

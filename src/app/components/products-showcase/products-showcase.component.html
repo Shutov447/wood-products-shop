@@ -5,16 +5,15 @@
             class="button-font category"
             *ngFor="let category of products.categories"
             [class]="category === selectedCategory ? 'selected-category' : ''"
-            (click)="filter(category)"
+            (click)="filterProducts(category)"
         >
             {{ category | translate | ngrxPush }}
         </button>
     </div>
     <div class="product-card-container">
-        <!-- заменить productsThatNeedRemove$ | ngrxPush на products.relevantValue -->
         <app-product-card
             class="broad"
-            *ngFor="let product of productsThatNeedRemove$ | ngrxPush"
+            *ngFor="let product of products.filteredProducts"
             [name]="product.name"
             [price]="product.price"
             [imgs]="product.photos"

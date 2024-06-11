@@ -13,3 +13,8 @@ export const selectCategories = createSelector(
     selectProducts,
     (state) => state.categories,
 );
+
+export const selectFilteredProducts = createSelector(
+    selectProducts,
+    (state) => state.filteredProducts,
+);

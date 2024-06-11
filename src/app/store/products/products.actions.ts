@@ -6,6 +6,10 @@ export const ProductsActions = createActionGroup({
     source: PRODUCTS_FEATURE,
     events: {
         addProducts: props<{ products: readonly IProduct[] }>(),
+        filterByCategoryAndAmount: props<{
+            category: IProduct['category'];
+            amount: number;
+        }>(),
     },
 });
 

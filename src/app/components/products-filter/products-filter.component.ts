@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
+    OnDestroy,
     Output,
     QueryList,
     ViewChildren,
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LetDirective, PushPipe } from '@ngrx/component';
+import { Subject, takeUntil } from 'rxjs';
 import { ButtonModule } from '../button/button.module';
 import { CustomInputModule } from '../custom-input/custom-input.module';
 import { IOutputRangeData } from '../custom-input/shared/types/input-range-data.interface';
@@ -43,16 +45,22 @@ import { IResultFilterData } from '../../../assets/products/types/for-filtering-
     styleUrl: './products-filter.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsFilterComponent {
-    readonly filterData$ = this.store.select(
-        selectFilteringDataForCurrentCategory,
-    );
+export class ProductsFilterComponent implements OnDestroy {
+    private readonly destroy$ = new Subject<void>();
     @ViewChildren(InputRangeComponent)
     private readonly inputRanges: QueryList<InputRangeComponent> | null = null;
     @ViewChildren(CheckboxListComponent)
     private readonly checkboxLists: QueryList<CheckboxListComponent> | null =
         null;
+
     @Output() readonly getFilterData = new EventEmitter<IOutputFilterData>();
+
+    readonly filterData$ = this.store.select(
+        selectFilteringDataForCurrentCategory,
+    );
+    readonly productsState$ = this.store.select(selectProducts);
+    readonly showNumberInput = true;
+    readonly rangeMin = 0;
 
     private currentCategory: IProduct['category'] = '';
     private filteringData: IOutputFilterData = {
@@ -62,10 +70,6 @@ export class ProductsFilterComponent {
     };
     private rangesAmount = 0;
     private characteristicsAmount = 0;
-
-    readonly productsState$ = this.store.select(selectProducts);
-    readonly showNumberInput = true;
-    readonly rangeMin = 0;
 
     constructor(
         private readonly store: Store,
@@ -77,20 +81,22 @@ export class ProductsFilterComponent {
             }),
         );
 
-        this.activatedRoute.paramMap.subscribe((paramMap) => {
-            const currentCategory = paramMap.get('category');
+        this.activatedRoute.paramMap
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((paramMap) => {
+                const currentCategory = paramMap.get('category');
 
-            if (currentCategory) {
-                this.resetFilteringData();
-                this.filteringData.category = currentCategory;
+                if (currentCategory) {
+                    this.resetFilteringData();
+                    this.filteringData.category = currentCategory;
 
-                this.store.dispatch(
-                    ProductsFilterActions.addFilteringDataForCategory({
-                        currentCategory,
-                    }),
-                );
-            }
-        });
+                    this.store.dispatch(
+                        ProductsFilterActions.addFilteringDataForCategory({
+                            currentCategory,
+                        }),
+                    ); // ошибка из-за этого экшена
+                }
+            });
 
         this.filterData$.subscribe((filterData) => {
             this.rangesAmount = (
@@ -100,6 +106,11 @@ export class ProductsFilterComponent {
                 filterData as IResultFilterData
             )?.characteristics?.length;
         });
+    }
+
+    ngOnDestroy() {
+        this.destroy$.next();
+        this.destroy$.complete();
     }
 
     reset() {

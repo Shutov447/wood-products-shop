@@ -2,12 +2,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
     Output,
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import { of, switchMap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -18,11 +16,16 @@ import { IOutputRangeData } from '../custom-input/shared/types/input-range-data.
 import { IChosenData } from '../custom-input/shared/types/characteristic-data.interface';
 import { CheckboxListComponent } from '../custom-input/components/checkbox-list/checkbox-list.component';
 import { InputRangeComponent } from '../custom-input/components/input-range/input-range.component';
-import { ProductsService } from '../../shared/products/products.service';
 import { IOutputFilterData } from './shared/types/output-filter-data.interface';
 import { IProduct } from '../../../assets/products/types/product.interface';
 import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
 import { selectProducts } from '../../store/products/products.selectors';
+import {
+    ProductsFilterActions,
+    ProductsFilterApiActions,
+} from './store/products-filter.actions';
+import { selectFilteringDataForCurrentCategory } from './store/products-filter.selectors';
+import { IResultFilterData } from '../../../assets/products/types/for-filtering-products.interface';
 
 @Component({
     selector: 'app-products-filter',
@@ -41,7 +44,15 @@ import { selectProducts } from '../../store/products/products.selectors';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsFilterComponent {
-    @Output() getFilterData = new EventEmitter<IOutputFilterData>();
+    readonly filterData$ = this.store.select(
+        selectFilteringDataForCurrentCategory,
+    );
+    @ViewChildren(InputRangeComponent)
+    private readonly inputRanges: QueryList<InputRangeComponent> | null = null;
+    @ViewChildren(CheckboxListComponent)
+    private readonly checkboxLists: QueryList<CheckboxListComponent> | null =
+        null;
+    @Output() readonly getFilterData = new EventEmitter<IOutputFilterData>();
 
     private currentCategory: IProduct['category'] = '';
     private filteringData: IOutputFilterData = {
@@ -49,44 +60,45 @@ export class ProductsFilterComponent {
         ranges: [],
         choices: [],
     };
-
-    readonly productsState$ = this.store.select(selectProducts);
-
-    @ViewChildren(InputRangeComponent)
-    private readonly inputRanges: QueryList<InputRangeComponent> | null = null;
-    @ViewChildren(CheckboxListComponent)
-    private readonly checkboxLists: QueryList<CheckboxListComponent> | null =
-        null;
-
-    readonly showNumberInput = true;
-    readonly rangeMin = 0;
     private rangesAmount = 0;
     private characteristicsAmount = 0;
 
-    readonly filterData$ = this.activatedRoute.paramMap.pipe(
-        switchMap((paramMap) => {
+    readonly productsState$ = this.store.select(selectProducts);
+    readonly showNumberInput = true;
+    readonly rangeMin = 0;
+
+    constructor(
+        private readonly store: Store,
+        private readonly activatedRoute: ActivatedRoute,
+    ) {
+        this.store.dispatch(
+            ProductsFilterApiActions.pageWithFilterDataOpened({
+                currentCategory: this.currentCategory,
+            }),
+        );
+
+        this.activatedRoute.paramMap.subscribe((paramMap) => {
             const currentCategory = paramMap.get('category');
 
             if (currentCategory) {
                 this.resetFilteringData();
                 this.filteringData.category = currentCategory;
 
-                return this.productsService.getfilteringData$(currentCategory);
+                this.store.dispatch(
+                    ProductsFilterActions.addFilteringDataForCategory({
+                        currentCategory,
+                    }),
+                );
             }
+        });
 
-            return of();
-        }),
-    );
-
-    constructor(
-        private readonly store: Store,
-        private readonly activatedRoute: ActivatedRoute,
-        @Inject(ProductsService)
-        private readonly productsService: ProductsService,
-    ) {
-        this.filterData$.subscribe(({ ranges, characteristics }) => {
-            this.rangesAmount = ranges.length;
-            this.characteristicsAmount = characteristics.length;
+        this.filterData$.subscribe((filterData) => {
+            this.rangesAmount = (
+                filterData as IResultFilterData
+            )?.ranges?.length;
+            this.characteristicsAmount = (
+                filterData as IResultFilterData
+            )?.characteristics?.length;
         });
     }
 

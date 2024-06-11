@@ -27,6 +27,7 @@ import * as homeEffects from './pages/home/store/home.effects';
 import * as servicesEffects from './store/services/services.effects';
 import * as productsEffects from './store/products/products.effects';
 import * as catalogEffects from './pages/catalog/store/catalog.effects';
+import * as productsFilterEffects from './components/products-filter/store/products-filter.effects';
 import { SLIDERS_FEATURE } from './store/sliders/sliders.state';
 import { slidresReducer } from './store/sliders/sliders.reducer';
 import { SERVICES_FEATURE } from './store/services/services.state';
@@ -35,6 +36,8 @@ import { PRODUCTS_FEATURE } from './store/products/products.state';
 import { productsReducer } from './store/products/products.reducer';
 import { CATALOG_FEATURE } from './pages/catalog/store/catalog.state';
 import { catalogReducer } from './pages/catalog/store/catalog.reducer';
+import { PRODUCTS_FILTER_FEATURE } from './components/products-filter/store/products-filter.state';
+import { productsFilterReducer } from './components/products-filter/store/products-filter.reducer';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -79,6 +82,10 @@ export const appConfig: ApplicationConfig = {
             name: CATALOG_FEATURE,
             reducer: catalogReducer,
         }),
+        provideState({
+            name: PRODUCTS_FILTER_FEATURE,
+            reducer: productsFilterReducer,
+        }),
         provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
         provideEffects(
             articlesCardsEffects,
@@ -87,6 +94,7 @@ export const appConfig: ApplicationConfig = {
             servicesEffects,
             productsEffects,
             catalogEffects,
+            productsFilterEffects,
         ),
     ],
 };

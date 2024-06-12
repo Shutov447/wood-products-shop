@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { LetDirective } from '@ngrx/component';
 import { UrlSegmentsVisualizerComponent } from '../../components/url-segments-visualizer/url-segments-visualizer.component';
 import { ImageGalleryComponent } from '../../components/image-gallery/image-gallery.component';
 import { ButtonModule } from '../../components/button/button.module';
@@ -29,6 +30,7 @@ import { ProductsActions } from '../../store/products/products.actions';
         ReactiveFormsModule,
         AlertTriangleIconComponent,
         RouterModule,
+        LetDirective,
     ],
     templateUrl: './product.component.html',
     styleUrl: './product.component.scss',

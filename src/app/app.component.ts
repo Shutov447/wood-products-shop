@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { TuiScrollbarModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
+import { PushPipe } from '@ngrx/component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TuiScrollbarService } from './shared/for-tui-scrollbar/tui-scrollbar.service';
@@ -17,6 +18,7 @@ import { ProductsApiActions } from './store/products/products.actions';
         NavbarComponent,
         FooterComponent,
         TuiScrollbarModule,
+        PushPipe,
     ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',

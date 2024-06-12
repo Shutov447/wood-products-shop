@@ -1,174 +1,179 @@
-<main class="main-container">
-    <div>
-        <app-url-segments-visualizer
-            class="url-segments-visualizer"
-        ></app-url-segments-visualizer>
-        <app-image-gallery
-            [images]="(product$ | async)?.photos"
-            [alt]="(product$ | async)?.name"
-        ></app-image-gallery>
-    </div>
-    <div class="info-container">
-        <p class="body-XS tide-font vendor-code">
-            Артикул<span>{{ (product$ | async)?.vendor_code }}</span>
-        </p>
-        <h3 class="h3">{{ (product$ | async)?.name }}</h3>
-        <div class="price-control">
-            <h1 class="price h1">
-                {{
-                    ((product$ | async)?.price
-                        ? (product$ | async)!.price * productsCount
-                        : undefined
-                    ) | currency: 'RUB' : 'symbol-narrow' : '1.0-0'
-                }}
-            </h1>
-            <div class="controls">
-                <app-counter
-                    [min]="1"
-                    [max]="9999"
-                    (getNumber)="setProductNumber($event)"
-                ></app-counter>
-                <app-button
-                    (click)="dialog.hide(false)"
-                    [haveBackground]="true"
-                    [size]="'M'"
-                    >купить</app-button
-                >
-            </div>
+<ng-container *ngrxLet="product$ as product">
+    <main class="main-container">
+        <div>
+            <app-url-segments-visualizer
+                class="url-segments-visualizer"
+            ></app-url-segments-visualizer>
+            <app-image-gallery
+                [images]="product?.photos"
+                [alt]="product?.name"
+            ></app-image-gallery>
         </div>
-        <hr class="hr-1" />
-        <section class="descrition-container">
-            <h4 class="h4">Описание</h4>
-            <p class="body-M">
-                {{ (product$ | async)?.description }}
+        <div class="info-container">
+            <p class="body-XS tide-font vendor-code">
+                Артикул<span>{{ product?.vendor_code }}</span>
             </p>
-        </section>
-        <hr class="hr-2" />
-        <app-characteristics
-            [title]="'Характеристики'"
-            [characteristics]="(product$ | async)?.characteristics"
-        ></app-characteristics>
-    </div>
-</main>
-<app-contact-us-card></app-contact-us-card>
-
-<app-dialog
-    #dialog
-    [hidden]="true"
-    (getHiddenState)="getPopupHiddenState($event)"
->
-    <ng-container
-        [ngTemplateOutlet]="
-            isOrderFormPopup ? orderFormPopup : afterOrderProductPopup
-        "
-    ></ng-container>
-</app-dialog>
-
-<ng-template #orderFormPopup>
-    <div class="product-order-popup">
-        <h2 class="h2">Заказ товара</h2>
-        <div class="product-info body-M-bold">
-            <div class="img-wrapper">
-                <img
-                    [src]="(product$ | async)?.photos?.[0]"
-                    [alt]="(product$ | async)?.name"
-                />
-            </div>
-            <div class="product-text-info-wrapper">
-                <span>{{ (product$ | async)?.name }}</span>
-                <span>x{{ productsCount }}</span>
-                <span>
+            <h3 class="h3">{{ product?.name }}</h3>
+            <div class="price-control">
+                <h1 class="price h1">
                     {{
-                        ((product$ | async)?.price
-                            ? (product$ | async)!.price * productsCount
+                        (product?.price
+                            ? product!.price * productsCount
                             : undefined
                         ) | currency: 'RUB' : 'symbol-narrow' : '1.0-0'
-                    }}</span
-                >
-            </div>
-        </div>
-        <form
-            class="form"
-            [formGroup]="formGroup"
-            (ngSubmit)="onSubmit(formGroup); isOrderFormPopup = false"
-        >
-            <h6 class="h6">
-                Оставьте свой номер телефона! Мы свяжемся с Вами по поводу
-                товара в течение 15 минут.
-            </h6>
-            <div class="form-inputs-wrapper">
-                <div
-                    *ngFor="let dataForm of dataForms"
-                    class="form-input-wrapper"
-                    [class]="
-                        dataForm.formControl?.invalid &&
-                        dataForm.formControl?.touched
-                            ? 'form-input-wrapper-invalid'
-                            : ''
-                    "
-                >
-                    <small
-                        class="body-S small"
-                        *ngIf="
-                            dataForm.formControl?.dirty ||
-                            dataForm.formControl?.touched
-                        "
-                        >{{ dataForm.needData }}
-                        <span *ngIf="dataForm.formControl?.hasError('required')"
-                            >*</span
-                        >
-                    </small>
-                    <input
-                        class="form-input body-L"
-                        type="text"
-                        autocomplete="off"
-                        [name]="dataForm.name"
-                        [formControlName]="dataForm.name"
-                        [placeholder]="
-                            dataForm.formControl?.invalid &&
-                            dataForm.formControl?.untouched
-                                ? dataForm.needData
-                                : 'Заполните форму'
-                        "
-                    />
-                    <app-alert-triangle-icon
-                        class="tooltip"
-                        *ngIf="
-                            dataForm.formControl?.invalid &&
-                            dataForm.formControl?.touched
-                        "
-                    ></app-alert-triangle-icon>
+                    }}
+                </h1>
+                <div class="controls">
+                    <app-counter
+                        [min]="1"
+                        [max]="9999"
+                        (getNumber)="setProductNumber($event)"
+                    ></app-counter>
+                    <app-button
+                        (click)="dialog.hide(false)"
+                        [haveBackground]="true"
+                        [size]="'M'"
+                        >купить</app-button
+                    >
                 </div>
             </div>
-            <app-button
-                role="button"
-                type="submit"
-                [size]="'XXL'"
-                [haveBackground]="true"
-                [isDisabled]="formGroup.invalid"
-                >Заказать товар</app-button
-            >
-        </form>
-    </div>
-</ng-template>
-
-<ng-template #afterOrderProductPopup>
-    <div class="after-order-product-popup">
-        <img
-            src="assets/img/for-popup-after-order-product.png"
-            alt="for-popup-after-order-product"
-        />
-        <div class="text-container">
-            <h2 class="h2">Спасибо за заявку!</h2>
-            <h6 class="h6 content">
-                Наши специалисты свяжутся с Вами в течении 30 минут.
-            </h6>
-            <app-button
-                routerLink="/"
-                [haveBackground]="true"
-                [size]="'M'"
-                >на главную</app-button
-            >
+            <hr class="hr-1" />
+            <section class="descrition-container">
+                <h4 class="h4">Описание</h4>
+                <p class="body-M">
+                    {{ product?.description }}
+                </p>
+            </section>
+            <hr class="hr-2" />
+            <app-characteristics
+                [title]="'Характеристики'"
+                [characteristics]="product?.characteristics"
+            ></app-characteristics>
         </div>
-    </div>
-</ng-template>
+    </main>
+    <app-contact-us-card></app-contact-us-card>
+
+    <app-dialog
+        #dialog
+        [hidden]="true"
+        (getHiddenState)="getPopupHiddenState($event)"
+    >
+        <ng-container
+            [ngTemplateOutlet]="
+                isOrderFormPopup ? orderFormPopup : afterOrderProductPopup
+            "
+        ></ng-container>
+    </app-dialog>
+
+    <ng-template #orderFormPopup>
+        <div class="product-order-popup">
+            <h2 class="h2">Заказ товара</h2>
+            <div class="product-info body-M-bold">
+                <div class="img-wrapper">
+                    <img
+                        [src]="product?.photos?.[0]"
+                        [alt]="product?.name"
+                    />
+                </div>
+                <div class="product-text-info-wrapper">
+                    <span>{{ product?.name }}</span>
+                    <span>x{{ productsCount }}</span>
+                    <span>
+                        {{
+                            (product?.price
+                                ? product!.price * productsCount
+                                : undefined
+                            ) | currency: 'RUB' : 'symbol-narrow' : '1.0-0'
+                        }}</span
+                    >
+                </div>
+            </div>
+            <form
+                class="form"
+                [formGroup]="formGroup"
+                (ngSubmit)="onSubmit(formGroup); isOrderFormPopup = false"
+            >
+                <h6 class="h6">
+                    Оставьте свой номер телефона! Мы свяжемся с Вами по поводу
+                    товара в течение 15 минут.
+                </h6>
+                <div class="form-inputs-wrapper">
+                    <div
+                        *ngFor="let dataForm of dataForms"
+                        class="form-input-wrapper"
+                        [class]="
+                            dataForm.formControl?.invalid &&
+                            dataForm.formControl?.touched
+                                ? 'form-input-wrapper-invalid'
+                                : ''
+                        "
+                    >
+                        <small
+                            class="body-S small"
+                            *ngIf="
+                                dataForm.formControl?.dirty ||
+                                dataForm.formControl?.touched
+                            "
+                            >{{ dataForm.needData }}
+                            <span
+                                *ngIf="
+                                    dataForm.formControl?.hasError('required')
+                                "
+                                >*</span
+                            >
+                        </small>
+                        <input
+                            class="form-input body-L"
+                            type="text"
+                            autocomplete="off"
+                            [name]="dataForm.name"
+                            [formControlName]="dataForm.name"
+                            [placeholder]="
+                                dataForm.formControl?.invalid &&
+                                dataForm.formControl?.untouched
+                                    ? dataForm.needData
+                                    : 'Заполните форму'
+                            "
+                        />
+                        <app-alert-triangle-icon
+                            class="tooltip"
+                            *ngIf="
+                                dataForm.formControl?.invalid &&
+                                dataForm.formControl?.touched
+                            "
+                        ></app-alert-triangle-icon>
+                    </div>
+                </div>
+                <app-button
+                    role="button"
+                    type="submit"
+                    [size]="'XXL'"
+                    [haveBackground]="true"
+                    [isDisabled]="formGroup.invalid"
+                    >Заказать товар</app-button
+                >
+            </form>
+        </div>
+    </ng-template>
+
+    <ng-template #afterOrderProductPopup>
+        <div class="after-order-product-popup">
+            <img
+                src="assets/img/for-popup-after-order-product.png"
+                alt="for-popup-after-order-product"
+            />
+            <div class="text-container">
+                <h2 class="h2">Спасибо за заявку!</h2>
+                <h6 class="h6 content">
+                    Наши специалисты свяжутся с Вами в течении 30 минут.
+                </h6>
+                <app-button
+                    routerLink="/"
+                    [haveBackground]="true"
+                    [size]="'M'"
+                    >на главную</app-button
+                >
+            </div>
+        </div>
+    </ng-template>
+</ng-container>

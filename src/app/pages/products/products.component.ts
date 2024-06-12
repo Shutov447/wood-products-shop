@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { LetDirective } from '@ngrx/component';
+import { LetDirective, PushPipe } from '@ngrx/component';
 import { UrlSegmentsVisualizerComponent } from '../../components/url-segments-visualizer/url-segments-visualizer.component';
 import { ProductsFilterComponent } from '../../components/products-filter/products-filter.component';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
@@ -35,6 +35,7 @@ import { ProductsActions } from '../../store/products/products.actions';
         ContactUsCardComponent,
         TranslatePipe,
         LetDirective,
+        PushPipe,
     ],
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',

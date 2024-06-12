@@ -1,4 +1,4 @@
-<tui-scrollbar [hidden]="(tuiScrollbarHidden$ | async) || false">
+<tui-scrollbar [hidden]="(tuiScrollbarHidden$ | ngrxPush) || false">
     <div class="content">
         <header>
             <app-navbar></app-navbar>

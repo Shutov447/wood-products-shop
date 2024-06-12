@@ -21,7 +21,7 @@ import { TuiScrollbarService } from '../../shared/for-tui-scrollbar/tui-scrollba
 })
 export class DialogComponent implements OnInit {
     @Input() hidden = true;
-    @Output() getHiddenState = new EventEmitter<boolean>();
+    @Output() readonly getHiddenState = new EventEmitter<boolean>();
 
     @HostBinding('style.display') display = this.hidden ? 'none' : 'flex';
 

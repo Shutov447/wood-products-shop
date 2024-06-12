@@ -19,7 +19,7 @@ export class CounterComponent implements OnInit {
     @Input() min = 0;
     @Input() max = Infinity;
 
-    @Output() getNumber = new EventEmitter<number>();
+    @Output() readonly getNumber = new EventEmitter<number>();
 
     ngOnInit() {
         this.number = this.min;

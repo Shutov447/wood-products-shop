@@ -25,7 +25,7 @@ export class InputRangeComponent implements OnInit, AfterViewInit {
     @Input() title: string = '';
     @Input() showNumberInput: boolean | undefined = false;
 
-    @Output() getCurrentRange = new EventEmitter<IOutputRangeData>();
+    @Output() readonly getCurrentRange = new EventEmitter<IOutputRangeData>();
 
     @ViewChild('numberCurrentFrom', { read: ElementRef, static: true })
     private readonly numberCurrentFrom: ElementRef<HTMLInputElement> | null =

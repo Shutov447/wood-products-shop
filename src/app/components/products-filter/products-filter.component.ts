@@ -12,6 +12,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LetDirective, PushPipe } from '@ngrx/component';
 import { Subject, takeUntil } from 'rxjs';
+import { cloneDeep } from 'lodash';
 import { ButtonModule } from '../button/button.module';
 import { CustomInputModule } from '../custom-input/custom-input.module';
 import { IOutputRangeData } from '../custom-input/shared/types/input-range-data.interface';
@@ -58,6 +59,7 @@ export class ProductsFilterComponent implements OnDestroy {
     readonly filterData$ = this.store.select(
         selectFilteringDataForCurrentCategory,
     );
+
     readonly productsState$ = this.store.select(selectProducts);
     readonly showNumberInput = true;
     readonly rangeMin = 0;
@@ -94,17 +96,15 @@ export class ProductsFilterComponent implements OnDestroy {
                         ProductsFilterActions.addFilteringDataForCategory({
                             currentCategory,
                         }),
-                    ); // ошибка из-за этого экшена
+                    );
                 }
             });
 
         this.filterData$.subscribe((filterData) => {
-            this.rangesAmount = (
-                filterData as IResultFilterData
-            )?.ranges?.length;
+            this.rangesAmount = (filterData as IResultFilterData).ranges.length;
             this.characteristicsAmount = (
                 filterData as IResultFilterData
-            )?.characteristics?.length;
+            ).characteristics.length;
         });
     }
 
@@ -119,9 +119,9 @@ export class ProductsFilterComponent implements OnDestroy {
     }
 
     getChosen(chosen: IChosenData) {
-        if (this.filteringData?.choices.length < this.characteristicsAmount) {
-            this.filteringData?.choices.push(chosen);
-            this.getFilterData.emit(this.filteringData);
+        if (this.filteringData.choices.length < this.characteristicsAmount) {
+            this.filteringData.choices.push(chosen);
+            this.emitFilterData();
 
             return;
         }
@@ -131,15 +131,13 @@ export class ProductsFilterComponent implements OnDestroy {
                 choice.choices = chosen.choices;
             }
         });
-
-        this.getFilterData.emit(this.filteringData);
+        this.emitFilterData();
     }
 
     getRange(range: IOutputRangeData) {
-        if (this.filteringData?.ranges.length < this.rangesAmount) {
-            this.filteringData?.ranges.push(range);
-            this.getFilterData.emit(this.filteringData);
-
+        if (this.filteringData.ranges.length < this.rangesAmount) {
+            this.filteringData.ranges.push(range);
+            this.emitFilterData();
             return;
         }
 
@@ -150,7 +148,11 @@ export class ProductsFilterComponent implements OnDestroy {
             }
         });
 
-        this.getFilterData.emit(this.filteringData);
+        this.emitFilterData();
+    }
+
+    private emitFilterData() {
+        this.getFilterData.emit(cloneDeep(this.filteringData));
     }
 
     private resetFilteringData() {

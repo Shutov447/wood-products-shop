@@ -31,7 +31,7 @@ export const selectFilteringDataForCurrentCategory = createSelector(
         const maxPrice = Math.max(...allPrices);
         const maxRating = Math.max(...allRatings);
 
-        if (currentCategory)
+        if (currentCategory && dtoFilteringData[currentCategory])
             return {
                 characteristics: dtoFilteringData[currentCategory],
                 ranges: [
@@ -46,6 +46,18 @@ export const selectFilteringDataForCurrentCategory = createSelector(
                 ],
             };
 
-        return null;
+        return {
+            characteristics: [],
+            ranges: [
+                {
+                    title: 'price',
+                    max: maxPrice,
+                },
+                {
+                    title: 'rating',
+                    max: maxRating,
+                },
+            ],
+        };
     },
 );

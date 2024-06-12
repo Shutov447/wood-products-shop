@@ -20,12 +20,12 @@ import { chunk } from 'lodash';
 })
 export class PaginationComponent<T> implements OnChanges {
     @Input({ required: true }) chunkSize = 0;
-    @Input({ required: true }) paginationItems: T[] | null = null;
+    @Input({ required: true }) paginationItems: readonly T[] | null = null;
 
-    @Output() getCurrentChunk = new EventEmitter<T[]>();
+    @Output() readonly getCurrentChunk = new EventEmitter<readonly T[]>();
 
     selectedChunkNumber = 0;
-    chunks: T[][] | null = null;
+    chunks: readonly T[][] | null = null;
 
     ngOnChanges({ paginationItems }: SimpleChanges) {
         if (paginationItems) {

@@ -212,7 +212,7 @@
             можно расчленить на самостоятельные предложения.
         </div>
     </div>
-    <app-quote-card [quoteData]="quoteData$ | async"></app-quote-card>
+    <app-quote-card [quoteData]="quoteData$ | ngrxPush"></app-quote-card>
     <div class="inner-content gap-30">
         <h6 class="h6">
             Текст состоит из некоторого количества предложений. Одно

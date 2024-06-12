@@ -1,18 +1,24 @@
 <app-url-segments-visualizer></app-url-segments-visualizer>
 <h1 class="h1 h1-text">Статьи</h1>
-<div class="articles-container">
-    <app-article-card
-        *ngFor="let article of articlesCardsChunksToSee"
-        [img]="article.image"
-        [header]="article.header"
-        [content]="article.content"
-        [date]="{ day: article.day, month: article.month, year: article.year }"
-    ></app-article-card>
-</div>
-<button
-    *ngIf="isShowButton"
-    class="button-font button"
-    (click)="onButtonClick()"
->
-    показать еще
-</button>
+<ng-container *ngrxLet="articles$ as articles">
+    <div class="articles-container">
+        <app-article-card
+            *ngFor="let article of articles.accumulatingChunk"
+            [img]="article.image"
+            [header]="article.header"
+            [content]="article.content"
+            [date]="{
+                day: article.day,
+                month: article.month,
+                year: article.year
+            }"
+        ></app-article-card>
+    </div>
+    <button
+        *ngIf="!articles.isLastArticle"
+        class="button-font button"
+        (click)="onButtonClick()"
+    >
+        показать еще
+    </button>
+</ng-container>

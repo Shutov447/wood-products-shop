@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { TuiCarouselModule } from '@taiga-ui/kit';
+import { PushPipe } from '@ngrx/component';
 import { DownloadCardComponent } from '../../components/download-card/download-card.component';
 import { QuoteCardComponent } from '../../components/quote-card/quote-card.component';
 import { IQuoteCard } from '../../../assets/quote-card/types/quote-card.type';
@@ -18,6 +19,7 @@ import { ButtonModule } from '../../components/button/button.module';
         UrlSegmentsVisualizerComponent,
         TuiCarouselModule,
         ButtonModule,
+        PushPipe,
     ],
     templateUrl: './about-us.component.html',
     styleUrl: './about-us.component.scss',

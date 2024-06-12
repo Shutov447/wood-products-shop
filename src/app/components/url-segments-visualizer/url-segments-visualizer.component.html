@@ -5,10 +5,12 @@
         >Главная</a
     ></span
 >
-<span
-    class="body-XS"
-    *ngFor="let segmet of segments$ | async"
->
-    <span class="mdash">&mdash;</span>
-    <a [routerLink]="[segmet]">{{ segmet.path | translate | async }}</a>
-</span>
+<ng-container *ngrxLet="segments$ as segments">
+    <span
+        class="body-XS"
+        *ngFor="let segmet of segments"
+    >
+        <span class="mdash">&mdash;</span>
+        <a [routerLink]="[segmet]">{{ segmet.path | translate | ngrxPush }}</a>
+    </span>
+</ng-container>

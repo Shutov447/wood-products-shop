@@ -21,7 +21,7 @@ export class CheckboxListComponent implements AfterViewInit {
     @Input({ required: true }) choices: string[] = [];
     @Input() title: string | undefined;
 
-    @Output() getCurrentChosen = new EventEmitter<IChosenData>();
+    @Output() readonly getCurrentChosen = new EventEmitter<IChosenData>();
 
     isShow = true;
     chosen: string[] = [];

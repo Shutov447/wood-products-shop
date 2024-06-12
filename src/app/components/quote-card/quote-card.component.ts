@@ -11,5 +11,5 @@ import { IQuoteCard } from '../../../assets/quote-card/types/quote-card.type';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuoteCardComponent {
-    @Input({ required: true }) quoteData: IQuoteCard | null = null;
+    @Input({ required: true }) quoteData: IQuoteCard | null | undefined;
 }

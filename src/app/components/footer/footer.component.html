@@ -11,12 +11,15 @@
         <li>{{ suppurtEmail }}</li>
     </ul>
 </div>
-<ul class="catalog body-S">
-    <li *ngFor="let category of categories$ | async">
+<ul
+    class="catalog body-S"
+    *ngrxLet="categories$ as categories"
+>
+    <li *ngFor="let category of categories">
         <a
             [routerLink]="'catalog/' + category"
             class="link"
-            >{{ category | translate | async }}</a
+            >{{ category | translate | ngrxPush }}</a
         >
     </li>
 </ul>

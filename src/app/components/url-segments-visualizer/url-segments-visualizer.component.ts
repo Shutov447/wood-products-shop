@@ -1,12 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { LetDirective, PushPipe } from '@ngrx/component';
 import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
 
 @Component({
     selector: 'app-url-segments-visualizer',
     standalone: true,
-    imports: [CommonModule, RouterModule, TranslatePipe],
+    imports: [
+        CommonModule,
+        RouterModule,
+        TranslatePipe,
+        LetDirective,
+        PushPipe,
+    ],
     templateUrl: './url-segments-visualizer.component.html',
     styleUrl: './url-segments-visualizer.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

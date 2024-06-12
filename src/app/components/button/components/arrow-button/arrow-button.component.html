@@ -1,6 +1,6 @@
 <button
     class="arrow-button"
-    [class]="(isHovered$ | async) ? 'hovered' : 'default'"
+    [class]="(isHovered$ | ngrxPush) ? 'hovered' : 'default'"
     appElemHover
 >
     <tui-svg [src]="arrowDirection"></tui-svg>

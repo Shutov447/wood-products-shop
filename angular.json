@@ -11,7 +11,6 @@
                     "style": "scss"
                 }
             },
-
             "root": "",
             "sourceRoot": "src",
             "prefix": "app",
@@ -107,6 +106,9 @@
     },
     "cli": {
         "analytics": "f3dc5ed3-6e2a-421a-a633-c282c75ef40b",
-        "schematicCollections": ["@angular-eslint/schematics"]
+        "schematicCollections": [
+            "@angular-eslint/schematics",
+            "@ngrx/schematics"
+        ]
     }
 }

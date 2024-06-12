@@ -1,14 +1,13 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { ProductsService } from '../../../../shared/products/products.service';
+import { Store } from '@ngrx/store';
+import { selectHaveProduct } from '../../../../store/products/products.selectors';
 
 export const productGuard: CanActivateFn = (route) => {
-    const product = route.paramMap.get('product');
+    const productName = route.paramMap.get('product');
     const router = inject(Router);
-    const productsService = inject(ProductsService);
-    const canNavigate = Boolean(
-        product && productsService.productsNames.includes(product),
-    );
+    const store = inject(Store);
+    const canNavigate = Boolean(productName && store.select(selectHaveProduct));
 
     !canNavigate && router.navigateByUrl('/not-found');
 

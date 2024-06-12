@@ -4,7 +4,7 @@ import { IProductsState, productsInitialState } from './products.state';
 import { ProductsActions } from './products.actions';
 import { IChosenData } from '../../components/custom-input/shared/types/characteristic-data.interface';
 import { IOutputRangeData } from '../../components/custom-input/shared/types/input-range-data.interface';
-import { filterProduct } from '../../shared/products/shared/filter-functions/by-output-filter-data';
+import { filterProduct } from './filter-functions/by-output-filter-data';
 
 export const productsReducer = createReducer(
     productsInitialState,
@@ -59,5 +59,32 @@ export const productsReducer = createReducer(
                 filteredProducts,
             };
         },
+    ),
+    on(
+        ProductsActions.setCurrentChunk,
+        (state, { currentChunk }): IProductsState => ({
+            ...state,
+            currentChunk,
+        }),
+    ),
+    on(
+        ProductsActions.setCurrentProductByName,
+        (state, { productName }): IProductsState => {
+            const currentProduct = state.products.find(
+                (product) => product.name === productName,
+            );
+
+            return {
+                ...state,
+                currentProduct,
+            };
+        },
+    ),
+    on(
+        ProductsActions.addProductsNames,
+        (state, { productsNames }): IProductsState => ({
+            ...state,
+            productsNames,
+        }),
     ),
 );

@@ -12,6 +12,11 @@ export const ProductsActions = createActionGroup({
             amount: number;
         }>(),
         filterByOutputFilterData: props<IOutputFilterData>(),
+        setCurrentChunk: props<{ currentChunk: readonly IProduct[] }>(),
+        setCurrentProductByName: props<{ productName: IProduct['name'] }>(),
+        addProductsNames: props<{
+            productsNames: readonly IProduct['name'][];
+        }>(),
     },
 });
 

@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { exhaustMap, map } from 'rxjs';
+import { exhaustMap, map, of } from 'rxjs';
 import { ProductsService } from '../../shared/products/products-service/products.service';
 import { ProductsActions, ProductsApiActions } from './products.actions';
 
@@ -17,6 +17,20 @@ export const loadProductsEffect = createEffect(
                         ),
                     ),
             ),
+        );
+    },
+    { functional: true },
+);
+
+export const setProductsNamesProductsEffect = createEffect(
+    (actions$ = inject(Actions)) => {
+        return actions$.pipe(
+            ofType(ProductsActions.addProducts),
+            exhaustMap(({ products }) => {
+                const productsNames = products.map((product) => product.name);
+
+                return of(ProductsActions.addProductsNames({ productsNames }));
+            }),
         );
     },
     { functional: true },

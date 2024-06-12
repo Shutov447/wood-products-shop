@@ -1,12 +1,9 @@
-import { concat } from 'lodash';
 import {
     ICharacteristic,
     IProduct,
-} from '../../../../../assets/products/types/product.interface';
-import { IOutputFilterData } from '../../../../components/products-filter/shared/types/output-filter-data.interface';
-import { IProductsFilterFn } from '../types/products-filter.interface';
-import { IChosenData } from '../../../../components/custom-input/shared/types/characteristic-data.interface';
-import { IOutputRangeData } from '../../../../components/custom-input/shared/types/input-range-data.interface';
+} from '../../../../assets/products/types/product.interface';
+import { IChosenData } from '../../../components/custom-input/shared/types/characteristic-data.interface';
+import { IOutputRangeData } from '../../../components/custom-input/shared/types/input-range-data.interface';
 
 export function filterProduct(
     product: IProduct,
@@ -74,21 +71,3 @@ export function filterProduct(
 
     return !filteredProduct.includes(false);
 }
-
-export const filterByOutputFilterData: IProductsFilterFn<IOutputFilterData> = (
-    products: IProduct[],
-    filterData: IOutputFilterData,
-): IProduct[] => {
-    const characteristics = concat<IChosenData | IOutputRangeData>(
-        filterData.choices,
-        filterData.ranges,
-    );
-
-    products = products.filter((product) => {
-        const isCategoryMatch = product.category === filterData.category;
-
-        return isCategoryMatch && filterProduct(product, characteristics);
-    });
-
-    return products;
-};

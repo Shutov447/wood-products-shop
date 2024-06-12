@@ -18,3 +18,19 @@ export const selectFilteredProducts = createSelector(
     selectProducts,
     (state) => state.filteredProducts,
 );
+
+export const selectCurrentChunkProducts = createSelector(
+    selectProducts,
+    (state) => state.currentChunk,
+);
+
+export const selectCurrentProduct = createSelector(
+    selectProducts,
+    (state) => state.currentProduct,
+);
+
+export const selectHaveProduct = createSelector(selectProducts, (state) => {
+    const productName = state.currentProduct?.name;
+
+    return productName && state.productsNames.includes(productName);
+});

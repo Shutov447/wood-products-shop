@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { ProductsService } from '../../shared/products/products.service';
+import { Store } from '@ngrx/store';
 import { UrlSegmentsVisualizerComponent } from '../../components/url-segments-visualizer/url-segments-visualizer.component';
 import { ImageGalleryComponent } from '../../components/image-gallery/image-gallery.component';
 import { ButtonModule } from '../../components/button/button.module';
@@ -11,6 +11,8 @@ import { ContactUsCardComponent } from '../../components/contact-us-card/contact
 import { CharacteristicsComponent } from '../../components/characteristics/characteristics.component';
 import { DialogComponent } from '../../components/dialog/dialog.component';
 import { AlertTriangleIconComponent } from '../../components/alert-triangle-icon/alert-triangle-icon.component';
+import { selectCurrentProduct } from '../../store/products/products.selectors';
+import { ProductsActions } from '../../store/products/products.actions';
 
 @Component({
     selector: 'app-product',
@@ -33,21 +35,24 @@ import { AlertTriangleIconComponent } from '../../components/alert-triangle-icon
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductComponent extends ContactUsCardComponent {
-    product$ = this.productsService.product$;
+    readonly product$ = this.store.select(selectCurrentProduct);
 
     productsCount = 1;
     isOrderFormPopup = true;
 
     constructor(
         private readonly activatedRoute: ActivatedRoute,
-        private readonly productsService: ProductsService,
         private readonly fb: FormBuilder,
+        private readonly store: Store,
     ) {
         super(fb);
         this.activatedRoute.paramMap.subscribe((paramMap) => {
             const productName = paramMap.get('product');
 
-            productName && this.productsService.getProductByName(productName);
+            productName &&
+                this.store.dispatch(
+                    ProductsActions.setCurrentProductByName({ productName }),
+                );
         });
     }
 

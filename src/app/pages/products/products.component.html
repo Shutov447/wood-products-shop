@@ -7,38 +7,28 @@
         ></app-products-filter>
     </aside>
     <div class="wrapper-product-card-container">
-        <ng-container *ngrxLet="filteredProducts$ as products">
+        <ng-container
+            *ngrxLet="{
+                products: filteredProducts$,
+                chunk: productsChunk$
+            } as productsData"
+        >
             <div class="product-card-container">
                 <app-product-card
                     class="thin"
-                    *ngFor="let product of products"
+                    *ngFor="let product of productsData.chunk"
                     [name]="product.name"
                     [price]="product.price"
                     [imgs]="product.photos"
                 ></app-product-card>
             </div>
-            <!-- <app-pagination
-            class="pagination"
-            [paginationItems]="products"
-            [chunkSize]="9"
-            (getCurrentChunk)="getProductsChunk$($event)"
-        ></app-pagination> -->
+            <app-pagination
+                class="pagination"
+                [paginationItems]="productsData.products"
+                [chunkSize]="9"
+                (getCurrentChunk)="getProductsChunk$($event)"
+            ></app-pagination>
         </ng-container>
-        <!-- <div class="product-card-container">
-            <app-product-card
-                class="thin"
-                *ngFor="let product of productsChunk$ | async"
-                [name]="product.name"
-                [price]="product.price"
-                [imgs]="product.photos"
-            ></app-product-card>
-        </div>
-        <app-pagination
-            class="pagination"
-            [paginationItems]="products$ | async"
-            [chunkSize]="9"
-            (getCurrentChunk)="getProductsChunk$($event)"
-        ></app-pagination> -->
         <hr class="rectangle" />
         <section class="text">
             <h3 class="h3">Двери на заказ</h3>

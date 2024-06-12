@@ -8,16 +8,19 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Subject, debounceTime, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { LetDirective } from '@ngrx/component';
 import { UrlSegmentsVisualizerComponent } from '../../components/url-segments-visualizer/url-segments-visualizer.component';
 import { ProductsFilterComponent } from '../../components/products-filter/products-filter.component';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { ProductsService } from '../../shared/products/products.service';
 import { IOutputFilterData } from '../../components/products-filter/shared/types/output-filter-data.interface';
-import { filterByOutputFilterData } from '../../shared/products/shared/filter-functions/by-output-filter-data';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { IProduct } from '../../../assets/products/types/product.interface';
 import { ContactUsCardComponent } from '../../components/contact-us-card/contact-us-card-default/contact-us-card.component';
 import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
+import { selectFilteredProducts } from '../../store/products/products.selectors';
+import { ProductsActions } from '../../store/products/products.actions';
 
 @Component({
     selector: 'app-products',
@@ -30,6 +33,7 @@ import { TranslatePipe } from '../../shared/translations/pipe/translate.pipe';
         PaginationComponent,
         ContactUsCardComponent,
         TranslatePipe,
+        LetDirective,
     ],
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
@@ -40,7 +44,9 @@ export class ProductsComponent implements OnDestroy {
 
     category = '';
 
-    readonly products$ = this.productsService.products$.pipe(debounceTime(600));
+    readonly filteredProducts$ = this.store
+        .select(selectFilteredProducts)
+        .pipe(debounceTime(600));
 
     private readonly _productsChunk$ = new BehaviorSubject<IProduct[] | null>(
         null,
@@ -52,6 +58,7 @@ export class ProductsComponent implements OnDestroy {
         @Inject(ProductsService)
         private readonly productsService: ProductsService,
         private readonly cdr: ChangeDetectorRef,
+        private readonly store: Store,
     ) {
         this.activatedRoute.paramMap
             .pipe(takeUntil(this.destroy$))
@@ -68,9 +75,8 @@ export class ProductsComponent implements OnDestroy {
     }
 
     onGetFilterData(filterData: IOutputFilterData) {
-        this.productsService.filterProducts$<IOutputFilterData>(
-            filterData,
-            filterByOutputFilterData,
+        this.store.dispatch(
+            ProductsActions.filterByOutputFilterData(filterData),
         );
     }
 

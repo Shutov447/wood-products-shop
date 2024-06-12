@@ -8,10 +8,10 @@ import { IProductsFilterFn } from '../types/products-filter.interface';
 import { IChosenData } from '../../../../components/custom-input/shared/types/characteristic-data.interface';
 import { IOutputRangeData } from '../../../../components/custom-input/shared/types/input-range-data.interface';
 
-function filterProduct(
+export function filterProduct(
     product: IProduct,
     characteristics: (IChosenData | IOutputRangeData)[],
-): boolean | undefined {
+): boolean {
     const filteredProduct: boolean[] = [];
 
     for (const key in product) {

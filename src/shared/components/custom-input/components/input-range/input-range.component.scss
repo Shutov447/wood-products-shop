@@ -1,0 +1,109 @@
+@import '../../../../scss/colors.scss';
+@import '../../../../scss/transitions.scss';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title {
+    text-transform: capitalize;
+}
+
+.input-number-container {
+    flex-grow: 1;
+
+    .button-container {
+        display: flex;
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            transition: color $bg-color-trans;
+
+            .cross path {
+                transition: stroke $bg-color-trans;
+            }
+        }
+
+        button:hover {
+            color: $Rust;
+            transition: color $bg-color-trans;
+
+            .cross path {
+                stroke: $Rust;
+                transition: stroke $bg-color-trans;
+            }
+        }
+    }
+
+    .input-container {
+        flex-grow: 1;
+        display: flex;
+        gap: 10px;
+    }
+}
+
+.input-range-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    padding: 10px 10px 7px 10px;
+    background-color: $HintOfRed;
+    height: 48px;
+
+    .wrapper {
+        position: relative;
+        display: flex;
+        width: 100%;
+        flex-grow: 1;
+        top: 6px;
+
+        .track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $Kilamanjaro;
+        }
+
+        input[type='range'] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        input[type='range']::-webkit-slider-runnable-track {
+            background-color: unset;
+        }
+
+        input[type='range']:focus {
+            z-index: 2;
+        }
+    }
+
+    .from-to-wrapper {
+        width: 100%;
+        display: flex;
+        padding: 2px 2px 0 2px;
+    }
+}
+
+.body-M {
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: 0.2px;
+}
+
+.not-show {
+    display: none;
+}

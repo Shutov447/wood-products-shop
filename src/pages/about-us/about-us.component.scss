@@ -1,0 +1,107 @@
+@import '../../shared/scss/colors.scss';
+@import '../../shared/scss/transitions.scss';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1060px;
+    padding-bottom: 120px;
+}
+
+.navigation-container {
+    margin: 50px 0 47px 0;
+    align-self: flex-start;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+
+    .inner-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px 0 20px;
+    }
+}
+
+.download-card-container {
+    display: flex;
+    margin: 20px 0 20px 0;
+}
+
+.image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1060px;
+    height: 540px;
+
+    .figcaption {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+    }
+}
+
+.gap-20 {
+    gap: 20px;
+}
+
+.gap-25 {
+    gap: 25px;
+}
+
+.gap-30 {
+    gap: 30px;
+}
+
+.gap-35 {
+    gap: 35px;
+}
+
+.bg-img {
+    position: absolute;
+    width: 100vw;
+    height: 480px;
+    background-color: $HintOfRed;
+    background-image: url(../../assets/img/vector-woodcut.png);
+    z-index: -1;
+}
+
+.buttons {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+
+    .arrow-button-left {
+        position: relative;
+        left: 7px;
+        z-index: 1;
+    }
+
+    .arrow-button-right {
+        position: relative;
+    }
+}
+
+.pagination-dots {
+    position: absolute;
+    display: flex;
+
+    .dot {
+        position: relative;
+        width: 6px;
+        height: 6px;
+        top: 502px;
+        border-radius: 50%;
+        background-color: rgba($White, 0.2);
+        transition: background-color $bg-color-trans;
+    }
+
+    .current-dot {
+        background-color: $White;
+        transition: background-color $bg-color-trans;
+    }
+}

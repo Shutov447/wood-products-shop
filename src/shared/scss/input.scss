@@ -1,0 +1,105 @@
+@import './colors.scss';
+@import './transitions.scss';
+
+// type='number'
+input[type='number'] {
+    flex-grow: 1;
+    padding-left: 12px;
+    min-width: 0px;
+    height: 40px;
+    border: 1px solid $Gainsboro;
+    transition: border-color $bg-color-trans;
+    color: $Kilamanjaro;
+}
+input[type='number']:focus {
+    border-color: $Tide;
+    transition: border-color $bg-color-trans;
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type='number']:hover,
+input[type='number']:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+//type='range'
+input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type='range']:focus {
+    outline: none;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+    background-color: $Kilamanjaro;
+    height: 2px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -5px;
+    height: 12px;
+    width: 12px;
+    border: 2px solid $Kilamanjaro;
+    border-radius: 50%;
+    background-color: $White;
+    transition: background-color $bg-color-trans;
+}
+
+input[type='range']:focus::-webkit-slider-thumb {
+    background-color: $Kilamanjaro;
+    transition: background-color $bg-color-trans;
+}
+
+input[type='range']::-moz-range-track {
+    background-color: $Kilamanjaro;
+    height: 2px;
+}
+
+input[type='range']::-moz-range-thumb {
+    appearance: none;
+    margin-top: -5px;
+    height: 12px;
+    width: 12px;
+    border: 2px solid $Kilamanjaro;
+    border-radius: 50%;
+    background-color: $White;
+    transition: background-color $bg-color-trans;
+}
+
+input[type='range']:focus::-moz-range-thumb {
+    background-color: $Kilamanjaro;
+    transition: background-color $bg-color-trans;
+}
+
+// type='chackbox'
+input[type='checkbox'] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    width: 21.75px;
+    height: 20px;
+    border: 2px solid $Tide;
+    transition: background-color $bg-color-trans;
+}
+
+input[type='checkbox']:checked {
+    border: none;
+    background-color: $Kilamanjaro;
+    background-image: url(../../assets/img/tick.svg);
+    background-repeat: no-repeat;
+    background-position: 3.5px, center;
+    transition: background-color $bg-color-trans;
+}

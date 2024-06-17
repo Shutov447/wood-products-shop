@@ -4,10 +4,10 @@ import { TuiScrollbarModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { PushPipe } from '@ngrx/component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { TuiScrollbarService } from './shared/for-tui-scrollbar/tui-scrollbar.service';
-import { ProductsApiActions } from './store/products/products.actions';
+import { NavbarComponent } from '@widgets/navbar';
+import { FooterComponent } from '@widgets/footer';
+import { TuiScrollbarService } from '@shared/model';
+import { ProductsApiActions } from '@app/core';
 
 @Component({
     selector: 'app-root',

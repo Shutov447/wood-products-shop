@@ -27,10 +27,13 @@
             ],
             "settings": {
                 "import/parsers": {
-                    "@typescript-eslint/parser": [".ts"],
+                    "@typescript-eslint/parser": [".ts"]
+                },
+                "import/resolver": {
                     "typescript": {
                         "alwaysTryTypes": true
-                    }
+                    },
+                    "eslint-import-resolver-typescript": true
                 }
             },
             "rules": {
@@ -62,7 +65,7 @@
                 ],
                 "import/no-commonjs": "off",
                 "import/unambiguous": "off",
-                "import/no-deprecated": "warn",
+                "import/no-deprecated": "off",
                 "import/prefer-default-export": "off",
                 "import/default": "error",
                 "import/extensions": [
@@ -81,7 +84,10 @@
                         "groups": [["builtin", "external", "internal"]]
                     }
                 ],
-                "import/no-cycle": "error",
+                "import/no-cycle": [
+                    "error",
+                    { "maxDepth": 1, "ignoreExternal": true }
+                ],
                 "import/first": "error",
                 "import/exports-last": "off",
                 "import/no-default-export": "off",

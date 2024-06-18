@@ -1,1 +1,2 @@
-export * from './translations/index';
+export * from './translations';
+export * from './types';

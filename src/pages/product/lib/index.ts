@@ -1,1 +1,1 @@
-export * from './product-guard/product.guard';
+export { productGuard } from './product-guard';

@@ -9,7 +9,7 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import { IChosenData } from '../../lib/types/characteristic-data.interface';
+import { IChosenData } from '../../lib';
 
 @Component({
     selector: 'app-checkbox-list',

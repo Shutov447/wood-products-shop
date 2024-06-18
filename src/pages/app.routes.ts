@@ -1,15 +1,14 @@
 import { Routes } from '@angular/router';
-import { DeliveryComponent } from './delivery/delivery.component';
-import { HomeComponent } from './home/home.component';
-import { Page404Component } from './page-404/index';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { CatalogComponent } from './catalog/catalog.component';
-import { ArticlesComponent } from './articles/articles.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { ProductsComponent } from './products/products.component';
-import { categoryGuard } from './catalog/lib/category-guard/category.guard';
+import { DeliveryComponent } from './delivery';
+import { HomeComponent } from './home';
+import { Page404Component } from './page-404';
+import { AboutUsComponent } from './about-us';
+import { CatalogComponent, categoryGuard } from './catalog';
+import { ArticlesComponent } from './articles';
+import { ContactsComponent } from './contacts';
+import { ProductsComponent } from './products';
 import { ProductComponent } from './product/product.component';
-import { productGuard } from './product/lib/product-guard/product.guard';
+import { productGuard } from './product';
 
 export const routes: Routes = [
     {

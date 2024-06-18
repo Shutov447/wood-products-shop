@@ -8,7 +8,7 @@ import {
 import { TuiCarouselComponent, TuiCarouselModule } from '@taiga-ui/kit';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from '@shared/components';
-import { IProduct } from '@assets/products/types/product.interface';
+import { IProduct } from '@shared/api';
 
 @Component({
     selector: 'app-product-card',

@@ -9,7 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TuiScrollbarService } from '../../model/for-tui-scrollbar-service/tui-scrollbar.service';
+import { TuiScrollbarService } from '../../model';
 
 @Component({
     selector: 'app-dialog',

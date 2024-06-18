@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Observable, of, switchMap } from 'rxjs';
-import { TranslateService } from '../service/translate.service';
+import { TranslateService } from '../service/';
 
 @Pipe({
     name: 'translate',

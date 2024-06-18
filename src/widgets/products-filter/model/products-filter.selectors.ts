@@ -1,7 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { IProduct } from '@assets/products/types/product.interface';
-import { IResultFilterData } from '@assets/products/types/for-filtering-products.interface';
-import { selectAllProducts } from '@app/core';
+import { IProduct, IResultFilterData } from '@shared/api';
+import { selectAllProducts } from '@shared/model';
 import {
     IFilterInitialState,
     PRODUCTS_FILTER_FEATURE,

@@ -6,8 +6,7 @@ import { Store } from '@ngrx/store';
 import { PushPipe } from '@ngrx/component';
 import { NavbarComponent } from '@widgets/navbar';
 import { FooterComponent } from '@widgets/footer';
-import { TuiScrollbarService } from '@shared/model';
-import { ProductsApiActions } from '@app/core';
+import { TuiScrollbarService, ProductsApiActions } from '@shared/model';
 
 @Component({
     selector: 'app-root',

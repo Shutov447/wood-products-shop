@@ -1,1 +1,1 @@
-export * from './category-guard/category.guard';
+export { categoryGuard } from './category-guard';

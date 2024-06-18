@@ -9,9 +9,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LetDirective, PushPipe } from '@ngrx/component';
 import { ProductCardComponent } from '@features/product-card';
-import { IProduct } from '@assets/products/types/product.interface';
+import { IProduct } from '@shared/api';
 import { TranslatePipe } from '@shared/lib';
-import { selectProducts, ProductsActions } from '@app/core';
+import { selectProducts, ProductsActions } from '@shared/model';
 
 @Component({
     selector: 'app-products-showcase',

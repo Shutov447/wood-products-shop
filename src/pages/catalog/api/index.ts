@@ -1,1 +1,1 @@
-export * from './catalog-service/catalog.service';
+export * from './catalog-service';

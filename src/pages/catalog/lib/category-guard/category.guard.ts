@@ -2,7 +2,7 @@ import { CanActivateFn, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { inject } from '@angular/core';
 import { take } from 'rxjs';
-import { selectCategories } from '@app/core';
+import { selectCategories } from '@shared/model';
 
 export const categoryGuard: CanActivateFn = (route) => {
     const category = route.paramMap.get('category');

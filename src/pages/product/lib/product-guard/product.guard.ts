@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectHaveProduct } from '@app/core';
+import { selectHaveProduct } from '@shared/model';
 
 export const productGuard: CanActivateFn = (route) => {
     const productName = route.paramMap.get('product');

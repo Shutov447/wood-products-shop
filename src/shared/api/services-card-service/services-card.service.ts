@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IServiceCard } from '@assets/service-card/types/service-card.interface';
+import { IServiceCard } from '../../api';
 
 @Injectable({
     providedIn: 'root',

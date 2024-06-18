@@ -5,7 +5,7 @@ import { TuiCarouselModule } from '@taiga-ui/kit';
 import { PushPipe } from '@ngrx/component';
 import { DownloadCardComponent } from '@entities/download-card';
 import { QuoteCardComponent, ButtonModule } from '@shared/components';
-import { IQuoteCard } from '@assets/quote-card/types/quote-card.type';
+import { IQuoteCard } from '@shared/lib';
 import { UrlSegmentsVisualizerComponent } from '@features/url-segments-visualizer';
 
 @Component({

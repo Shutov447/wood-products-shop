@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { exhaustMap, map, of } from 'rxjs';
-import { ProductsFilterService } from '../api/products-filter-service/products-filter.service';
+import { ProductsFilterService } from '../api';
 import {
     ProductsFilterActions,
     ProductsFilterApiActions,

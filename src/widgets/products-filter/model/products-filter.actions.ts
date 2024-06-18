@@ -1,7 +1,6 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { PRODUCTS_API_FEATURE, PRODUCTS_FEATURE } from '@app/core';
-import { IForFilteringProducts } from '@assets/products/types/for-filtering-products.interface';
-import { IProduct } from '@assets/products/types/product.interface';
+import { PRODUCTS_API_FEATURE, PRODUCTS_FEATURE } from '@shared/model';
+import { IForFilteringProducts, IProduct } from '@shared/api';
 
 export const ProductsFilterActions = createActionGroup({
     source: PRODUCTS_FEATURE,

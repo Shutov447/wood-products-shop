@@ -14,7 +14,7 @@ import {
 } from '@shared/components';
 import { ContactUsCardComponent } from '@features/contact-us-card';
 import { CharacteristicsComponent } from '@entities/characteristics';
-import { selectCurrentProduct, ProductsActions } from '@app/core';
+import { selectCurrentProduct, ProductsActions } from '@shared/model';
 
 @Component({
     selector: 'app-product',

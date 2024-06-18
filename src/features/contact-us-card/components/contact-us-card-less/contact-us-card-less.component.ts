@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ButtonModule, AlertTriangleIconComponent } from '@shared/components';
-import { ContactUsCardComponent } from '../contact-us-card-default/contact-us-card.component';
-import { IDataForm } from '../../lib/types/data-form.type';
+import { ContactUsCardComponent } from '../contact-us-card-default';
+import { IDataForm } from '../../lib';
 
 @Component({
     selector: 'app-contact-us-card-less',

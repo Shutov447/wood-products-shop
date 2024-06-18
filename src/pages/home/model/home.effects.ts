@@ -5,7 +5,7 @@ import {
     ArticlesCardsApiActions,
     SlidersApiActions,
     ServicesApiActions,
-} from '@app/core';
+} from '@shared/model';
 import { HomeActions } from './home.actions';
 
 export const loadArticlesCardsChunksEffect = createEffect(

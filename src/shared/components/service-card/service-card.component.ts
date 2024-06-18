@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { IServiceCard } from '@assets/service-card/types/service-card.interface';
-import { ButtonModule } from '../button/button.module';
+import { IServiceCard } from '@shared/api';
+import { ButtonModule } from '../button';
 
 @Component({
     selector: 'app-service-card',

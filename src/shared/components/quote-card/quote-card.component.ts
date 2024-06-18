@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IQuoteCard } from '@assets/quote-card/types/quote-card.type';
+import { IQuoteCard } from '@shared/lib';
 
 @Component({
     selector: 'app-quote-card',

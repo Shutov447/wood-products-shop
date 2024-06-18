@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { exhaustMap, map } from 'rxjs';
-import { CatalogService } from '../api/catalog-service/catalog.service';
+import { CatalogService } from '../api';
 import { CatalogActions, CatalogApiActions } from './catalog.actions';
 
 export const loadCategoriesIntroImgs = createEffect(

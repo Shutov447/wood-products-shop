@@ -19,7 +19,7 @@ import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
 import { routes } from '@pages';
-import * as coreModel from '@app/core';
+import * as coreModel from '@shared/model';
 import {
     CATALOG_FEATURE,
     catalogReducer,

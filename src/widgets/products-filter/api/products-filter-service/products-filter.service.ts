@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IForFilteringProducts } from '@assets/products/types/for-filtering-products.interface';
+import { IForFilteringProducts } from '@shared/api';
 
 @Injectable({
     providedIn: 'root',

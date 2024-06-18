@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { tuiHexToRGBA } from '@taiga-ui/cdk';
-import { IconButton } from '../../lib/types/icon-button.type';
-import { ElemHoverService } from '../../model/elem-hover-service/elem-hover.service';
+import { IconButton } from '../../lib';
+import { ElemHoverService } from '../../model';
 
 @Component({
     selector: 'app-icon-button',

@@ -1,8 +1,8 @@
 import {
     IForFilteringProducts,
     IResultFilterData,
-} from '@assets/products/types/for-filtering-products.interface';
-import { IProduct } from '@assets/products/types/product.interface';
+    IProduct,
+} from '@shared/api';
 
 export const PRODUCTS_FILTER_FEATURE = 'Products filter';
 export const PRODUCTS_FILTER_API_FEATURE = 'Products filter api';

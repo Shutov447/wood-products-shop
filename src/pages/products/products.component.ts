@@ -10,20 +10,17 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { LetDirective, PushPipe } from '@ngrx/component';
 import { UrlSegmentsVisualizerComponent } from '@features/url-segments-visualizer';
-import {
-    ProductsFilterComponent,
-    IOutputFilterData,
-} from '@widgets/products-filter';
+import { ProductsFilterComponent } from '@widgets/products-filter';
 import { ProductCardComponent } from '@features/product-card';
 import { PaginationComponent } from '@features/pagination';
-import { IProduct } from '@assets/products/types/product.interface';
+import { IProduct, IOutputFilterData } from '@shared/api';
 import { ContactUsCardComponent } from '@features/contact-us-card';
 import { TranslatePipe } from '@shared/lib';
 import {
     selectCurrentChunkProducts,
     selectFilteredProducts,
     ProductsActions,
-} from '@app/core';
+} from '@shared/model';
 
 @Component({
     selector: 'app-products',

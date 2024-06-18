@@ -7,8 +7,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ButtonModule, AlertTriangleIconComponent } from '@shared/components';
-import { phoneNumberValidator } from '../../lib/form-validators/phoneNumber.validator';
-import { IDataForm } from '../../lib/types/data-form.type';
+import { phoneNumberValidator, IDataForm } from '../../lib';
 
 @Component({
     selector: 'app-contact-us-card',

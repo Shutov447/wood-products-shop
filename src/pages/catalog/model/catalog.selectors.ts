@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { selectCategories } from '@app/core';
+import { selectCategories } from '@shared/model';
 import { CATALOG_FEATURE } from './catalog.state';
 
 interface ICateroryData {

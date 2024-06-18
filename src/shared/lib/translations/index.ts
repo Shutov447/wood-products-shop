@@ -1,2 +1,2 @@
-export * from './pipe/translate.pipe';
-export * from './service/translate.service';
+export { TranslatePipe } from './pipe';
+export { TranslateService } from './service';

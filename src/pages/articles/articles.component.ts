@@ -8,7 +8,7 @@ import {
     selectArticles,
     ArticlesCardsActions,
     ArticlesCardsApiActions,
-} from '@app/core';
+} from '@shared/model';
 
 @Component({
     selector: 'app-articles',

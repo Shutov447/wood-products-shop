@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ButtonSize } from '../../lib/types/button-size.type';
-import { PieceOfWood } from '../../lib/types/peice-of-wood.type';
-import { ElemHoverService } from '../../model/elem-hover-service/elem-hover.service';
+import { ButtonSize, PieceOfWood } from '../../lib';
+import { ElemHoverService } from '../../model';
 
 @Component({
     selector: 'app-button',

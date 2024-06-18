@@ -6,8 +6,7 @@ import { LetDirective, PushPipe } from '@ngrx/component';
 import { UrlSegmentsVisualizerComponent } from '@features/url-segments-visualizer';
 import { ButtonModule } from '@shared/components';
 import { TranslatePipe } from '@shared/lib';
-import { selectCategoriesData } from './model/catalog.selectors';
-import { CatalogApiActions } from './model/catalog.actions';
+import { selectCategoriesData, CatalogApiActions } from './model';
 
 @Component({
     selector: 'app-catalog',

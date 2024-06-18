@@ -10,8 +10,7 @@ import {
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ButtonModule, DownloadIconComponent } from '@shared/components';
-import { getFileType } from '../../shared/utils/get-file-type';
-import { normalizeDataSize } from '../../shared/utils/normalize-data-size';
+import { getFileType, normalizeDataSize } from '@shared/utils';
 
 @Component({
     selector: 'app-download-card',

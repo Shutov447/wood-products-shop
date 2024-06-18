@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ISliderData } from '@assets/slider/types/slider-data.interface';
+import { ISliderData } from '../../api';
 
 @Injectable({
     providedIn: 'root',

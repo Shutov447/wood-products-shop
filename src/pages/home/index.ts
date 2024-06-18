@@ -1,2 +1,2 @@
 export * from './home.component';
-export * from './model/index';
+export * from './model';

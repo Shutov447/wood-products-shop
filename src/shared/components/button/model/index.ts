@@ -1,1 +1,1 @@
-export * from './elem-hover-service/elem-hover.service';
+export { ElemHoverService } from './elem-hover-service';

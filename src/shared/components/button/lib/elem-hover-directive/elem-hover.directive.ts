@@ -1,5 +1,5 @@
 import { Directive, HostListener, Inject } from '@angular/core';
-import { ElemHoverService } from '../../model/elem-hover-service/elem-hover.service';
+import { ElemHoverService } from '../../model';
 
 @Directive({
     selector: '[appElemHover]',

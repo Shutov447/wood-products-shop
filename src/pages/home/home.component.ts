@@ -12,8 +12,8 @@ import {
     selectArticlesCardsChunks,
     selectSliders,
     selectServices,
-} from '@app/core';
-import { HomeActions } from './model/home.actions';
+} from '@shared/model';
+import { HomeActions } from './model';
 
 @Component({
     selector: 'app-home',

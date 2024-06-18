@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IArticleCardData } from '@assets/article-card/types/article-card-data.interface';
+import { IArticleCardData } from '@shared/api';
 
 @Injectable({
     providedIn: 'root',

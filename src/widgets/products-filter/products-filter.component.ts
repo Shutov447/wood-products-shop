@@ -21,16 +21,14 @@ import {
     CheckboxListComponent,
     InputRangeComponent,
 } from '@shared/components';
-import { IProduct } from '@assets/products/types/product.interface';
+import { IProduct, IResultFilterData, IOutputFilterData } from '@shared/api';
 import { TranslatePipe } from '@shared/lib';
-import { selectProducts } from '@app/core';
-import { IResultFilterData } from '@assets/products/types/for-filtering-products.interface';
+import { selectProducts } from '@shared/model';
 import {
     ProductsFilterActions,
     ProductsFilterApiActions,
-} from './model/products-filter.actions';
-import { selectFilteringDataForCurrentCategory } from './model/products-filter.selectors';
-import { IOutputFilterData } from './lib/types/output-filter-data.interface';
+    selectFilteringDataForCurrentCategory,
+} from './model';
 
 @Component({
     selector: 'app-products-filter',

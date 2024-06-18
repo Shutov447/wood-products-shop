@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ICharacteristic } from '@assets/products/types/product.interface';
+import { ICharacteristic } from '@shared/api';
 
 @Component({
     selector: 'app-characteristics',

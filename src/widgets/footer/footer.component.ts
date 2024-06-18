@@ -13,7 +13,7 @@ import {
     PINTEREST,
     METRO_STATION,
 } from '@shared/api';
-import { selectCategories } from '@app/core';
+import { selectCategories } from '@shared/model';
 import { TranslatePipe } from '@shared/lib';
 
 @Component({

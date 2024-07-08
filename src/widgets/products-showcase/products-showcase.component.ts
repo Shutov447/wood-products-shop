@@ -43,7 +43,7 @@ export class ProductsShowcaseComponent implements OnInit {
         this.selectedCategory = category;
         this.store.dispatch(
             ProductsActions.filterByCategoryAndAmount({
-                category: category,
+                category,
                 amount: 9,
             }),
         );

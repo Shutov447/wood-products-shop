@@ -12,23 +12,19 @@ export class TranslatePipe implements PipeTransform {
     transform(string: string): Observable<string> {
         string = string.toLowerCase();
 
-        return this.translateService.translations$.pipe(
+        return this.translateService.getTranslations$().pipe(
             switchMap((translations) => {
-                if (translations) {
-                    const sourceStrings = Object.keys(translations).map((str) =>
-                        str.toLowerCase(),
-                    );
-                    const sourceString = sourceStrings.find(
-                        (srcString) => srcString === string,
-                    );
-                    const translatedString = sourceString
-                        ? translations[sourceString]
-                        : string;
+                const sourceStrings = Object.keys(translations).map((str) =>
+                    str.toLowerCase(),
+                );
+                const sourceString = sourceStrings.find(
+                    (srcString) => srcString === string,
+                );
+                const translatedString = sourceString
+                    ? translations[sourceString]
+                    : string;
 
-                    return of(translatedString);
-                }
-
-                return of(string);
+                return of(translatedString);
             }),
         );
     }

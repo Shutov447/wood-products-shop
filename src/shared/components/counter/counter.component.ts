@@ -17,7 +17,7 @@ import {
 export class CounterComponent implements OnInit {
     @Input() number = 0;
     @Input() min = 0;
-    @Input() max = Infinity;
+    @Input() max = 0;
 
     @Output() readonly getNumber = new EventEmitter<number>();
 

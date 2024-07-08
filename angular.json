@@ -83,10 +83,11 @@
                     }
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular-builders/jest:run",
                     "options": {
                         "polyfills": ["zone.js", "zone.js/testing"],
                         "tsConfig": "tsconfig.spec.json",
+                        "configPath": "jest.config.ts",
                         "assets": ["src/favicon.ico", "src/assets"],
                         "styles": ["src/styles.scss"],
                         "scripts": []
@@ -108,7 +109,8 @@
         "analytics": "f3dc5ed3-6e2a-421a-a633-c282c75ef40b",
         "schematicCollections": [
             "@angular-eslint/schematics",
-            "@ngrx/schematics"
+            "@ngrx/schematics",
+            "@schematics/angular"
         ]
     }
 }

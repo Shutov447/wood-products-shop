@@ -14,7 +14,7 @@
             "env": {
                 "es6": true
             },
-            "plugins": ["eslint-plugin-import"],
+            "plugins": ["eslint-plugin-import", "rxjs", "rxjs-angular"],
             "extends": [
                 "eslint:recommended",
                 "plugin:import/recommended",
@@ -23,7 +23,9 @@
                 "plugin:@angular-eslint/template/process-inline-templates",
                 "airbnb-typescript/base",
                 "plugin:prettier/recommended",
-                "@feature-sliced"
+                "plugin:@ngrx/recommended-requiring-type-checking",
+                "@feature-sliced",
+                "plugin:rxjs/recommended"
             ],
             "settings": {
                 "import/parsers": {
@@ -120,6 +122,32 @@
                         "ignoreImport": false,
                         "ignoreExport": false
                     }
+                ],
+                "rxjs/finnish": [
+                    "error",
+                    {
+                        "functions": true,
+                        "methods": true,
+                        "names": {
+                            "^(canActivate|canActivateChild|canDeactivate|canLoad|intercept|resolve|validate|transform|store)$": false
+                        },
+                        "parameters": true,
+                        "properties": true,
+                        "strict": false,
+                        "types": {
+                            "^EventEmitter$": false
+                        },
+                        "variables": true
+                    }
+                ],
+                "rxjs-angular/prefer-takeuntil": [
+                    "error",
+                    {
+                        "alias": ["untilDestroyed"],
+                        "checkComplete": true,
+                        "checkDecorators": ["Component"],
+                        "checkDestroy": true
+                    }
                 ]
             }
         },
@@ -139,18 +167,20 @@
             "parserOptions": {
                 "project": "./tsconfig.spec.json"
             },
-            "extends": ["plugin:jasmine/recommended"],
-            "plugins": ["jasmine"],
+            "plugins": ["jest"],
+            "extends": ["plugin:jest/recommended"],
             "env": {
-                "jasmine": true
+                "jest/globals": true
             },
             "rules": {
-                "@typescript-eslint/no-unused-vars": "off"
+                "@typescript-eslint/no-unused-vars": "error",
+                "jest/no-disabled-tests": "warn",
+                "jest/no-focused-tests": "error",
+                "jest/no-identical-title": "error",
+                "jest/prefer-to-have-length": "warn",
+                "jest/valid-expect": "error"
+                // "jest/prefer-expect-assertions": "off"
             }
-        },
-        {
-            "files": ["*.ts"],
-            "extends": ["plugin:@ngrx/recommended-requiring-type-checking"]
         }
     ]
 }

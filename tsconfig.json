@@ -21,6 +21,7 @@
         "module": "ES2022",
         "useDefineForClassFields": false,
         "lib": ["ES2022", "dom"],
+        "types": ["jest"],
         "paths": {
             "@app/core": ["./src/app/core"],
             "@app/core/*": ["./src/app/core/*"],

@@ -38,10 +38,10 @@ export class FooterComponent {
 
     constructor(
         private readonly store: Store,
-        @Inject(SUPPORT_EMAIL) readonly suppurtEmail: string,
+        @Inject(SUPPORT_EMAIL) readonly supportEmail: string,
         @Inject(PHONE_NUMBER) readonly phoneNumber: string,
         @Inject(ADDRESS) readonly address: string,
-        @Inject(METRO_STATION) readonly matroStation: string,
+        @Inject(METRO_STATION) readonly metroStation: string,
         @Inject(TELEGRAM) readonly tg: string,
         @Inject(VK) readonly vk: string,
         @Inject(PINTEREST) readonly pinterest: string,

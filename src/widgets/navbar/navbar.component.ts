@@ -13,7 +13,7 @@ import { SUPPORT_EMAIL, PHONE_NUMBER } from '@shared/api';
 })
 export class NavbarComponent {
     constructor(
-        @Inject(SUPPORT_EMAIL) readonly suppurtEmail: string,
+        @Inject(SUPPORT_EMAIL) readonly supportEmail: string,
         @Inject(PHONE_NUMBER) readonly phoneNumber: string,
     ) {}
 }

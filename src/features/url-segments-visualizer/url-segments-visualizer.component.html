@@ -8,9 +8,11 @@
 <ng-container *ngrxLet="segments$ as segments">
     <span
         class="body-XS"
-        *ngFor="let segmet of segments"
+        *ngFor="let segment of segments"
     >
         <span class="mdash">&mdash;</span>
-        <a [routerLink]="[segmet]">{{ segmet.path | translate | ngrxPush }}</a>
+        <a [routerLink]="[segment]">{{
+            segment.path | translate | ngrxPush
+        }}</a>
     </span>
 </ng-container>

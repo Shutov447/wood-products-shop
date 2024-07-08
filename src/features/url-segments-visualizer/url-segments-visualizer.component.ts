@@ -19,8 +19,6 @@ import { TranslatePipe } from '@shared/lib';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UrlSegmentsVisualizerComponent {
-    urlSegmentTranslation: unknown;
-
     constructor(private readonly actRoute: ActivatedRoute) {}
 
     get segments$() {

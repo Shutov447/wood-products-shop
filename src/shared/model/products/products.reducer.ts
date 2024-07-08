@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { concat } from 'lodash';
+import { concat, isFinite } from 'lodash';
 import { IChosenData, IOutputRangeData } from '@shared/components';
 import { IProductsState, productsInitialState } from './products.state';
 import { ProductsActions } from './products.actions';
@@ -21,7 +21,7 @@ export const productsReducer = createReducer(
     on(
         ProductsActions.filterByCategoryAndAmount,
         (state, { category, amount }): IProductsState => {
-            if (isNaN(amount))
+            if (!isFinite(amount))
                 return {
                     ...state,
                     filteredProducts: [],

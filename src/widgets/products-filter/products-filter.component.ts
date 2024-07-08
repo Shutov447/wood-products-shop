@@ -100,12 +100,16 @@ export class ProductsFilterComponent implements OnDestroy {
                 }
             });
 
-        this.filterData$.subscribe((filterData) => {
-            this.rangesAmount = (filterData as IResultFilterData).ranges.length;
-            this.characteristicsAmount = (
-                filterData as IResultFilterData
-            ).characteristics.length;
-        });
+        this.filterData$
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((filterData) => {
+                this.rangesAmount = (
+                    filterData as IResultFilterData
+                ).ranges.length;
+                this.characteristicsAmount = (
+                    filterData as IResultFilterData
+                ).characteristics.length;
+            });
     }
 
     ngOnDestroy() {

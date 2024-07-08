@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { IProduct, IResultFilterData } from '@shared/api';
+import { IResultFilterData } from '@shared/api';
 import { selectAllProducts } from '@shared/model';
 import {
     IFilterInitialState,
@@ -17,36 +17,21 @@ export const selectFilteringDataForCurrentCategory = createSelector(
         { currentCategory, dtoFilteringData },
         products,
     ): IResultFilterData | null => {
-        const allPrices: IProduct['price'][] = [];
-        const allRatings: IProduct['rating'][] = [];
+        let maxPrice = 0;
+        let maxRating = 0;
 
         products.filter((product) => {
             if (product.category === currentCategory) {
-                allPrices.push(product.price);
-                allRatings.push(product.rating);
+                maxPrice = Math.max(maxPrice, product.price);
+                maxRating = Math.max(maxRating, product.rating);
             }
         });
 
-        const maxPrice = Math.max(...allPrices);
-        const maxRating = Math.max(...allRatings);
-
-        if (currentCategory && dtoFilteringData[currentCategory])
-            return {
-                characteristics: dtoFilteringData[currentCategory],
-                ranges: [
-                    {
-                        title: 'price',
-                        max: maxPrice,
-                    },
-                    {
-                        title: 'rating',
-                        max: maxRating,
-                    },
-                ],
-            };
-
         return {
-            characteristics: [],
+            characteristics:
+                currentCategory && dtoFilteringData[currentCategory]
+                    ? dtoFilteringData[currentCategory]
+                    : [],
             ranges: [
                 {
                     title: 'price',
@@ -58,5 +43,19 @@ export const selectFilteringDataForCurrentCategory = createSelector(
                 },
             ],
         };
+
+        // characteristics:
+        //     currentCategory && dtoFilteringData[currentCategory]
+        //         ? dtoFilteringData[currentCategory]
+        //         : [],
+        // ranges: products
+        //     .filter((product) => product.category === currentCategory)
+        //     .reduce(
+        //         (acc, product) => ({
+        //             price: Math.max(acc.price, product.price),
+        //             rating: Math.max(acc.rating, product.rating),
+        //         }),
+        //         { price: 0, rating: 0 },
+        //     ),
     },
 );

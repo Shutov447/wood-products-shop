@@ -164,7 +164,22 @@
                     { "object": true, "array": false }
                 ],
                 "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-                "no-underscore-dangle": ["error", { "allowAfterThis": true }]
+                "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+                "@nx/enforce-module-boundaries": [
+                    "error",
+                    {
+                        "allow": [
+                            "@app/core",
+                            "@app/core/**",
+                            "@pages",
+                            "@pages/**",
+                            "@widgets/**",
+                            "@features/**",
+                            "@entities/**",
+                            "@shared/**"
+                        ]
+                    }
+                ]
             }
         },
         {

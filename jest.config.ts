@@ -35,7 +35,6 @@ const config: Config = {
         '@entities(.*)': ['<rootDir>/src/entities/$1'],
         '@features(.*)': ['<rootDir>/src/features/$1'],
         '@shared(.*)': ['<rootDir>/src/shared/$1'],
-        '@assets(.*)': ['<rootDir>/src/assets/$1'],
     },
 };
 

@@ -23,19 +23,12 @@
         "paths": {
             "@app/core": ["./src/app/core"],
             "@app/core/*": ["./src/app/core/*"],
-            // "@app/*": ["./src/app/*"],
+            "@entities/*": ["./src/entities/*"],
+            "@features/*": ["./src/features/*"],
             "@pages": ["./src/pages"],
             "@pages/*": ["./src/pages/*"],
-            // "@widgets": ["./src/widgets"],
-            "@widgets/*": ["./src/widgets/*"],
-            // "@entities": ["./src/entities"],
-            "@entities/*": ["./src/entities/*"],
-            // "@features": ["./src/features"],
-            "@features/*": ["./src/features/*"],
-            // "@shared": ["./src/shared"],
             "@shared/*": ["./src/shared/*"],
-            // "@assets": ["./src/assets"],
-            "@assets/*": ["./src/assets/*"]
+            "@widgets/*": ["./src/widgets/*"]
         }
     },
     "files": [],
@@ -60,60 +53,3 @@
         "strictTemplates": true
     }
 }
-
-// {
-//     "compilerOptions": {
-//         "rootDir": ".",
-//         "sourceMap": true,
-//         "declaration": false,
-//         "moduleResolution": "node",
-//         "emitDecoratorMetadata": true,
-//         "experimentalDecorators": true,
-//         "importHelpers": true,
-//         "target": "es2022",
-//         "module": "es2022",
-//         "lib": ["es2020", "dom"],
-//         "skipLibCheck": true,
-//         "skipDefaultLibCheck": true,
-//         "types": ["node"],
-//         "baseUrl": "./",
-//         "paths": {
-//             "@app/core": ["./src/app/core"],
-//             "@app/core/*": ["./src/app/core/*"],
-//             // "@app/*": ["./src/app/*"],
-//             "@pages": ["./src/pages"],
-//             "@pages/*": ["./src/pages/*"],
-//             // "@widgets": ["./src/widgets"],
-//             "@widgets/*": ["./src/widgets/*"],
-//             // "@entities": ["./src/entities"],
-//             "@entities/*": ["./src/entities/*"],
-//             // "@features": ["./src/features"],
-//             "@features/*": ["./src/features/*"],
-//             // "@shared": ["./src/shared"],
-//             "@shared/*": ["./src/shared/*"],
-//             // "@assets": ["./src/assets"],
-//             "@assets/*": ["./src/assets/*"]
-//         },
-//         "useDefineForClassFields": false,
-//         "forceConsistentCasingInFileNames": true,
-//         "strict": true,
-//         "noImplicitOverride": true,
-//         "noPropertyAccessFromIndexSignature": true,
-//         "noImplicitReturns": true,
-//         "noFallthroughCasesInSwitch": true
-//     },
-//     "include": ["src/**/*.ts", "**/*.ts"],
-//     "compileOnSave": false,
-//     "exclude": [
-//         "node_modules",
-//         "tmp",
-//         "commitlint.config.js"
-//         // "**/*.spec.ts"
-//     ],
-//     "angularCompilerOptions": {
-//         "enableI18nLegacyMessageIdFormat": false,
-//         "strictInjectionParameters": true,
-//         "strictInputAccessModifiers": true,
-//         "strictTemplates": true
-//     }
-// }

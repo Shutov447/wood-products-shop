@@ -51,6 +51,7 @@ export class ContactUsCardComponent {
         },
     ];
 
+    // eslint-disable-next-line class-methods-use-this
     onSubmit(formGroup: FormGroup) {
         // eslint-disable-next-line no-console
         console.log(formGroup.value);

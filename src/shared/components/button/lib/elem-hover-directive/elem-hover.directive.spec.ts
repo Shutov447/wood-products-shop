@@ -75,8 +75,7 @@ describe('ElemHoverDirective', () => {
             testElem.dispatchEvent(new Event('mouseover'));
             fixture.detectChanges();
 
-            const onMouseover = (ElemHoverDirective.prototype as any)
-                .onMouseover;
+            const { onMouseover } = ElemHoverDirective.prototype as any;
 
             expect(onMouseover).toHaveBeenCalledTimes(1);
         });
@@ -84,7 +83,7 @@ describe('ElemHoverDirective', () => {
         it('при mouseout event должен вызываться onMouseout method', () => {
             jest.spyOn(ElemHoverDirective.prototype as any, 'onMouseout');
             testElem.dispatchEvent(new Event('mouseout'));
-            const onMouseout = (ElemHoverDirective.prototype as any).onMouseout;
+            const { onMouseout } = ElemHoverDirective.prototype as any;
 
             expect(onMouseout).toHaveBeenCalledTimes(1);
         });

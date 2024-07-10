@@ -20,6 +20,7 @@ export class IconButtonComponent {
 
     constructor(private readonly elemHoverService: ElemHoverService) {}
 
+    // eslint-disable-next-line class-methods-use-this
     hexToRGBA(hex: string, alpha?: number): string {
         return tuiHexToRGBA(hex, alpha);
     }

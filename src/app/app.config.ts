@@ -4,6 +4,7 @@ import {
     ApplicationConfig,
     importProvidersFrom,
     isDevMode,
+    provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
@@ -37,6 +38,7 @@ export const appConfig: ApplicationConfig = {
         provideAnimations(),
         provideRouter(routes),
         provideClientHydration(),
+        provideZoneChangeDetection({ eventCoalescing: true }),
         provideAnimationsAsync(),
         importProvidersFrom(HttpClientModule),
         provideHttpClient(withFetch()),

@@ -39,10 +39,10 @@ export class AboutUsComponent {
     constructor(private readonly http: HttpClient) {}
 
     incrementCurrentDot() {
-        this.currentDot < this.imgs.length - 1 && this.currentDot++;
+        this.currentDot < this.imgs.length - 1 && (this.currentDot += 1);
     }
 
     decrementCurrentDot() {
-        this.currentDot > 0 && this.currentDot--;
+        this.currentDot > 0 && (this.currentDot -= 1);
     }
 }

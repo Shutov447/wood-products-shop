@@ -49,13 +49,13 @@ export class ImageGalleryComponent implements OnInit {
         const isLastImg = this.currentImgNumber === this.chunkSize - 1;
 
         if (isLastImg) {
-            this.currentChunkNumber++;
+            this.currentChunkNumber += 1;
             this.currentImgNumber = 0;
 
             return;
         }
 
-        this.currentImgNumber++;
+        this.currentImgNumber += 1;
     }
 
     seePreviosImg() {
@@ -74,11 +74,11 @@ export class ImageGalleryComponent implements OnInit {
 
         if (isFirstImg) {
             this.currentImgNumber = this.chunkSize - 1;
-            this.currentChunkNumber--;
+            this.currentChunkNumber -= 1;
 
             return;
         }
 
-        this.currentImgNumber--;
+        this.currentImgNumber -= 1;
     }
 }

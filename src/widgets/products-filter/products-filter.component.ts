@@ -130,11 +130,12 @@ export class ProductsFilterComponent implements OnDestroy {
             return;
         }
 
-        this.filteringData.choices.map((choice) => {
+        this.filteringData.choices.forEach((choice) => {
             if (choice.title === chosen.title) {
                 choice.choices = chosen.choices;
             }
         });
+
         this.emitFilterData();
     }
 
@@ -142,10 +143,11 @@ export class ProductsFilterComponent implements OnDestroy {
         if (this.filteringData.ranges.length < this.rangesAmount) {
             this.filteringData.ranges.push(range);
             this.emitFilterData();
+
             return;
         }
 
-        this.filteringData.ranges.map((r) => {
+        this.filteringData.ranges.forEach((r) => {
             if (r.title === range.title) {
                 r.from = range.from;
                 r.to = range.to;

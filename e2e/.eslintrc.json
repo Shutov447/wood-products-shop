@@ -1,0 +1,17 @@
+{
+    "ignorePatterns": ["!**/*"],
+    "overrides": [
+        {
+            "files": ["*.ts", "e2e/**/*.ts"],
+            "parser": "@typescript-eslint/parser",
+            "rules": {},
+            "parserOptions": {
+                "parser": "@typescript-eslint/parser",
+                "project": ["tsconfig.*?.json"]
+            },
+            "extends": ["plugin:@nx/typescript"]
+        }
+    ],
+    "plugins": ["@nx"],
+    "extends": ["plugin:cypress/recommended"]
+}

@@ -1,0 +1,161 @@
+{
+    "name": "wood-products-shop",
+    "$schema": "node_modules/nx/schemas/project-schema.json",
+    "schematics": {
+        "@schematics/angular:component": {
+            "changeDetection": "OnPush",
+            "style": "scss"
+        }
+    },
+    "projectType": "application",
+    "prefix": "app",
+    "sourceRoot": "./src",
+    "tags": [],
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/wood-products-shop/browser",
+                "index": "./src/index.html",
+                "main": "./src/main.ts",
+                "polyfills": ["zone.js"],
+                "tsConfig": "tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "assets": [
+                    "src/assets",
+                    {
+                        "glob": "**/*",
+                        "input": "public"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "node_modules/@taiga-ui/icons/src",
+                        "output": "assets/taiga-ui/icons"
+                    }
+                ],
+                "styles": ["./src/styles.scss"],
+                "scripts": []
+            },
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "1mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "10kb"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+                "production": {
+                    "buildTarget": "wood-products-shop:build:production"
+                },
+                "development": {
+                    "buildTarget": "wood-products-shop:build:development"
+                }
+            },
+            "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "buildTarget": "wood-products-shop:build"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {
+                "lintFilePatterns": ["./src"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
+            "options": {
+                "jestConfig": "jest.config.ts"
+            }
+        },
+        "serve-static": {
+            "executor": "@nx/web:file-server",
+            "options": {
+                "buildTarget": "wood-products-shop:build",
+                "port": 4200,
+                "spa": true
+            }
+        },
+        "server": {
+            "dependsOn": ["build"],
+            "executor": "@angular-devkit/build-angular:server",
+            "options": {
+                "outputPath": "dist/wood-products-shop/server",
+                "main": "server.ts",
+                "tsConfig": "tsconfig.server.json",
+                "inlineStyleLanguage": "scss"
+            },
+            "configurations": {
+                "production": {
+                    "outputHashing": "media"
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "sourceMap": true,
+                    "extractLicenses": false,
+                    "vendorChunk": true
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+            "executor": "@angular-devkit/build-angular:ssr-dev-server",
+            "configurations": {
+                "development": {
+                    "browserTarget": "wood-products-shop:build:development",
+                    "serverTarget": "wood-products-shop:server:development"
+                },
+                "production": {
+                    "browserTarget": "wood-products-shop:build:production",
+                    "serverTarget": "wood-products-shop:server:production"
+                }
+            },
+            "defaultConfiguration": "development"
+        },
+        "prerender": {
+            "executor": "@angular-devkit/build-angular:prerender",
+            "options": {
+                "routes": ["/"]
+            },
+            "configurations": {
+                "development": {
+                    "browserTarget": "wood-products-shop:build:development",
+                    "serverTarget": "wood-products-shop:server:development"
+                },
+                "production": {
+                    "browserTarget": "wood-products-shop:build:production",
+                    "serverTarget": "wood-products-shop:server:production"
+                }
+            },
+            "defaultConfiguration": "production"
+        }
+    }
+}

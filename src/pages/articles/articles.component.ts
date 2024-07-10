@@ -37,7 +37,7 @@ export class ArticlesComponent {
     onButtonClick() {
         this.store.dispatch(
             ArticlesCardsActions.addChunkToAccumulating({
-                chunkNumber: this.chunkNumber++,
+                chunkNumber: (this.chunkNumber += 1),
             }),
         );
     }

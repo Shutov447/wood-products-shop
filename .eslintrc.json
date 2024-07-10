@@ -1,6 +1,7 @@
 {
     "root": true,
-    "ignorePatterns": ["projects/**/*"],
+    "ignorePatterns": ["!**/*"],
+    "plugins": ["@nx"],
     "overrides": [
         {
             "files": ["*.ts"],
@@ -8,22 +9,32 @@
             "parserOptions": {
                 "ecmaVersion": "latest",
                 "parser": "@typescript-eslint/parser",
-                "project": ["tsconfig.json"],
+                "project": ["tsconfig.*?.json"],
                 "createDefaultProgram": true
             },
             "env": {
                 "es6": true
             },
-            "plugins": ["eslint-plugin-import", "rxjs", "rxjs-angular"],
+            "plugins": [
+                "eslint-plugin-import",
+                "eslint-plugin-rxjs",
+                "eslint-plugin-rxjs-angular",
+                "@angular-eslint/eslint-plugin",
+                "@angular-eslint/eslint-plugin-template",
+                "@typescript-eslint",
+                "@ngrx/eslint-plugin"
+            ],
             "extends": [
+                "plugin:@nx/typescript",
+                "plugin:@nx/angular",
+                "plugin:@angular-eslint/template/process-inline-templates",
                 "eslint:recommended",
                 "plugin:import/recommended",
                 "plugin:@typescript-eslint/recommended",
                 "plugin:@angular-eslint/recommended",
-                "plugin:@angular-eslint/template/process-inline-templates",
+                "airbnb-base",
                 "airbnb-typescript/base",
                 "plugin:prettier/recommended",
-                "plugin:@ngrx/recommended-requiring-type-checking",
                 "@feature-sliced",
                 "plugin:rxjs/recommended"
             ],
@@ -75,9 +86,7 @@
                     "always",
                     {
                         "js": "never",
-                        "jsx": "never",
-                        "ts": "never",
-                        "tsx": "never"
+                        "ts": "never"
                     }
                 ],
                 "import/order": [
@@ -148,19 +157,20 @@
                         "checkDecorators": ["Component"],
                         "checkDestroy": true
                     }
-                ]
+                ],
+
+                "prefer-destructuring": [
+                    "error",
+                    { "object": true, "array": false }
+                ],
+                "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+                "no-underscore-dangle": ["error", { "allowAfterThis": true }]
             }
         },
         {
             "files": ["*.html"],
-            "extends": [
-                "plugin:@angular-eslint/template/recommended",
-                "plugin:@angular-eslint/template/accessibility"
-            ],
-            "rules": {
-                "@angular-eslint/template/click-events-have-key-events": "off",
-                "@angular-eslint/template/interactive-supports-focus": "off"
-            }
+            "extends": ["plugin:@nx/angular-template"],
+            "rules": {}
         },
         {
             "files": ["src/**/*.spec.ts", "src/**/*.d.ts"],
@@ -179,7 +189,6 @@
                 "jest/no-identical-title": "error",
                 "jest/prefer-to-have-length": "warn",
                 "jest/valid-expect": "error"
-                // "jest/prefer-expect-assertions": "off"
             }
         }
     ]

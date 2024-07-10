@@ -1,5 +1,5 @@
 import { IProduct } from './product.interface';
-import { IChosenData, IOutputRangeData } from '../../../components/';
+import { IChosenData, IOutputRangeData } from '../../../components';
 
 export interface IOutputFilterData {
     category: IProduct['category'];

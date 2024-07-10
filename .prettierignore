@@ -1,6 +1,7 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# Add files here to ignore them from prettier formatting
+/.nx/cache
+/.nx/workspace-data
 
-# Compiled output
 /dist
 /tmp
 /out-tsc

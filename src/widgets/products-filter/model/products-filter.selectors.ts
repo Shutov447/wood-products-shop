@@ -20,7 +20,7 @@ export const selectFilteringDataForCurrentCategory = createSelector(
         let maxPrice = 0;
         let maxRating = 0;
 
-        products.filter((product) => {
+        products.forEach((product) => {
             if (product.category === currentCategory) {
                 maxPrice = Math.max(maxPrice, product.price);
                 maxRating = Math.max(maxRating, product.rating);

@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { selectCategories } from '@shared/model';
 import { CATALOG_FEATURE } from './catalog.state';
 
-interface ICateroryData {
+interface ICategoryData {
     category: string;
     introImg: string;
 }
@@ -14,15 +14,15 @@ export const selectCategoriesData = createSelector(
     selectCatalog,
     selectCategories,
     (introImgs, categories) => {
-        const categoryData: ICateroryData[] = [];
+        const categoryData: ICategoryData[] = [];
         const formattedCategories = categories.map((category) =>
             category.toLowerCase(),
         );
 
-        Object.keys(introImgs).map((introImg) => {
+        Object.keys(introImgs).forEach((introImg) => {
             const formattedIntroImgCategory = introImg.toLowerCase();
 
-            formattedCategories.map((category) => {
+            formattedCategories.forEach((category) => {
                 if (formattedIntroImgCategory === category)
                     categoryData.push({
                         category,

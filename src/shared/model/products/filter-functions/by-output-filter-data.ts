@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-continue */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import { ICharacteristic, IProduct } from '@shared/api';
 import { IChosenData, IOutputRangeData } from '@shared/components';
 
@@ -10,8 +14,7 @@ export function filterProductByFilterData(
     for (const key in product) {
         const formattedKey = key.toLowerCase();
 
-        bp: for (const characteristic of characteristics) {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        for (const characteristic of characteristics) {
             const newProduct = product as Record<string, any>;
             const value = newProduct[key];
 
@@ -25,7 +28,7 @@ export function filterProductByFilterData(
 
                 filteredProduct.push(isCorrespondsToRange);
 
-                continue bp;
+                continue;
             }
 
             if (formattedKey === 'characteristics') {

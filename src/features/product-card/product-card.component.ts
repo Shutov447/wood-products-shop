@@ -41,6 +41,6 @@ export class ProductCardComponent {
             return;
         }
 
-        this.currentDot++;
+        this.currentDot += 1;
     }
 }

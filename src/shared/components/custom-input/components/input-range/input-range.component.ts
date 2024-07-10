@@ -22,7 +22,7 @@ export class InputRangeComponent implements OnInit, AfterViewInit {
     @Input({ required: true }) max = 0;
     @Input() initCurrentFrom: number | undefined = 0;
     @Input() initCurrentTo: number | undefined = 0;
-    @Input() title: string = '';
+    @Input() title = '';
     @Input() showNumberInput: boolean | undefined = false;
 
     @Output() readonly getCurrentRange = new EventEmitter<IOutputRangeData>();
@@ -39,30 +39,40 @@ export class InputRangeComponent implements OnInit, AfterViewInit {
     @ViewChild('rangeCurrentTo', { read: ElementRef, static: true })
     private readonly rangeCurrentTo: ElementRef<HTMLInputElement> | null = null;
 
+    private get nCurrentFromV() {
+        return Number(this.numberCurrentFrom?.nativeElement.value);
+    }
     private set nCurrentFromV(number: number) {
-        this.numberCurrentFrom!.nativeElement.value = String(number);
+        (
+            this.numberCurrentFrom as ElementRef<HTMLInputElement>
+        ).nativeElement.value = String(number);
+    }
+
+    private get nCurrentToV() {
+        return Number(this.numberCurrentTo?.nativeElement.value);
     }
     private set nCurrentToV(number: number) {
-        this.numberCurrentTo!.nativeElement.value = String(number);
-    }
-    private set rCurrentFromV(number: number) {
-        this.rangeCurrentFrom!.nativeElement.value = String(number);
-    }
-    private set rCurrentToV(number: number) {
-        this.rangeCurrentTo!.nativeElement.value = String(number);
+        (
+            this.numberCurrentTo as ElementRef<HTMLInputElement>
+        ).nativeElement.value = String(number);
     }
 
     private get rCurrentFromV() {
         return Number(this.rangeCurrentFrom?.nativeElement.value);
     }
+    private set rCurrentFromV(number: number) {
+        (
+            this.rangeCurrentFrom as ElementRef<HTMLInputElement>
+        ).nativeElement.value = String(number);
+    }
+
     private get rCurrentToV() {
         return Number(this.rangeCurrentTo?.nativeElement.value);
     }
-    private get nCurrentFromV() {
-        return Number(this.numberCurrentFrom?.nativeElement.value);
-    }
-    private get nCurrentToV() {
-        return Number(this.numberCurrentTo?.nativeElement.value);
+    private set rCurrentToV(number: number) {
+        (
+            this.rangeCurrentTo as ElementRef<HTMLInputElement>
+        ).nativeElement.value = String(number);
     }
 
     ngOnInit() {
@@ -148,8 +158,6 @@ export class InputRangeComponent implements OnInit, AfterViewInit {
                 }
 
                 this.rCurrentToV = this.nCurrentToV;
-
-                return;
             }
         }
     }

@@ -29,14 +29,14 @@ export class CounterComponent implements OnInit {
     increment() {
         if (this.number >= this.max) return;
 
-        this.number++;
+        this.number += 1;
         this.emitNumber();
     }
 
     decrement() {
         if (this.number <= this.min) return;
 
-        this.number--;
+        this.number -= 1;
         this.emitNumber();
     }
 

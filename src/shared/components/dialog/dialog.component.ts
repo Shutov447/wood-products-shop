@@ -31,7 +31,9 @@ export class DialogComponent implements OnInit {
         this.hide(this.hidden);
     }
 
-    @HostListener('wheel', ['$event']) onScroll(event: WheelEvent) {
+    @HostListener('wheel', ['$event']) private static onScroll(
+        event: WheelEvent,
+    ) {
         event.preventDefault();
     }
 

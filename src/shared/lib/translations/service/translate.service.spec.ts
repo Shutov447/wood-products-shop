@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
 import {
-    HttpClientTestingModule,
     HttpTestingController,
+    provideHttpClientTesting,
 } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
 import { TranslateService } from './translate.service';
 
 describe('TranslateService', () => {
@@ -12,8 +13,11 @@ describe('TranslateService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule],
-            providers: [TranslateService],
+            providers: [
+                provideHttpClient(),
+                provideHttpClientTesting(),
+                TranslateService,
+            ],
         });
 
         translateService = TestBed.inject(TranslateService);

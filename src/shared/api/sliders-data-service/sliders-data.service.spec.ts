@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
 import {
-    HttpClientTestingModule,
     HttpTestingController,
+    provideHttpClientTesting,
 } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
 import { SlidersDataService } from './sliders-data.service';
 import { ISliderData } from './types';
 
@@ -13,8 +14,11 @@ describe('SlidersDataService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule],
-            providers: [SlidersDataService],
+            providers: [
+                provideHttpClient(),
+                provideHttpClientTesting(),
+                SlidersDataService,
+            ],
         });
 
         slidersDataService = TestBed.inject(SlidersDataService);

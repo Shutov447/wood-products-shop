@@ -1,9 +1,14 @@
 <h1 class="h1">Витрина товаров</h1>
-<ng-container *ngrxLet="products$ as products">
+<ng-container
+    *ngrxLet="{
+        products: filteredProducts$,
+        categories: categories$,
+    } as productsData"
+>
     <div class="categories">
         <button
             class="button-font category"
-            *ngFor="let category of products.categories"
+            *ngFor="let category of productsData.categories | ngrxPush"
             [class]="category === selectedCategory ? 'selected-category' : ''"
             (click)="filterProducts(category)"
         >
@@ -13,7 +18,7 @@
     <div class="product-card-container">
         <app-product-card
             class="broad"
-            *ngFor="let product of products.filteredProducts"
+            *ngFor="let product of productsData.products | ngrxPush"
             [name]="product.name"
             [price]="product.price"
             [imgs]="product.photos"

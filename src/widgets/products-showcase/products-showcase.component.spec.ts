@@ -17,10 +17,11 @@ import { ProductCardComponent } from '@features/product-card';
 import { LetDirective, PushPipe } from '@ngrx/component';
 import { TranslatePipe } from '@shared/lib';
 import { DebugElement } from '@angular/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { IProduct } from '@shared/api';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
 import { ProductsShowcaseComponent } from './products-showcase.component';
 
 describe('ProductsShowcaseComponent', () => {
@@ -57,9 +58,10 @@ describe('ProductsShowcaseComponent', () => {
                 TranslatePipe,
                 LetDirective,
                 PushPipe,
-                HttpClientTestingModule,
             ],
             providers: [
+                provideHttpClient(),
+                provideHttpClientTesting(),
                 provideMockStore({
                     selectors: [
                         {
@@ -118,8 +120,8 @@ describe('ProductsShowcaseComponent', () => {
             который приходит из потока products$`, () => {
             let updatedFilteredProducts: readonly IProduct[] | undefined;
 
-            component.products$.subscribe((res) => {
-                updatedFilteredProducts = res.filteredProducts;
+            component.filteredProducts$.subscribe((filteredProducts) => {
+                updatedFilteredProducts = filteredProducts;
             });
 
             expect(updatedFilteredProducts).toEqual(

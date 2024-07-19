@@ -1,7 +1,10 @@
 <div class="container">
     <nav>
         <ul class="navigation body-M white-font">
-            <li class="logo">
+            <li
+                class="logo"
+                data-cy="navbar-logo"
+            >
                 <app-logo [routerLink]="['']"></app-logo>
             </li>
             <li>
@@ -35,8 +38,18 @@
         </ul>
     </nav>
     <address class="contact-info">
-        <p class="frangipani-font body-M">{{ supportEmail }}</p>
-        <p class="frangipani-font h5">{{ phoneNumber }}</p>
+        <p
+            class="frangipani-font body-M"
+            data-cy="navbar-support-email"
+        >
+            {{ supportEmail }}
+        </p>
+        <p
+            class="frangipani-font h5"
+            data-cy="navbar-phone-number"
+        >
+            {{ phoneNumber }}
+        </p>
     </address>
     <app-button
         [pieceOfWood]="'top&down'"

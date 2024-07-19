@@ -42,3 +42,6 @@ Thumbs.db
 .nx/workspace-data
 
 .angular/cache
+
+e2e/.nyc_output
+e2e/coverage

@@ -1,4 +1,10 @@
-import { Component, Inject } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    NgZone,
+    OnInit,
+} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TuiScrollbarModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
@@ -21,17 +27,26 @@ import { TuiScrollbarService, ProductsApiActions } from '@shared/model';
     ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'wood-products-shop';
 
     readonly tuiScrollbarHidden$ = this.tuiScrollbarService.hidden$;
 
     constructor(
+        private readonly ngZone: NgZone,
         @Inject(TuiScrollbarService)
         private readonly tuiScrollbarService: TuiScrollbarService,
         private readonly store: Store,
     ) {
         this.store.dispatch(ProductsApiActions.loadProducts());
+    }
+
+    ngOnInit() {
+        if (window.Cypress) {
+            window.ngZone = this.ngZone;
+            window.store = this.store;
+        }
     }
 }

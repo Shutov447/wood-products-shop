@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,4 +9,6 @@ import { RouterModule } from '@angular/router';
     styleUrl: './logo.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LogoComponent {}
+export class LogoComponent {
+    @HostBinding('attr.data-cy') private readonly dataCy = 'logo';
+}

@@ -179,7 +179,19 @@
                             "@shared/**"
                         ]
                     }
-                ]
+                ],
+                "class-methods-use-this": ["off"]
+            }
+        },
+        {
+            "files": ["*.js"],
+            "parser": "@typescript-eslint/parser",
+            "parserOptions": {
+                "ecmaVersion": "latest",
+                "createDefaultProgram": true
+            },
+            "env": {
+                "es6": true
             }
         },
         {

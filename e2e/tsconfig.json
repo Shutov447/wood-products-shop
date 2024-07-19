@@ -4,7 +4,12 @@
         "allowJs": true,
         "outDir": "../dist/out-tsc",
         "module": "commonjs",
-        "types": ["cypress", "node"],
+        "types": [
+            "cypress",
+            "node",
+            "@testing-library/cypress",
+            "cypress-real-events"
+        ],
         "sourceMap": false,
         "forceConsistentCasingInFileNames": true,
         "strict": true,

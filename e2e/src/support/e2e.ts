@@ -15,3 +15,6 @@
 
 // Import commands.ts using ES2015 syntax:
 import './commands';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import '@cypress/code-coverage/support';
+import 'cypress-real-events';

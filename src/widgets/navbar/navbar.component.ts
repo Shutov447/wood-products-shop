@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LogoComponent, ButtonModule } from '@shared/components';
 import { SUPPORT_EMAIL, PHONE_NUMBER } from '@shared/api';
@@ -12,6 +17,8 @@ import { SUPPORT_EMAIL, PHONE_NUMBER } from '@shared/api';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent {
+    @HostBinding('attr.data-cy') private readonly dataCy = 'navbar';
+
     constructor(
         @Inject(SUPPORT_EMAIL) readonly supportEmail: string,
         @Inject(PHONE_NUMBER) readonly phoneNumber: string,

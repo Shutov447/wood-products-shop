@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { TuiCarouselModule } from '@taiga-ui/kit';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
@@ -34,6 +34,8 @@ import { HomeActions } from './model';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
+    @HostBinding('attr.data-cy') private readonly dataCy = 'home-page';
+
     readonly articlesCardsChunks$ = this.store.select(
         selectArticlesCardsChunks,
     );

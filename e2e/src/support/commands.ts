@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-namespace */
 /// <reference types="cypress" />
 
 // ***********************************************
@@ -9,20 +12,6 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-
-// eslint-disable-next-line @typescript-eslint/no-namespace
-declare namespace Cypress {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    interface Chainable<Subject> {
-        login(email: string, password: string): void;
-    }
-}
-
-// -- This is a parent command --
-Cypress.Commands.add('login', (email, password) => {
-    // eslint-disable-next-line no-console
-    console.log('Custom command example: Login', email, password);
-});
 //
 // -- This is a child command --
 // Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
@@ -34,3 +23,23 @@ Cypress.Commands.add('login', (email, password) => {
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+declare namespace Cypress {
+    interface Chainable<Subject> {
+        getBySel(
+            selector: string,
+            ...args: any[]
+        ): Chainable<JQuery<HTMLElement>>;
+        getBySelLike(
+            selector: string,
+            ...args: any[]
+        ): Chainable<JQuery<HTMLElement>>;
+    }
+}
+
+Cypress.Commands.add('getBySel', (selector, ...args) => {
+    return cy.get(`[data-cy=${selector}]`, ...args);
+});
+
+Cypress.Commands.add('getBySelLike', (selector, ...args) => {
+    return cy.get(`[data-cy*=${selector}]`, ...args);
+});

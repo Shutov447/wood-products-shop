@@ -4,7 +4,9 @@
         {
             "files": ["*.ts", "e2e/**/*.ts"],
             "parser": "@typescript-eslint/parser",
-            "rules": {},
+            "rules": {
+                "class-methods-use-this": ["off"]
+            },
             "parserOptions": {
                 "parser": "@typescript-eslint/parser",
                 "project": ["tsconfig.*?.json"]

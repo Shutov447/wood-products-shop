@@ -1,5 +1,5 @@
-@import '../../shared/scss/colors.scss';
-@import '../../shared/scss/transitions.scss';
+@use 'colors';
+@use 'transitions';
 
 $liGap: 18px;
 
@@ -9,12 +9,12 @@ $liGap: 18px;
     width: 100vw;
     height: 360px;
     min-width: 1600px;
-    background-color: $Kilamanjaro;
+    background-color: colors.$Kilimanjaro;
     padding-left: 160px;
-    color: rgba($White, 0.6);
+    color: rgba(colors.$White, 0.6);
 
     a {
-        color: rgba($White, 0.6);
+        color: rgba(colors.$White, 0.6);
     }
 }
 
@@ -25,7 +25,7 @@ $liGap: 18px;
     width: 660px;
     height: 360px;
     background-image: url(../../assets/img/wood-texture-1.png);
-    color: rgba($White, 0.6);
+    color: rgba(colors.$White, 0.6);
 
     .company {
         display: flex;
@@ -47,7 +47,7 @@ $liGap: 18px;
 
         .phoneNumber {
             padding-bottom: calc(38px - $liGap);
-            color: rgba($White, 1);
+            color: rgba(colors.$White, 1);
         }
     }
 }
@@ -58,7 +58,7 @@ $liGap: 18px;
     justify-content: center;
     gap: $liGap;
     padding: 0 40px 0 40px;
-    color: rgba($White, 0.6);
+    color: rgba(colors.$White, 0.6);
 }
 
 .navigation-container {
@@ -70,7 +70,7 @@ $liGap: 18px;
     height: 360px;
     background-image: url(../../assets/img/wood-texture-2.png);
     padding-left: 85px;
-    color: rgba($White, 0.6);
+    color: rgba(colors.$White, 0.6);
 
     .navigation {
         display: flex;
@@ -109,11 +109,11 @@ $liGap: 18px;
 }
 
 .link:hover {
-    transition: color $bg-color-trans;
-    color: $White;
+    transition: color transitions.$bg-color-trans;
+    color: colors.$White;
 }
 
 .link {
-    transition: color $bg-color-trans;
-    color: rgba($White, 0.6);
+    transition: color transitions.$bg-color-trans;
+    color: rgba(colors.$White, 0.6);
 }

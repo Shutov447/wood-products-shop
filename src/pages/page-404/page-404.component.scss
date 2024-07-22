@@ -1,4 +1,4 @@
-@import '../../shared/scss/fonts.scss';
+@use 'fonts';
 
 :host {
     display: flex;
@@ -10,5 +10,5 @@
 
 .h1,
 .h2 {
-    font-family: $Gilroy;
+    font-family: fonts.$Gilroy;
 }

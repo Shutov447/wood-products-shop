@@ -1,5 +1,5 @@
-@import '../../../../scss/colors.scss';
-@import '../../../../scss/transitions.scss';
+@use 'colors';
+@use 'transitions';
 
 :host {
     display: flex;
@@ -22,20 +22,20 @@
             justify-content: center;
             align-items: center;
             gap: 5px;
-            transition: color $bg-color-trans;
+            transition: color transitions.$bg-color-trans;
 
             .cross path {
-                transition: stroke $bg-color-trans;
+                transition: stroke transitions.$bg-color-trans;
             }
         }
 
         button:hover {
-            color: $Rust;
-            transition: color $bg-color-trans;
+            color: colors.$Rust;
+            transition: color transitions.$bg-color-trans;
 
             .cross path {
-                stroke: $Rust;
-                transition: stroke $bg-color-trans;
+                stroke: colors.$Rust;
+                transition: stroke transitions.$bg-color-trans;
             }
         }
     }
@@ -55,7 +55,7 @@
     align-items: center;
     gap: 2px;
     padding: 10px 10px 7px 10px;
-    background-color: $HintOfRed;
+    background-color: colors.$HintOfRed;
     height: 48px;
 
     .wrapper {
@@ -71,7 +71,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background-color: $Kilamanjaro;
+            background-color: colors.$Kilimanjaro;
         }
 
         input[type='range'] {

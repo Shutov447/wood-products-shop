@@ -1,5 +1,5 @@
-@import '../../shared/scss/colors.scss';
-@import '../../shared/scss/transitions.scss';
+@use 'colors';
+@use 'transitions';
 
 :host {
     display: flex;
@@ -65,7 +65,7 @@
     position: absolute;
     width: 100vw;
     height: 480px;
-    background-color: $HintOfRed;
+    background-color: colors.$HintOfRed;
     background-image: url(../../assets/img/vector-woodcut.png);
     z-index: -1;
 }
@@ -96,12 +96,12 @@
         height: 6px;
         top: 502px;
         border-radius: 50%;
-        background-color: rgba($White, 0.2);
-        transition: background-color $bg-color-trans;
+        background-color: rgba(colors.$White, 0.2);
+        transition: background-color transitions.$bg-color-trans;
     }
 
     .current-dot {
-        background-color: $White;
-        transition: background-color $bg-color-trans;
+        background-color: colors.$White;
+        transition: background-color transitions.$bg-color-trans;
     }
 }

@@ -1,4 +1,4 @@
-@import '../../shared/scss/colors.scss';
+@use 'colors';
 
 :host {
     display: flex;
@@ -25,7 +25,7 @@
             justify-content: center;
             gap: 38px;
             width: 510px;
-            background-color: $HintOfRed;
+            background-color: colors.$HintOfRed;
             padding: 0 70px 0 70px;
             background-image: url(../../assets/img/vector-woodcut.png);
             background-position: bottom 205px right 190px;

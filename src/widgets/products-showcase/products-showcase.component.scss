@@ -1,5 +1,5 @@
-@import '../../shared/scss/colors.scss';
-@import '../../shared/scss/transitions.scss';
+@use 'colors';
+@use 'transitions';
 
 :host {
     display: flex;
@@ -16,8 +16,8 @@
         justify-content: center;
         align-items: center;
         height: 60px;
-        border: 1px solid $Gainsboro;
-        transition: border-color $bg-color-trans;
+        border: 1px solid colors.$Gainsboro;
+        transition: border-color transitions.$bg-color-trans;
         filter: opacity(0.9);
     }
 
@@ -27,8 +27,8 @@
     }
 
     .selected-category {
-        border: 2px solid $Kilamanjaro;
-        transition: border-color $bg-color-trans;
+        border: 2px solid colors.$Kilimanjaro;
+        transition: border-color transitions.$bg-color-trans;
         filter: opacity(1);
         font-weight: 700;
         line-height: 140%;
@@ -49,11 +49,11 @@
 
 .button {
     height: 60px;
-    border: 1px solid $Gainsboro;
-    transition: border-color $bg-color-trans;
+    border: 1px solid colors.$Gainsboro;
+    transition: border-color transitions.$bg-color-trans;
 }
 
 .button:hover {
-    border: 1px solid $Kilamanjaro;
-    transition: border $bg-color-trans;
+    border: 1px solid colors.$Kilimanjaro;
+    transition: border transitions.$bg-color-trans;
 }

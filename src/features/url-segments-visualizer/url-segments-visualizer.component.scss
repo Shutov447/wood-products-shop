@@ -1,4 +1,4 @@
-@import '../../shared/scss/colors.scss';
+@use 'colors';
 
 :host {
     display: flex;
@@ -7,7 +7,7 @@
 
 span,
 a {
-    color: $Tide;
+    color: colors.$Tide;
     text-transform: capitalize;
 }
 

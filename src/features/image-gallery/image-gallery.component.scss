@@ -1,5 +1,5 @@
-@import '../../shared/scss/colors.scss';
-@import '../../shared/scss/transitions.scss';
+@use 'colors';
+@use 'transitions';
 
 :host {
     display: flex;
@@ -14,7 +14,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid $Gainsboro;
+    border: 1px solid colors.$Gainsboro;
     width: 100%;
     height: 540px;
 
@@ -36,8 +36,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid $Gainsboro;
-        transition: border-color $bg-color-trans;
+        border: 1px solid colors.$Gainsboro;
+        transition: border-color transitions.$bg-color-trans;
         width: 90px;
         height: 100%;
 
@@ -49,8 +49,8 @@
     }
 
     .current-img {
-        border: 2px solid $Kilamanjaro;
-        transition: border-color $bg-color-trans;
+        border: 2px solid colors.$Kilimanjaro;
+        transition: border-color transitions.$bg-color-trans;
     }
 
     button {
@@ -61,10 +61,10 @@
         top: 43px;
         width: 24px;
         height: 24px;
-        border: 1.5px solid $Gainsboro;
+        border: 1.5px solid colors.$Gainsboro;
         border-radius: 50%;
         z-index: 10;
-        background-color: $White;
+        background-color: colors.$White;
 
         .mask {
             position: relative;
@@ -75,7 +75,7 @@
             -webkit-mask-repeat: no-repeat;
             mask-image: url(../../assets/img/tick-for-list.svg);
             mask-repeat: no-repeat;
-            background-color: $Kilamanjaro;
+            background-color: colors.$Kilimanjaro;
         }
     }
 

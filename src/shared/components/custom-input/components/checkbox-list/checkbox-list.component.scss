@@ -1,5 +1,5 @@
-@import '../../../../scss/colors.scss';
-@import '../../../../scss/transitions.scss';
+@use 'colors';
+@use 'transitions';
 
 :host {
     .not-show {
@@ -29,24 +29,24 @@ fieldset {
                 -webkit-mask-repeat: no-repeat;
                 mask-image: url(../../../../../assets/img/tick-for-list.svg);
                 mask-repeat: no-repeat;
-                background-color: $Kilamanjaro;
+                background-color: colors.$Kilimanjaro;
                 transition:
-                    transform $bg-color-trans,
-                    background-color $bg-color-trans;
+                    transform transitions.$bg-color-trans,
+                    background-color transitions.$bg-color-trans;
             }
 
             .mask-second-view {
                 transform: rotate(180deg);
-                transition: transform $bg-color-trans;
+                transition: transform transitions.$bg-color-trans;
             }
         }
 
         button:hover {
             .mask {
-                background-color: $Rust;
+                background-color: colors.$Rust;
                 transition:
-                    transform $bg-color-trans,
-                    background-color $bg-color-trans;
+                    transform transitions.$bg-color-trans,
+                    background-color transitions.$bg-color-trans;
             }
         }
     }

@@ -1,6 +1,6 @@
 @use '../../features/contact-us-card/lib/form-styles.scss';
-@import '../../shared/scss/fonts.scss';
-@import '../../shared/scss/colors.scss';
+@use 'fonts';
+@use 'colors';
 
 :host {
     display: flex;
@@ -36,7 +36,7 @@
             margin-top: 70px;
 
             .price {
-                font-family: $Gilroy;
+                font-family: fonts.$Gilroy;
                 font-size: 64px;
                 font-weight: 500;
                 line-height: 100%;
@@ -61,7 +61,7 @@
 }
 
 hr {
-    background-color: $Gainsboro;
+    background-color: colors.$Gainsboro;
 }
 
 .hr-1 {
@@ -83,14 +83,14 @@ hr {
         width: 100%;
         padding: 10px 30px 10px 10px;
         margin: 14px 0 34px 0;
-        background-color: $Frangipani;
+        background-color: colors.$Frangipani;
 
         .img-wrapper {
             min-width: 70px;
             min-height: 70px;
             max-width: 70px;
             max-height: 70px;
-            background-color: $White;
+            background-color: colors.$White;
 
             img {
                 width: 100%;

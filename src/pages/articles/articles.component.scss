@@ -1,5 +1,5 @@
-@import '../../shared/scss/transitions.scss';
-@import '../../shared/scss/colors.scss';
+@use 'transitions';
+@use 'colors';
 
 :host {
     display: flex;
@@ -22,11 +22,11 @@
 
 .button {
     height: 60px;
-    border: 1px solid $Gainsboro;
-    transition: border-color $bg-color-trans;
+    border: 1px solid colors.$Gainsboro;
+    transition: border-color transitions.$bg-color-trans;
 }
 
 .button:hover {
-    border: 1px solid $Tide;
-    transition: border-color $bg-color-trans;
+    border: 1px solid colors.$Tide;
+    transition: border-color transitions.$bg-color-trans;
 }

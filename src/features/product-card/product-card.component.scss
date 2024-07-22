@@ -1,18 +1,18 @@
-@import '../../shared/scss/colors.scss';
-@import '../../shared/scss/transitions.scss';
+@use 'colors';
+@use 'transitions';
 
 :host {
     display: flex;
     flex-direction: column;
     height: 400px;
     padding: 20px;
-    border: 1px solid $Gainsboro;
-    transition: border $bg-color-trans;
+    border: 1px solid colors.$Gainsboro;
+    transition: border transitions.$bg-color-trans;
 }
 
 :host(:hover) {
-    border: 1px solid $Kilamanjaro;
-    transition: border $bg-color-trans;
+    border: 1px solid colors.$Kilimanjaro;
+    transition: border transitions.$bg-color-trans;
 }
 
 :host(.broad) {
@@ -76,11 +76,11 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background-color: $Gainsboro;
+            background-color: colors.$Gainsboro;
         }
 
         .current-dot {
-            background-color: $Kilamanjaro;
+            background-color: colors.$Kilimanjaro;
             width: 10px;
             height: 10px;
         }

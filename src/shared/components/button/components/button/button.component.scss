@@ -1,5 +1,5 @@
-@import '../../../../scss/colors.scss';
-@import '../../../../scss/transitions.scss';
+@use 'colors';
+@use 'transitions';
 
 .button {
     display: flex;
@@ -48,13 +48,13 @@
 }
 
 .BG-color {
-    background-color: $MediumWood;
-    transition: background-color $bg-color-trans;
+    background-color: colors.$MediumWood;
+    transition: background-color transitions.$bg-color-trans;
 }
 
 .BG-color:hover {
-    transition: background-color $bg-color-trans;
-    background-color: $Rope;
+    transition: background-color transitions.$bg-color-trans;
+    background-color: colors.$Rope;
 }
 
 .BG-color:disabled {
@@ -62,11 +62,11 @@
 }
 
 .no-BG {
-    transition: text-decoration $bg-color-trans;
+    transition: text-decoration transitions.$bg-color-trans;
 }
 
 .no-BG:hover {
-    transition: text-decoration $bg-color-trans;
+    transition: text-decoration transitions.$bg-color-trans;
     text-decoration: underline;
 }
 

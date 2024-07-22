@@ -1,5 +1,5 @@
-@import './colors.scss';
-@import './transitions.scss';
+@use 'colors';
+@use 'transitions';
 
 // type='number'
 input[type='number'] {
@@ -7,13 +7,13 @@ input[type='number'] {
     padding-left: 12px;
     min-width: 0px;
     height: 40px;
-    border: 1px solid $Gainsboro;
-    transition: border-color $bg-color-trans;
-    color: $Kilamanjaro;
+    border: 1px solid colors.$Gainsboro;
+    transition: border-color transitions.$bg-color-trans;
+    color: colors.$Kilimanjaro;
 }
 input[type='number']:focus {
-    border-color: $Tide;
-    transition: border-color $bg-color-trans;
+    border-color: colors.$Tide;
+    transition: border-color transitions.$bg-color-trans;
 }
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
@@ -41,7 +41,7 @@ input[type='range']:focus {
 }
 
 input[type='range']::-webkit-slider-runnable-track {
-    background-color: $Kilamanjaro;
+    background-color: colors.$Kilimanjaro;
     height: 2px;
 }
 
@@ -51,19 +51,19 @@ input[type='range']::-webkit-slider-thumb {
     margin-top: -5px;
     height: 12px;
     width: 12px;
-    border: 2px solid $Kilamanjaro;
+    border: 2px solid colors.$Kilimanjaro;
     border-radius: 50%;
-    background-color: $White;
-    transition: background-color $bg-color-trans;
+    background-color: colors.$White;
+    transition: background-color transitions.$bg-color-trans;
 }
 
 input[type='range']:focus::-webkit-slider-thumb {
-    background-color: $Kilamanjaro;
-    transition: background-color $bg-color-trans;
+    background-color: colors.$Kilimanjaro;
+    transition: background-color transitions.$bg-color-trans;
 }
 
 input[type='range']::-moz-range-track {
-    background-color: $Kilamanjaro;
+    background-color: colors.$Kilimanjaro;
     height: 2px;
 }
 
@@ -72,15 +72,15 @@ input[type='range']::-moz-range-thumb {
     margin-top: -5px;
     height: 12px;
     width: 12px;
-    border: 2px solid $Kilamanjaro;
+    border: 2px solid colors.$Kilimanjaro;
     border-radius: 50%;
-    background-color: $White;
-    transition: background-color $bg-color-trans;
+    background-color: colors.$White;
+    transition: background-color transitions.$bg-color-trans;
 }
 
 input[type='range']:focus::-moz-range-thumb {
-    background-color: $Kilamanjaro;
-    transition: background-color $bg-color-trans;
+    background-color: colors.$Kilimanjaro;
+    transition: background-color transitions.$bg-color-trans;
 }
 
 // type='chackbox'
@@ -91,15 +91,15 @@ input[type='checkbox'] {
     margin: 0;
     width: 21.75px;
     height: 20px;
-    border: 2px solid $Tide;
-    transition: background-color $bg-color-trans;
+    border: 2px solid colors.$Tide;
+    transition: background-color transitions.$bg-color-trans;
 }
 
 input[type='checkbox']:checked {
     border: none;
-    background-color: $Kilamanjaro;
+    background-color: colors.$Kilimanjaro;
     background-image: url(../../assets/img/tick.svg);
     background-repeat: no-repeat;
     background-position: 3.5px, center;
-    transition: background-color $bg-color-trans;
+    transition: background-color transitions.$bg-color-trans;
 }

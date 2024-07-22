@@ -1,4 +1,4 @@
-@import '../../shared/scss/colors.scss';
+@use 'colors';
 
 :host {
     display: flex;
@@ -12,7 +12,7 @@
     display: flex;
     gap: 20px;
     padding: 15px 0 15px 0;
-    border-bottom: 1px solid $Gainsboro;
+    border-bottom: 1px solid colors.$Gainsboro;
 
     p {
         width: 100%;

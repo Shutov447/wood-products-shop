@@ -22,6 +22,9 @@
                 "polyfills": ["zone.js"],
                 "tsConfig": "tsconfig.app.json",
                 "inlineStyleLanguage": "scss",
+                "stylePreprocessorOptions": {
+                    "includePaths": ["./src/shared/scss"]
+                },
                 "assets": [
                     "src/assets",
                     {
@@ -34,8 +37,13 @@
                         "output": "assets/taiga-ui/icons"
                     }
                 ],
-                "styles": ["./src/styles.scss"],
-                "scripts": []
+                "styles": ["src/styles.scss"],
+                "scripts": [],
+                "allowedCommonJsDependencies": [
+                    "lodash",
+                    "@taiga-ui/kit",
+                    "@tinkoff/ng-dompurify"
+                ]
             },
             "configurations": {
                 "production": {

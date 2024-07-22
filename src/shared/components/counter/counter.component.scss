@@ -1,11 +1,11 @@
-@import '../../../shared/scss/colors.scss';
-@import '../../../shared/scss/transitions.scss';
+@use 'colors';
+@use 'transitions';
 
 :host {
     display: flex;
     width: 160px;
     height: 60px;
-    border: 1px solid $Gainsboro;
+    border: 1px solid colors.$Gainsboro;
 }
 
 .number {
@@ -18,12 +18,12 @@
 }
 
 button {
-    transition: color $bg-color-trans;
+    transition: color transitions.$bg-color-trans;
 }
 
 button:hover {
-    color: $Rust;
-    transition: color $bg-color-trans;
+    color: colors.$Rust;
+    transition: color transitions.$bg-color-trans;
 }
 
 .minus {

@@ -1,4 +1,4 @@
-@import '../../scss/colors.scss';
+@use 'colors';
 
 :host {
     top: 0;
@@ -9,7 +9,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: rgba($Kilamanjaro, 0.7);
+    background-color: rgba(colors.$Kilimanjaro, 0.7);
     z-index: 99;
 }
 
@@ -18,7 +18,7 @@
     margin-left: 60px;
 
     .tamplate-container {
-        background-color: $HintOfRed;
+        background-color: colors.$HintOfRed;
         background-image: url(../../../assets/img/vector-woodcut.png);
         background-repeat: no-repeat;
     }
@@ -32,8 +32,8 @@
         align-items: center;
         width: 60px;
         height: 60px;
-        background-color: $White;
-        border: 1px solid $Gainsboro;
+        background-color: colors.$White;
+        border: 1px solid colors.$Gainsboro;
 
         .mask {
             width: 12px;
@@ -42,7 +42,7 @@
             -webkit-mask-repeat: no-repeat;
             mask-image: url(../../../assets/img/cross.svg);
             mask-repeat: no-repeat;
-            background-color: $Kilamanjaro;
+            background-color: colors.$Kilimanjaro;
         }
     }
 }

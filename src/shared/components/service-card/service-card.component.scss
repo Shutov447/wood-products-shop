@@ -1,4 +1,4 @@
-@import '../../scss/colors.scss';
+@use 'colors';
 
 :host {
     display: flex;
@@ -28,5 +28,5 @@
 .rectangle {
     width: 620px;
     height: 1px;
-    background-color: $Gainsboro;
+    background-color: colors.$Gainsboro;
 }

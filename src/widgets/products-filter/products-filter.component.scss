@@ -1,5 +1,5 @@
-@import '../../shared/scss/colors.scss';
-@import '../../shared/scss/transitions.scss';
+@use 'colors';
+@use 'transitions';
 
 :host {
     display: flex;
@@ -14,20 +14,20 @@
     .category {
         display: flex;
         transition:
-            color $bg-color-trans,
-            opacity $bg-color-trans;
+            color transitions.$bg-color-trans,
+            opacity transitions.$bg-color-trans;
     }
 
     .category:not(.selected-category):hover {
-        color: $Rust;
+        color: colors.$Rust;
         opacity: 0.9;
         transition:
-            color $bg-color-trans,
-            opacity $bg-color-trans;
+            color transitions.$bg-color-trans,
+            opacity transitions.$bg-color-trans;
     }
 
     .selected-category {
-        color: $Rust;
+        color: colors.$Rust;
     }
 }
 

@@ -1,4 +1,4 @@
-@import '../../../shared/scss/colors.scss';
+@use 'colors';
 
 .form-input-wrapper {
     position: relative;
@@ -7,20 +7,20 @@
     flex-direction: column;
     justify-content: center;
     height: 60px;
-    background-color: $White;
+    background-color: colors.$White;
     padding-left: 23px;
 }
 
 .form-input-wrapper-invalid {
-    border: 1px solid $Rust;
+    border: 1px solid colors.$Rust;
 
     .small {
-        color: $Rust;
-        background-color: $White;
+        color: colors.$Rust;
+        background-color: colors.$White;
     }
 
     .form-input::placeholder {
-        color: $Rust;
+        color: colors.$Rust;
         font-size: 15px;
         font-weight: 700;
         line-height: 140%;
@@ -33,7 +33,7 @@
 }
 
 .form-input::placeholder {
-    color: $Tide;
+    color: colors.$Tide;
     font-size: 18px;
     font-weight: 500;
     line-height: 100%;

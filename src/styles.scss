@@ -1,8 +1,8 @@
 @use '../node_modules/scss-reset/_reset.scss';
-@use './shared/scss/link.scss';
-@use './shared/scss/fonts.scss';
-@use './shared/scss/list.scss';
-@use './shared/scss/input.scss';
+@use 'link';
+@use 'fonts';
+@use 'list';
+@use 'input';
 
 body {
     overflow: hidden;

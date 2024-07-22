@@ -1,4 +1,4 @@
-@import '../../shared/scss/colors.scss';
+@use 'colors';
 
 :host {
     display: flex;
@@ -39,7 +39,7 @@
     position: absolute;
     top: 120px;
     left: 0;
-    background-color: $HintOfRed;
+    background-color: colors.$HintOfRed;
     width: 100%;
     height: 480px;
     z-index: -1;

@@ -1,4 +1,4 @@
-@import '../../scss/colors.scss';
+@use 'colors';
 
 :host {
     position: relative;
@@ -67,7 +67,7 @@
         height: 100%;
 
         div:not(.empty) {
-            background-color: $Tide;
+            background-color: colors.$Tide;
         }
     }
 }

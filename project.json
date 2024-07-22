@@ -156,6 +156,9 @@
                 }
             },
             "defaultConfiguration": "production"
+        },
+        "deploy:ghp": {
+            "command": "nx build --output-path docs --base-href /wood-products-shop/ && ngh --dir docs/"
         }
     }
 }

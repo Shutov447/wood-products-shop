@@ -1,23 +1,11 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { exhaustMap, map, of } from 'rxjs';
+import { exhaustMap, map } from 'rxjs';
 import { ProductsFilterService } from '../api';
 import {
     ProductsFilterActions,
     ProductsFilterApiActions,
 } from './products-filter.actions';
-
-export const pageWithFilterDataOpenedEffect = createEffect(
-    (actions$ = inject(Actions)) => {
-        return actions$.pipe(
-            ofType(ProductsFilterApiActions.pageWithFilterDataOpened),
-            exhaustMap(() =>
-                of(ProductsFilterApiActions.loadDtoFilteringData()),
-            ),
-        );
-    },
-    { functional: true },
-);
 
 export const loadFilteringDataEffect = createEffect(
     (
@@ -33,22 +21,6 @@ export const loadFilteringDataEffect = createEffect(
                             dtoFilteringData,
                         }),
                     ),
-                ),
-            ),
-        );
-    },
-    { functional: true },
-);
-
-export const addFilteringDataForCategoryEffect = createEffect(
-    (actions$ = inject(Actions)) => {
-        return actions$.pipe(
-            ofType(ProductsFilterApiActions.pageWithFilterDataOpened),
-            exhaustMap(({ currentCategory }) =>
-                of(
-                    ProductsFilterActions.addFilteringDataForCategory({
-                        currentCategory,
-                    }),
                 ),
             ),
         );

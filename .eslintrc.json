@@ -138,7 +138,7 @@
                         "functions": true,
                         "methods": true,
                         "names": {
-                            "^(canActivate|canActivateChild|canDeactivate|canLoad|intercept|resolve|validate|transform|store)$": false
+                            "^(canActivate|canActivateChild|canDeactivate|canLoad|intercept|resolve|validate|transform|store|paramMap)$": false
                         },
                         "parameters": true,
                         "properties": true,

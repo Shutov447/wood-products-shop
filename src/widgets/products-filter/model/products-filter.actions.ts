@@ -17,9 +17,6 @@ export const ProductsFilterActions = createActionGroup({
 export const ProductsFilterApiActions = createActionGroup({
     source: PRODUCTS_API_FEATURE,
     events: {
-        loadDtoFilteringData: emptyProps(),
-        pageWithFilterDataOpened: props<{
-            currentCategory: IProduct['category'];
-        }>(),
+        pageWithFilterDataOpened: emptyProps(),
     },
 });

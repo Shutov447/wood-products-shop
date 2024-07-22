@@ -5,7 +5,7 @@ import {
     OnDestroy,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { LetDirective, PushPipe } from '@ngrx/component';
@@ -43,12 +43,10 @@ import {
 export class ProductsComponent implements OnDestroy {
     private readonly destroy$ = new Subject<void>();
 
-    category = '';
-
-    readonly filteredProducts$ = this.store
-        .select(selectFilteredProducts)
-        .pipe(debounceTime(600));
+    readonly filteredProducts$ = this.store.select(selectFilteredProducts);
     readonly productsChunk$ = this.store.select(selectCurrentChunkProducts);
+
+    category = '';
 
     constructor(
         private readonly activatedRoute: ActivatedRoute,
@@ -75,7 +73,7 @@ export class ProductsComponent implements OnDestroy {
         );
     }
 
-    getProductsChunk$(currentChunk: readonly IProduct[]) {
+    getProductsChunk(currentChunk: readonly IProduct[]) {
         this.store.dispatch(ProductsActions.setCurrentChunk({ currentChunk }));
         this.cdr.detectChanges();
     }

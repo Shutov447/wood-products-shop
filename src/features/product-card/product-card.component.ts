@@ -19,20 +19,21 @@ import { IProduct } from '@shared/api';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardComponent {
-    @Input({ required: true }) name: IProduct['name'] | null = null;
-    @Input({ required: true }) price: IProduct['price'] | null = null;
-    @Input({ required: true }) imgs: IProduct['photos'] | null = null;
-
     @ViewChild('carousel', {
         static: true,
         read: TuiCarouselComponent,
     })
     private readonly carousel: TuiCarouselComponent | null = null;
 
+    @Input({ required: true }) name: IProduct['name'] | null = null;
+    @Input({ required: true }) price: IProduct['price'] | null = null;
+    @Input({ required: true }) imgs: IProduct['photos'] | null = null;
+
     currentDot = 0;
 
     seeNextImg() {
         this.carousel?.onAutoscroll();
+
         const imgCount = (this.carousel?.items.length as number) - 1;
 
         if (imgCount === this.currentDot) {

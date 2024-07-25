@@ -3,7 +3,7 @@ import { ISliderData } from '@shared/api';
 import { slidersInitialState } from './sliders.state';
 import { SlidersActions } from './sliders.actions';
 
-export const slidresReducer = createReducer(
+export const slidersReducer = createReducer(
     slidersInitialState,
     on(
         SlidersActions.addSliders,

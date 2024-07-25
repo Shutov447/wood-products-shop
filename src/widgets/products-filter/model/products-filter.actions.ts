@@ -1,9 +1,12 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { PRODUCTS_API_FEATURE, PRODUCTS_FEATURE } from '@shared/model';
 import { IForFilteringProducts, IProduct } from '@shared/api';
+import {
+    PRODUCTS_FILTER_API_FEATURE,
+    PRODUCTS_FILTER_FEATURE,
+} from './products-filter.state';
 
 export const ProductsFilterActions = createActionGroup({
-    source: PRODUCTS_FEATURE,
+    source: PRODUCTS_FILTER_FEATURE,
     events: {
         addDtoFilteringData: props<{
             dtoFilteringData: IForFilteringProducts;
@@ -15,7 +18,7 @@ export const ProductsFilterActions = createActionGroup({
 });
 
 export const ProductsFilterApiActions = createActionGroup({
-    source: PRODUCTS_API_FEATURE,
+    source: PRODUCTS_FILTER_API_FEATURE,
     events: {
         pageWithFilterDataOpened: emptyProps(),
     },

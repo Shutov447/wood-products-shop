@@ -5,7 +5,7 @@ import { CatalogActions } from './catalog.actions';
 export const catalogReducer = createReducer(
     catalogInitialState,
     on(
-        CatalogActions.addCategryIntroImg,
+        CatalogActions.addCategoryIntroImg,
         (_, { introImgs }): Record<string, string> => introImgs,
     ),
 );

@@ -7,13 +7,13 @@ import { CatalogActions, CatalogApiActions } from './catalog.actions';
 export const loadCategoriesIntroImgs = createEffect(
     (actions$ = inject(Actions), catalogService = inject(CatalogService)) => {
         return actions$.pipe(
-            ofType(CatalogApiActions.loadCategryIntroImg),
+            ofType(CatalogApiActions.loadCategoryIntroImg),
             exhaustMap(() =>
                 catalogService
                     .getCategoriesIntroImgs()
                     .pipe(
                         map((introImgs) =>
-                            CatalogActions.addCategryIntroImg({ introImgs }),
+                            CatalogActions.addCategoryIntroImg({ introImgs }),
                         ),
                     ),
             ),

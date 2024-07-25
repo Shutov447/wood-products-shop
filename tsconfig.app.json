@@ -7,9 +7,11 @@
     "files": ["src/main.ts"],
     "include": ["src/**/*.d.ts", "e2e/**/*.ts", "src/**/*.ts", "**/*.ts"],
     "exclude": [
+        "src/**/test-setup.ts",
         "jest.config.ts",
         "src/**/*.test.ts",
         "src/**/*.spec.ts",
-        "src/**/*.mock.ts"
+        "src/**/*.mock.ts",
+        "e2e/**"
     ]
 }

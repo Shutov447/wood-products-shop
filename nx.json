@@ -83,6 +83,5 @@
             "changeDetection": "OnPush"
         }
     },
-    "defaultProject": "wood-products-shop",
-    "nxCloudAccessToken": "ZDdlNWQ5ZDMtMzQ3NS00ZjQwLTgzZGEtMGE5N2NlZTA2YzJmfHJlYWQtd3JpdGU="
+    "defaultProject": "wood-products-shop"
 }

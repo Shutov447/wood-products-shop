@@ -1,18 +1,17 @@
-<span class="body-XS"
-    ><a
-        routerLink="/"
-        routerLinkActive="router-link-active"
-        >Главная</a
-    ></span
->
-<ng-container *ngrxLet="segments$ as segments">
-    <span
-        class="body-XS"
-        *ngFor="let segment of segments"
+<ng-container *ngrxLet="segments as segments">
+    <span class="body-XS"
+        ><a
+            routerLink="/"
+            routerLinkActive="router-link-active"
+            >Главная</a
+        ></span
     >
-        <span class="mdash">&mdash;</span>
-        <a [routerLink]="[segment]">{{
-            segment.path | translate | ngrxPush
-        }}</a>
-    </span>
+    @for (segment of segments; track $index) {
+        <span class="body-XS">
+            <span class="mdash">&mdash;</span>
+            <a [routerLink]="getPathTo(segment)">{{
+                segment | translate | ngrxPush
+            }}</a>
+        </span>
+    }
 </ng-container>

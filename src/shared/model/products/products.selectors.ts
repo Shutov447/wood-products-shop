@@ -32,5 +32,5 @@ export const selectCurrentProduct = createSelector(
 export const selectHaveProduct = createSelector(selectProducts, (state) => {
     const productName = state.currentProduct?.name;
 
-    return productName && state.productsNames.includes(productName);
+    return Boolean(productName && state.productsNames.includes(productName));
 });

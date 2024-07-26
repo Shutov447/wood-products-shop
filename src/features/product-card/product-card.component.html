@@ -1,5 +1,6 @@
 <button
-    [routerLink]="['/product', name]"
+    [routerLink]="['/catalog/', category, name]"
+    (click)="setCurrentProduct()"
     class="header"
 >
     <div class="name body-L">
@@ -36,5 +37,9 @@
         ></div>
     </div>
     <div class="empty"></div>
-    <app-button [routerLink]="['/product', name]">купить</app-button>
+    <app-button
+        [routerLink]="['/catalog/', category, name]"
+        (click)="setCurrentProduct()"
+        >купить</app-button
+    >
 </div>

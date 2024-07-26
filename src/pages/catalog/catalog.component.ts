@@ -28,6 +28,6 @@ export class CatalogComponent {
     readonly categoriesData$ = this.store.select(selectCategoriesData);
 
     constructor(private readonly store: Store) {
-        this.store.dispatch(CatalogApiActions.loadCategryIntroImg());
+        this.store.dispatch(CatalogApiActions.loadCategoryIntroImg());
     }
 }

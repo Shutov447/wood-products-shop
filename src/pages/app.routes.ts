@@ -1,45 +1,27 @@
 import { Routes } from '@angular/router';
-import { DeliveryComponent } from './delivery';
 import { HomeComponent } from './home';
 import { Page404Component } from './page-404';
-import { AboutUsComponent } from './about-us';
-import { CatalogComponent, categoryGuard } from './catalog';
-import { ArticlesComponent } from './articles';
-import { ContactsComponent } from './contacts';
-import { ProductsComponent } from './products';
-import { ProductComponent } from './product/product.component';
-import { productGuard } from './product';
 
 export const routes: Routes = [
     {
         path: 'delivery',
-        component: DeliveryComponent,
+        loadChildren: () => import('./delivery').then((m) => m.routes),
     },
     {
         path: 'articles',
-        component: ArticlesComponent,
+        loadChildren: () => import('./articles').then((m) => m.routes),
     },
     {
         path: 'about-us',
-        component: AboutUsComponent,
+        loadChildren: () => import('./about-us').then((m) => m.routes),
     },
     {
         path: 'contacts',
-        component: ContactsComponent,
+        loadChildren: () => import('./contacts').then((m) => m.routes),
     },
     {
         path: 'catalog',
-        component: CatalogComponent,
-    },
-    {
-        path: 'catalog/:category',
-        component: ProductsComponent,
-        canActivate: [categoryGuard],
-    },
-    {
-        path: 'product/:product',
-        component: ProductComponent,
-        canActivate: [productGuard],
+        loadChildren: () => import('./catalog').then((m) => m.routes),
     },
     {
         path: 'not-found',

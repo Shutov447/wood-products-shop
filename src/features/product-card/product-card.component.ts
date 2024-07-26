@@ -9,6 +9,8 @@ import { TuiCarouselComponent, TuiCarouselModule } from '@taiga-ui/kit';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from '@shared/components';
 import { IProduct } from '@shared/api';
+import { Store } from '@ngrx/store';
+import { ProductsActions } from '@shared/model';
 
 @Component({
     selector: 'app-product-card',
@@ -28,8 +30,20 @@ export class ProductCardComponent {
     @Input({ required: true }) name: IProduct['name'] | null = null;
     @Input({ required: true }) price: IProduct['price'] | null = null;
     @Input({ required: true }) imgs: IProduct['photos'] | null = null;
+    @Input({ required: true }) category: IProduct['category'] | null = null;
 
     currentDot = 0;
+
+    constructor(private readonly store: Store) {}
+
+    setCurrentProduct() {
+        this.name &&
+            this.store.dispatch(
+                ProductsActions.setCurrentProductByName({
+                    productName: this.name,
+                }),
+            );
+    }
 
     seeNextImg() {
         this.carousel?.onAutoscroll();

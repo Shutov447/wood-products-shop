@@ -110,6 +110,7 @@ export class ProductsFilterComponent implements OnDestroy, OnInit {
                             currentCategory,
                         }),
                     );
+                    this.emitFilterData();
                 }
             });
 

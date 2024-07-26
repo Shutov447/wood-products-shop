@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -14,8 +14,8 @@ import {
 } from '@shared/components';
 import { ContactUsCardComponent } from '@features/contact-us-card';
 import { CharacteristicsComponent } from '@entities/characteristics';
-import { selectCurrentProduct, ProductsActions } from '@shared/model';
-import { Subject, takeUntil } from 'rxjs';
+import { selectCurrentProduct } from '@shared/model';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-product',
@@ -49,23 +49,10 @@ export class ProductComponent
     isOrderFormPopup = true;
 
     constructor(
-        private readonly activatedRoute: ActivatedRoute,
         private readonly fb: FormBuilder,
         private readonly store: Store,
     ) {
         super(fb);
-        this.activatedRoute.paramMap
-            .pipe(takeUntil(this.destroy$))
-            .subscribe((paramMap) => {
-                const productName = paramMap.get('product');
-
-                productName &&
-                    this.store.dispatch(
-                        ProductsActions.setCurrentProductByName({
-                            productName,
-                        }),
-                    );
-            });
     }
 
     ngOnDestroy() {
